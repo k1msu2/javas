@@ -29,7 +29,7 @@
 		where post_content like '%'||#{key}||'%'
 	</select>
 	
-	<select id="searcWantad1" parameterType="string" resultType="vo.WantadVO">
+	<select id="searchWantad1" parameterType="string" resultType="vo.WantadVO">
 		select mem_userid, post_title, post_content, post_writedate, post_hit, 
 		post_location, post_payment, post_review_count from wantad
 		where mem_userid = #{mem_userid} order by post_id
@@ -39,9 +39,9 @@
 	</delete>
 	<insert id="insertWantad" parameterType="vo.WantadVO">
 		insert into wantad (mem_userid, post_title, post_content, post_writedate, 
-		post_location, post_payment, post_review_count) 
+		post_location, post_payment, post_review_count, post_hit) 
 		values (#{mem_userid}, #{post_title}, #{post_content}, sysdate, 
-		#{post_location}, #{post_payment}, #{post_review_count})
+		#{post_location}, #{post_payment}, #{post_review_count}, 0)
 	</insert>
 	<update id="updateWantad" parameterType="vo.WantadVO">
 		update wantad set mem_userid = #{mem_userid}, post_title = #{post_title}, 

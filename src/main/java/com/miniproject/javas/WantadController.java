@@ -33,6 +33,8 @@ public class WantadController {
 	
 	@RequestMapping("/wantadform")
 	public String wantform(WantadVO vo) {
+		System.out.println(vo);
+		dao.insert(vo);
 		return "wantadform";
 	}
 	
