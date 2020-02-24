@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="resource.JobadMapper">
+  	<select id="selectAll" resultType="vo.JobadVO">
+  		select post_id,mem_userid,post_title,post_content,to_char(post_writedate,'yyyy"년" mm"월" dd"일" hh24"시":mi"분"'),post_hit,post_location,post_payment,post_phone,post_review_count 
+  		from jobad order by post_writedate desc
+  	</select>
+  	<select id="selectAllPage" parameterType="java.util.HashMap" resultType="vo.JobadVO">
+	  	select rownum,post_id,mem_userid,post_title,post_content,to_char(post_writedate,'yyyy"년" mm"월" dd"일" hh24"시":mi"분"'),post_hit,post_location,post_payment,post_phone,post_review_count 
+	  	from jobad 
+        where rownum between #{getWritingStart} and #{getWritingEnd}
+        order by post_writedate desc
+  	</select>
+  	<select id="listOne" parameterType="_int" resultType="vo.JobadVO">
+  		select post_id,mem_userid,post_title,post_content,to_char(post_writedate,'yyyy"년" mm"월" dd"일" hh24"시":mi"분"'),post_hit,post_location,post_payment,post_phone,post_review_count 
+  		from jobad where post_id=#{post_id}
+  	</select>
+  	<select id="selectWriter" parameterType="java.util.HashMap" resultType="vo.JobadVO">
+  		select rownum,jobad.post_id,jobad.mem_userid,jobad.post_title,jobad.post_content,to_char(jobad.post_writedate,'yyyy"년" mm"월" dd"일" hh24"시":mi"분"'),jobad.post_hit,jobad.post_location,jobad.post_payment,jobad.post_phone,jobad.post_review_count 
+	  	from jobad inner join meminfo on jobad.mem_userid=meminfo.mem_userid
+        where meminfo.mem_username=#{writer} and rownum between #{getWritingStart} and #{getWritingEnd}
+        order by jobad.post_writedate desc
+  	</select>
+  	<select id="searchList" parameterType="java.util.HashMap" resultType="vo.JobadVO">
+	  	select rownum,post_id,mem_userid,post_title,post_content,to_char(post_writedate,'yyyy"년" mm"월" dd"일" hh24"시":mi"분"'),post_hit,post_location,post_payment,post_phone,post_review_count 
+	    from jobad
+	    where #{searchType} like '%'||#{key}||'%' and rownum between #{getWritingStart} and #{getWritingEnd} 
+	    order by post_writedate desc	
+  	</select>
+  	<insert id="insertJobad" parameterType="vo.JobadVO">
+  		insert into jobad (post_id,mem_userid,post_title,post_content,post_writedate,post_hit,post_location,post_payment,post_phone,post_review_count) 
+  		values (#{post_id},#{mem_userid},#{post_title},#{post_content},to_date(sysdate,'yyyy-mm-dd"T"hh24:mi'),#{post_hit},#{post_location},#{post_payment},#{post_phone},#{post_review_count})
+  	</insert>
+  	<delete id="deleteJobad" parameterType="_int">
+  		delete from jobad where id=#{id}
+  	</delete>
+  	<update id="updateJobad" parameterType="vo.JobadVO">
+  		update jobad set post_id=#{post_id},mem_userid=#{mem_userid},post_title=#{post_title},post_content=#{post_content},post_writedate=to_date(sysdate,'yyyy-mm-dd"T"hh24:mi'),post_hit=#{post_hit},post_location=#{post_location},post_payment=#{post_payment},post_phone=#{post_phone},post_review_count=#{post_review_count}
+  	</update>
+  	<select id="listSort" parameterType="java.util.HashMap" resultType="vo.JobadVO">
+  		select rownum,post_id,mem_userid,post_title,post_content,to_char(post_writedate,'yyyy"년" mm"월" dd"일" hh24"시":mi"분"'),post_hit,post_location,post_payment,post_phone,post_review_count
+  		from (select post_id,mem_userid,post_title,post_content,to_char(post_writedate,'yyyy"년" mm"월" dd"일" hh24"시":mi"분"'),post_hit,post_location,post_payment,post_phone,post_review_count
+  		from jobad 
+  		order by #{sortColumn} asc
+  		where rownum between #{getWritingStart} and #{getWrtingEnd})
+  	</select>
+  	
+  </mapper>
