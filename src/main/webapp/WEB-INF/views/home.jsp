@@ -12,7 +12,7 @@
 </h1>
 <h2>
 
-	feature_branch!!
+	feature branch!!
 
 </h2>
 
