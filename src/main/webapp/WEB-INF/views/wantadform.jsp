@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1> 구직 게시판 작성 폼</h1>
-<form method="post" action="/javas/wantadform">
+<form method="post" action="wantadinsert">
 <input id="hidden1" type="hidden" name="action" value="insert">
 작성자 <input id="mem_userid" type="text" name="mem_userid"><br>
 <br> 제목 <input id="post_title" type="text" name="post_title" required><br>
@@ -19,7 +19,7 @@
 <input id="post_id" type="text" name="newsid" style="display: none"> 
 <input type="submit" value="등록">
 <input type="reset" value="재작성">
-<button type="button" onclick="location.href='wantadform'">취소</button>
+<button onclick="location.href='wantadform'">취소</button>
 </form>
 </body>
 </html>

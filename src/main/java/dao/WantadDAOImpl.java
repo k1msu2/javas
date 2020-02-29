@@ -11,11 +11,12 @@ import org.springframework.stereotype.Repository;
 import vo.WantadVO;
 
 @Repository
-public class WantadMybatisDAO implements WantadDAO{
+public class WantadDAOImpl implements WantadDAO{
 	
 	@Autowired
 	SqlSession session = null;
 	
+	@Override
 	public List<WantadVO> listAll(){
 		System.out.println("==========dao listAll===========");
 		List<WantadVO> list = null;
@@ -25,6 +26,7 @@ public class WantadMybatisDAO implements WantadDAO{
 		return list;
 	}
 	
+	@Override
 	public WantadVO listOne(int id) {
 		WantadVO vo = null;
 		boolean result = false;
@@ -40,6 +42,7 @@ public class WantadMybatisDAO implements WantadDAO{
 		else return null;
 	}
 	
+	@Override
 	public boolean insert(WantadVO vo) {
 		boolean result = false;
 		String statement = "resource.WantadMapper.insertWantad";
@@ -48,6 +51,7 @@ public class WantadMybatisDAO implements WantadDAO{
 		return result;
 	}
 
+	@Override
 	public boolean delete(int id) {
 		boolean result = false;
 			String statement = "resource.WantadMapper.deleteNews";
@@ -56,6 +60,7 @@ public class WantadMybatisDAO implements WantadDAO{
 		return result;
 	}
 	
+	@Override
 	public boolean update(WantadVO vo) {
 		boolean result = false;
 		String statement = "resource.WantadMapper.updateNews";
@@ -65,6 +70,7 @@ public class WantadMybatisDAO implements WantadDAO{
 		return result;
 	}
 
+	@Override
 	public List<WantadVO> listWriter(String writer) {
 		List<WantadVO> list = null;
 		String statement = "resource.WantadMapper.searchWantad1";
@@ -72,6 +78,7 @@ public class WantadMybatisDAO implements WantadDAO{
 		return list;
 	}
 	
+	@Override
 	public List<WantadVO> search(String key, String searchType){
 		List<WantadVO> list = null;
 		String statement = "resource.WantadMapper.searchWantadTitleAndContent";
@@ -82,13 +89,14 @@ public class WantadMybatisDAO implements WantadDAO{
 		return list;
 	}
 	
+	@Override
 	public List<WantadVO> searchAll(String key) {
 
 		List<WantadVO> list = null;
 		String statement = "resource.WantadMapper.searchWantadAll";
 		list = session.selectList(statement, key);
 		return list;
-	}
+	}	
 	
 
 }

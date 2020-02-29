@@ -36,7 +36,7 @@
 <tr>
 <td width=100><c:out value="${vo.post_id}"/></td>
 <th width=400>
-<a href="/javas/wantad?action=read">
+<a href="/javas/readwantad?id=${vo.post_id}">
 <c:out value="${vo.post_title}"/>
 </a>
 </th>
