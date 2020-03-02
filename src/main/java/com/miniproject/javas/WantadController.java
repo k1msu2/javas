@@ -6,9 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import dao.WantadDAOImpl;
+import vo.PageVO;
 import vo.WantadVO;
 
 @Controller
@@ -17,7 +19,28 @@ public class WantadController {
 	WantadDAOImpl dao;
 	
 	@RequestMapping("/wantad")
-	public ModelAndView wantad(WantadVO vo, String action)
+	public ModelAndView wantad2(WantadVO vo, 
+			@RequestParam(defaultValue="1") int page,
+			@RequestParam(required = false, defaultValue="0") int left,
+			@RequestParam(required = false, defaultValue="0") int right)
+	{
+
+		System.out.println("============wantad dao========");
+		ModelAndView mav = new ModelAndView();
+		List<WantadVO> list = new ArrayList<>();
+
+		PageVO pvo = dao.pagination(page, left, right);
+		list = dao.listAll(pvo);
+		
+		mav.addObject("listAll", list);
+		mav.addObject("pageVO", pvo);		
+		
+		mav.setViewName("wantad");
+		return mav;
+	}
+	
+	@RequestMapping("/wantadall")
+	public ModelAndView wantad(WantadVO vo)
 	{
 		System.out.println("============wantad dao========");
 		ModelAndView mav = new ModelAndView();

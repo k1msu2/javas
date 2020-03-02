@@ -4,50 +4,91 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="resource.WantadMapper">
 	<select id="selectWantad" resultType="vo.WantadVO">
-		select post_id, mem_userid, post_title, post_content, post_writedate, post_hit, 
-		post_location, post_payment, post_review_count from wantad order by post_id desc
+		select post_id, mem_userid,
+		post_title, post_content, post_writedate, post_hit,
+		post_location,
+		post_payment, post_review_count from wantad order by post_id desc
+	</select>
+	<select id="selectWantadPage" parameterType="java.util.Map"
+		resultType="vo.WantadVO">
+		select post_id, mem_userid, post_title, post_content, post_writedate,
+		post_hit,
+		post_location, post_payment, post_review_count
+		from (select post_id, mem_userid, post_title, post_content,
+		post_writedate, post_hit,
+		post_location, post_payment, post_review_count, rownum as rnum
+		from wantad order by post_id desc)
+		<!-- where rnum between 4 and 6 -->
+		where rnum between ${startNum} and ${endNum}
 	</select>
 	<select id="selectWantad1" parameterType="_int"
 		resultType="vo.WantadVO">
-		select mem_userid, post_title, post_content, post_writedate, post_hit, 
-		post_location, post_payment, post_review_count from wantad where post_id = #{post_id}
+		select mem_userid, post_title, post_content,
+		post_writedate, post_hit,
+		post_location, post_payment,
+		post_review_count from wantad where post_id =
+		#{post_id}
 	</select>
-	<select id="searchWantadTitleAndContent" parameterType="java.util.Map"
-		resultType="vo.WantadVO">
-		select mem_userid, post_title, post_content, post_writedate, post_hit, 
-		post_location, post_payment, post_review_count from wantad 
-		where ${searchtype} like '%'||#{key}||'%'
+	<select id="searchWantadTitleAndContent"
+		parameterType="java.util.Map" resultType="vo.WantadVO">
+		select mem_userid,
+		post_title, post_content, post_writedate, post_hit,
+		post_location,
+		post_payment, post_review_count from wantad
+		where ${searchtype} like
+		'%'||#{key}||'%'
 	</select>
 	<select id="searchWantadAll" parameterType="string"
-		resultType="vo.WantadVO"> 
-		select mem_userid, post_title, post_content, post_writedate, post_hit, 
+		resultType="vo.WantadVO">
+		select mem_userid, post_title, post_content,
+		post_writedate, post_hit,
+		post_location, post_payment,
+		post_review_count from wantad
+		where
+		post_title like '%'||#{key}||'%'
+		union
+		select mem_userid, post_title, post_content, post_writedate,
+		post_hit,
 		post_location, post_payment, post_review_count from wantad
-		where post_title like '%'||#{key}||'%' 
-		union 
-		select mem_userid, post_title, post_content, post_writedate, post_hit, 
-		post_location, post_payment, post_review_count from wantad 
 		where post_content like '%'||#{key}||'%'
 	</select>
-	
-	<select id="searchWantad1" parameterType="string" resultType="vo.WantadVO">
-		select mem_userid, post_title, post_content, post_writedate, post_hit, 
-		post_location, post_payment, post_review_count from wantad
-		where mem_userid = #{mem_userid} order by post_id
+
+	<select id="searchWantad1" parameterType="string"
+		resultType="vo.WantadVO">
+		select mem_userid, post_title, post_content,
+		post_writedate, post_hit,
+		post_location, post_payment,
+		post_review_count from wantad
+		where mem_userid =
+		#{mem_userid} order by
+		post_id
 	</select>
 	<delete id="deleteWantad" parameterType="_int">
-		delete from wantad where post_id = #{post_id}
+		delete from wantad where
+		post_id = #{post_id}
 	</delete>
 	<insert id="insertWantad" parameterType="vo.WantadVO">
-		insert into wantad (mem_userid, post_title, post_content, post_writedate, 
-		post_location, post_payment, post_review_count, post_hit) 
-		values (#{mem_userid}, #{post_title}, #{post_content}, sysdate, 
-		#{post_location}, #{post_payment}, #{post_review_count}, 0)
+		insert into wantad
+		(mem_userid, post_title, post_content, post_writedate,
+		post_location,
+		post_payment, post_review_count, post_hit)
+		values (#{mem_userid},
+		#{post_title}, #{post_content}, sysdate,
+		#{post_location},
+		#{post_payment}, #{post_review_count}, 0)
 	</insert>
 	<update id="updateWantad" parameterType="vo.WantadVO">
-		update wantad set mem_userid = #{mem_userid}, post_title = #{post_title}, 
-		post_content = #{post_content}, post_writedate = sysdate where post_id = #{post_id}
+		update wantad set
+		mem_userid = #{mem_userid}, post_title = #{post_title},
+		post_content =
+		#{post_content}, post_writedate = sysdate where post_id =
+		#{post_id}
 	</update>
 	<update id="updateWantadView" parameterType="_int">
-		update wantad set post_hit = post_hit + 1 where post_id = #{post_id}
+		update wantad set
+		post_hit = post_hit + 1 where post_id = #{post_id}
 	</update>
+	<select id="countWantad" resultType="_int">
+		select count(post_id) from wantad
+	</select>
 </mapper>
