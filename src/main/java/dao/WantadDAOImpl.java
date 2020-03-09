@@ -16,33 +16,30 @@ public class WantadDAOImpl implements WantadDAO {
 
 	@Autowired
 	SqlSession session = null;
-	
+
 	@Autowired
 	PageVO pvo = null;
 
 	@Override
 	public List<WantadVO> listAll(PageVO pvo) {
-		//system.out.println("==========dao listAll pagination ===========");
+		// system.out.println("==========dao listAll pagination ===========");
 		List<WantadVO> list = null;
 		String statement = "resource.WantadMapper.selectWantadPage";
 		Map<String, Integer> hmap = new HashMap<String, Integer>();
-		hmap.put("startNum", pvo.getListStartNum());
+		hmap.put("beginNum", pvo.getListBeginNum());
 		hmap.put("endNum", pvo.getListEndNum());
-		// hmap.put("startNum", 0);
-		// hmap.put("endNum", 0);
 		list = session.selectList(statement, hmap);
-		//system.out.println(list);
 		return list;
 
 	}
 
 	@Override
 	public List<WantadVO> listAll() {
-		//system.out.println("==========dao listAll===========");
+		// system.out.println("==========dao listAll===========");
 		List<WantadVO> list = null;
 		String statement = "resource.WantadMapper.selectWantad";
 		list = session.selectList(statement);
-		//system.out.println("dao : " + list);
+		// system.out.println("dao : " + list);
 		return list;
 	}
 
@@ -56,7 +53,7 @@ public class WantadDAOImpl implements WantadDAO {
 		statement = "resource.WantadMapper.updateWantadView";
 		if (session.update(statement, id) == 1) {
 			result = true;
-			//system.out.println("count 증가함");
+			// system.out.println("count 증가함");
 		}
 		if (result)
 			return vo;
@@ -86,7 +83,7 @@ public class WantadDAOImpl implements WantadDAO {
 	public boolean update(WantadVO vo) {
 		boolean result = false;
 		String statement = "resource.WantadMapper.updateNews";
-		//system.out.println(vo);
+		// system.out.println(vo);
 		if (session.insert(statement, vo) == 1)
 			result = true;
 		return result;
@@ -125,108 +122,63 @@ public class WantadDAOImpl implements WantadDAO {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-	
+
 	@Override
-	public PageVO pagination(int page, int left, int right) {
-		//system.out.println("page : " + page);
-		//system.out.println("left : " + left);
-		//system.out.println("right : " + right);
-
-		//PageVO pvo = new PageVO();
-
-		//pvo.setPage(page);
+	public PageVO pagination(int page) {
 
 		String statement = "resource.WantadMapper.countWantad";
 		int totalListNum = session.selectOne(statement);
-		pvo.setTotalListNum(totalListNum);
-		//system.out.println("totalListNum: " + totalListNum);
 
-		// 사용자 지정
-		pvo.setShowListNum(3);
-		pvo.setShowPageNum(2);
-
-		//system.out.println("ShowListNum: " + pvo.getShowListNum());
-		//system.out.println("ShowPageNum: " + pvo.getShowPageNum());
-
-		int totalpage = (pvo.getTotalListNum() + 1) / pvo.getShowListNum();
-		pvo.setTotalPageNum(totalpage);
-		//system.out.println("totalpage: " + totalpage);
-
+		pvo.setShowListNum(4);
+		pvo.setShowPageNum(5);
+		
 		pvo.setPage(page);
-		// 첫화면 페이지 구분
-		if (page == 1) {
-			if (pvo.getTotalPageNum() > pvo.getShowPageNum()) {
-				pvo.setRightNum(right + 1);
-				pvo.setRightChar(">");
-				pvo.setLeftChar("");
-			} else {
-				pvo.setRightNum(0);
-				pvo.setRightChar("");
-				pvo.setLeftChar("");
-			}
-			pvo.setPageStartNum(1);  //1
-			pvo.setPageEndNum(pvo.getShowPageNum()); //2
-			
-		} else {
-			// '>' 클릭시
-			// 1. endnum + 1
-			// 2. '<' or '>' 출력 여부 확인 (데이터가 있는지 여부)
-			// 3. 새로운 startnum, endnum
-			//System.out.println(page);
-			if (page > pvo.getPageEndNum()) {
-				pvo.setPage(pvo.getPageEndNum() + 1);
-				System.out.println(pvo.getPage());
-				pvo.setLeftChar("<");
-				pvo.setPageStartNum(pvo.getPageStartNum() + pvo.getShowPageNum());
-				int pendnum = pvo.getPageEndNum() + pvo.getShowPageNum();
-				if (pendnum > pvo.getTotalPageNum()) {
-					pendnum = pvo.getTotalPageNum();
-					pvo.setPageEndNum(pendnum);
-					pvo.setRightChar("");
-				} else {
-					pvo.setPageEndNum(pendnum);
-					pvo.setRightChar(">");
-				}
-			}
-			// '<' 클릭시
-			// 1. startnum - 1
-			// 2. '<' or '>' 출력 여부 확인 (데이터가 있는지 여부)
-			// 3. 새로운 startnum, endnum
-			
-			else if(page < pvo.getPageStartNum()) {
-				pvo.setPage(pvo.getPageStartNum()-1);
-				pvo.setRightChar(">");
-				
-				if(pvo.getPageStartNum() == pvo.getPageEndNum()) {
-					pvo.setPageEndNum(pvo.getPageEndNum()-1);
-					pvo.setPageStartNum(pvo.getPageEndNum()-pvo.getShowPageNum()+1);				
-				} else {
-					pvo.setPageEndNum(pvo.getPageEndNum()-pvo.getShowPageNum());
-					pvo.setPageStartNum(pvo.getPageEndNum()-pvo.getShowPageNum()+1);				
-				}
+		pvo.setTotalListNum(totalListNum);
+		
+		int showPageNum = pvo.getShowPageNum();
+		int showListNum = pvo.getShowListNum();
+		int totalPageNum = (totalListNum - 1)/showListNum+1;
+		
+		// 페이지 개수
+		pvo.setTotalPageNum(totalPageNum);
 
-				
-				if(pvo.getPageStartNum()==1) {
-					pvo.setLeftChar("");
-				}else {
-					pvo.setLeftChar("<");
-				}
-				
-			}
+		int pageBeginNum = page;
+		int pageEndNum = page;
+		if (page % showPageNum == 0) {
+			pageBeginNum = ((page/showPageNum)-1) * showPageNum + 1;
+		} else {
+			pageBeginNum = (page/showPageNum) * showPageNum+1;
 		}
 
-		// 출력할 게시판 글의 시작과 끝 넘버
-		int start = (pvo.getPage() - 1) * pvo.getShowListNum() + 1;
-		int end = pvo.getPage() * pvo.getShowListNum();
-		pvo.setListStartNum(start);
-		pvo.setListEndNum(end);
+		if ((pageBeginNum + showPageNum) >= totalPageNum) {
+			pageEndNum = totalPageNum;
+		} else {
+			pageEndNum = pageBeginNum + showPageNum - 1;
+		}
 
-		//system.out.println("start: " + start);
-		//system.out.println("end: " + end);
+		pvo.setPageBeginNum(pageBeginNum);
+		pvo.setPageEndNum(pageEndNum);
 
-		//system.out.println("right: " + pvo.getRightNum() + ", char:" + pvo.getRightChar());
-		//system.out.println("left: " + pvo.getLeftNum() + ", char:" + pvo.getLeftChar());
+		if (pageBeginNum == 1) {
+			pvo.setLeftChar("");
+		} else {
+			pvo.setLeftChar("<");
+		}
 
+		if (pageEndNum == totalPageNum) {
+			pvo.setRightChar("");
+		} else {
+			pvo.setRightChar(">");
+		}
+
+		int listBeginNum = totalListNum - (page - 1) * showListNum;
+		int ListEndNum = -1;
+		ListEndNum = listBeginNum - showListNum + 1;
+
+		pvo.setListBeginNum(ListEndNum);
+		pvo.setListEndNum(listBeginNum);
+		
+		System.out.println(pvo);
 		return pvo;
 
 	}

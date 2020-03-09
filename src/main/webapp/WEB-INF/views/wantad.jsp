@@ -57,11 +57,17 @@ a {
 	<hr>
 	<br>
 	<div id="pages">
-		<a href="/javas/wantad?page=${pageVO.pageStartNum-pageVO.showPageNum}">${pageVO.leftChar}</a>
-		<a href="/javas/wantad?page=${pageVO.pageStartNum}">${pageVO.pageStartNum}</a>
-		<a href="/javas/wantad?page=${pageVO.pageEndNum}">${pageVO.pageEndNum}</a>
-		<a href="/javas/wantad?page=${pageVO.pageEndNum+1}">${pageVO.rightChar}</a>
 	</div>
 
+	<script>
+		window.onload = function(){
+			document.getElementById("pages").innerHTML += "<a href='/javas/wantad?page=${pageVO.pageBeginNum-pageVO.showPageNum}'>${pageVO.leftChar}</a>&nbsp&nbsp";
+			for(var i = "${pageVO.pageBeginNum}"; i <= "${pageVO.pageEndNum}"; i++){
+				document.getElementById("pages").innerHTML += "<a href='/javas/wantad?page=" + i + "'>"+ i + "</a>&nbsp&nbsp";				
+			}
+			document.getElementById("pages").innerHTML += "<a href='/javas/wantad?page=${pageVO.pageEndNum+1}'>${pageVO.rightChar}</a>&nbsp&nbsp";
+		};
+	</script>
+	
 </body>
 </html>

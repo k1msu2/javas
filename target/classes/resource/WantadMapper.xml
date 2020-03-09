@@ -19,7 +19,7 @@
 		post_location, post_payment, post_review_count, rownum as rnum
 		from wantad order by post_id desc)
 		<!-- where rnum between 4 and 6 -->
-		where rnum between ${startNum} and ${endNum}
+		where rnum between ${beginNum} and ${endNum} order by post_id desc
 	</select>
 	<select id="selectWantad1" parameterType="_int"
 		resultType="vo.WantadVO">

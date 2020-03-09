@@ -20,16 +20,14 @@ public class WantadController {
 	
 	@RequestMapping("/wantad")
 	public ModelAndView wantad2(WantadVO vo, 
-			@RequestParam(defaultValue="1") int page,
-			@RequestParam(required = false, defaultValue="0") int left,
-			@RequestParam(required = false, defaultValue="0") int right)
+			@RequestParam(defaultValue="1") int page)
 	{
 
 		System.out.println("============wantad dao========");
 		ModelAndView mav = new ModelAndView();
 		List<WantadVO> list = new ArrayList<>();
 
-		PageVO pvo = dao.pagination(page, left, right);
+		PageVO pvo = dao.pagination(page);
 		list = dao.listAll(pvo);
 		
 		mav.addObject("listAll", list);

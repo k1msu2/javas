@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="resource.WantReviewMapper">
+	<select id="selectWantReview" resultType="vo.WantReviewVO">
+		select review_id,
+		post_id, review_userid,
+		review_comment, review_date, review_rate from
+		wantreview order by post_id
+	</select>
+	<delete id="deleteWantReview" parameterType="_int">
+		delete from wantreview
+		where post_id=#{post_id}
+	</delete>
+	<insert id="insertWantReview" parameterType="vo.WantReviewVO">
+		insert into wantreview
+		(post_id, review_userid,
+		review_comment, review_date, review_rate)
+		values
+		(#{post_id}, #{review_userid},
+		#{review_comment}, sysdate, #{review_rate})
+	</insert>
+	<update id="updateWantReivew" parameterType="vo.WantadVO">
+		update wantreview set
+		review_comment = #{review_comment},
+		review_date = #{review_date},
+		review_rate = #{review_rate}
+		where review_id = #{review_id}
+	</update>
+</mapper>

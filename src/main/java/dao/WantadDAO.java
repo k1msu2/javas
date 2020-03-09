@@ -16,6 +16,6 @@ public interface WantadDAO {
 	public List<WantadVO> search(String key, String searchType);
 	public List<WantadVO> searchAll(String keyword);
 	public int listCount();
-	public PageVO pagination(int page, int left, int right);
+	public PageVO pagination(int page);
 
 }
