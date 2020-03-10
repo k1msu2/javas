@@ -17,7 +17,7 @@ public class MeminfoController {
 	MeminfoDAO dao;
 	
 	
-	@RequestMapping(value = "/meminfo", method = RequestMethod.POST)
+	@RequestMapping(value = "/meminfo", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView meminfoinsert(MeminfoVO vo, String action) {
 		ModelAndView mav = new ModelAndView();
 		List<MeminfoVO> list = null;
