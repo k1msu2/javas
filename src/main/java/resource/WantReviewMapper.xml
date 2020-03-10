@@ -9,6 +9,12 @@
 		review_comment, review_date, review_rate from
 		wantreview order by post_id
 	</select>
+	<select id="selectWantReviewById" parameterType="_int" resultType="vo.WantReviewVO">
+		select review_userid,
+		review_comment, review_date 
+		from wantreview where post_id = #{post_id} 
+		order by review_id
+	</select>
 	<delete id="deleteWantReview" parameterType="_int">
 		delete from wantreview
 		where post_id=#{post_id}
@@ -27,5 +33,10 @@
 		review_date = #{review_date},
 		review_rate = #{review_rate}
 		where review_id = #{review_id}
+	</update>
+	<update id="updateWantReviewCount" parameterType="_int">
+		update wantad set
+		post_review_count = post_review_count + 1 
+		where post_id=#{post_id}
 	</update>
 </mapper>

@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import dao.WantReviewDAOImpl;
@@ -28,14 +29,15 @@ public class WantReviewController {
 		
 	}
 	
+	@ResponseBody
 	@RequestMapping("/wantreviewinsert")
-	public ModelAndView insert(WantReviewVO vo) {
-		System.out.println(vo);
-		//dao.insert(vo);
-		ModelAndView mav = new ModelAndView();
-		//mav.addObject("listReviewAll", dao.listAll());
-		//mav.setViewName("readwantad");
-		return mav;
+	public WantReviewVO insert(WantReviewVO vo) {
+		if(dao.insert(vo)) {
+			System.out.println("삽입 성공");
+			return vo;
+		}else {
+			return null;
+		}		
 	}
 	
 }

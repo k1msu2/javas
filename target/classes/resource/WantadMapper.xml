@@ -23,7 +23,7 @@
 	</select>
 	<select id="selectWantad1" parameterType="_int"
 		resultType="vo.WantadVO">
-		select mem_userid, post_title, post_content,
+		select post_id, mem_userid, post_title, post_content,
 		post_writedate, post_hit,
 		post_location, post_payment,
 		post_review_count from wantad where post_id =

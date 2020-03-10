@@ -61,7 +61,7 @@ a {
 
 	<script>
 		window.onload = function(){
-			document.getElementById("pages").innerHTML += "<a href='/javas/wantad?page=${pageVO.pageBeginNum-pageVO.showPageNum}'>${pageVO.leftChar}</a>&nbsp&nbsp";
+			document.getElementById("pages").innerHTML += "<a href='/javas/wantad?page=${pageVO.pageBeginNum-1}'>${pageVO.leftChar}</a>&nbsp&nbsp";
 			for(var i = "${pageVO.pageBeginNum}"; i <= "${pageVO.pageEndNum}"; i++){
 				document.getElementById("pages").innerHTML += "<a href='/javas/wantad?page=" + i + "'>"+ i + "</a>&nbsp&nbsp";				
 			}
