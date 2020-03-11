@@ -30,7 +30,7 @@ public class MeminfoDAO {
 		return list;
 	}
 
-	// insert 기능을 하는 메서드
+	// insert 기능을 하는 메서드. 회원가입 폼에서 데이터를 받아 DAO를 거쳐 DB에 저장하는 기능.
 	public boolean insert(MeminfoVO vo) {
 		System.out.println("Mybatis를 사용 DB 연동-insert : MeminfoMybatisDAO");
 		boolean result = false;

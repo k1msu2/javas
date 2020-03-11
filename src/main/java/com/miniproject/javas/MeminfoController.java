@@ -19,7 +19,7 @@ public class MeminfoController {
 	
 	@RequestMapping(value = "/meminfoinsert", method = RequestMethod.POST)
 	public ModelAndView meminfoinsert(MeminfoVO vo, String action) {
-		System.out.println("?");
+		//System.out.println("?");
 		ModelAndView mav = new ModelAndView();
 		List<MeminfoVO> list = null;
 		String mem_userid = vo.getMem_userid();
@@ -47,11 +47,6 @@ public class MeminfoController {
 		mav.addObject("mem_photo", mem_photo);
 		mav.addObject("mem_is_employer", mem_is_employer);
 		
-
-		
-		  /*System.out.println(writer); System.out.println(title);
-		  System.out.println(content); System.out.println(writedate); */
-		 
 		
 		boolean result = dao.insert(vo);
 		System.out.println(vo);
@@ -67,6 +62,8 @@ public class MeminfoController {
 		mav.setViewName("meminfoview");
 		return mav;
 	}
+	//회원가입 폼을 인서트 기능으로 받아 컨트롤링하는 메서드.
+	
 	
 	@RequestMapping(value = "/meminfoupdate", method = RequestMethod.POST)
 	public ModelAndView meminfoupdate(MeminfoVO vo, String action) {
