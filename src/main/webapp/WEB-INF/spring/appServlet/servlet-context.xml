@@ -29,7 +29,7 @@
 	
 	<!-- 	<beans:bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
-		
+	-->
 	<beans:bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<beans:property name="driverClassName"
@@ -54,8 +54,5 @@
 		destroy-method="clearCache">
 		<beans:constructor-arg index="0"
 			ref="sqlSessionFactory" />
-	</beans:bean> -->
-	
-	
-	
+	</beans:bean>
 </beans:beans>

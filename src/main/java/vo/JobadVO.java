@@ -78,4 +78,12 @@ public class JobadVO {
 	public void setPost_review_count(int post_review_count) {
 		this.post_review_count = post_review_count;
 	}
+	@Override
+	public String toString() {
+		return "JobadVO [post_id=" + post_id + ", mem_userid=" + mem_userid + ", post_title=" + post_title
+				+ ", post_content=" + post_content + ", post_writedate=" + post_writedate + ", post_hit=" + post_hit
+				+ ", post_location=" + post_location + ", post_payment=" + post_payment + ", post_phone=" + post_phone
+				+ ", post_review_count=" + post_review_count + "]";
+	}
+	
 }

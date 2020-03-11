@@ -1,83 +1,113 @@
 package com.miniproject.javas;
 
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import dao.JobadDAO;
+import dao.JobadDAO2;
 import vo.JobadVO;
+import vo.LoginVO;
 
 @Controller
 public class JobadController {
-	@Autowired JobadDAO dao;
-	//게시판 리스트 출력하는 메서드
-	@RequestMapping(value = "/mainpage", method = RequestMethod.GET)
-	public ModelAndView listAll(Integer pgNum) {
-		//curPage로 아무것도 전달 안되면 page=1
-		int page = 1;
-		if(pgNum!=null) {
-			page = pgNum;
+	@Autowired JobadDAO2 dao;
+	@RequestMapping(value="/jobad",method=RequestMethod.GET)
+	public ModelAndView doGet(
+	@RequestParam(value="action",required=false)String action,
+	@RequestParam(defaultValue="1")int pgNum,
+	@RequestParam(value="mem_username",required=false)String mem_username,
+	@RequestParam(value="key",required=false)String key,
+	@RequestParam(value="searchType",required=false)String searchType,
+	@RequestParam(defaultValue="0")int post_id,
+	HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		List<JobadVO> list;
+		int count = 0;
+		String linkStr = "";
+		if(action==null) {
+			list = dao.listAll(pgNum);
+			session.setAttribute("pgNum", pgNum);
+			System.out.println("pgNum : "+pgNum);
+			mav.addObject("msg","구인 게시판");
+			if(list!=null && list.size()!=0) {
+				mav.addObject("list",list);
+			}
+			count = dao.getCount();
 		}
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("viewlist", dao.listAll(page));
-		mav.setViewName("Jobad");
+		else if(action.equals("sort")) {
+			list = dao.listSort(key, pgNum);
+			mav.addObject("msg","구인 리스트("+key+"정렬)");
+			if(list!=null && list.size()!=0) {
+				mav.addObject("list",list);
+			}
+			count = dao.getCount();
+			linkStr = "&action=sort&key="+key;
+		}
+		else if(action.equals("listone")) {
+			JobadVO vo = dao.listOne(post_id);
+			if(vo!=null) {
+				session.setAttribute("vo", vo);
+				mav.addObject("msg","구인 내용");
+				mav.addObject("vo",vo);
+			}
+		}
+		else if(action.equals("listWriter")) {
+			list = dao.listWriter(mem_username, pgNum);
+			mav.addObject("msg","구인 게시판");
+			if(list!=null && list.size()!=0) {
+				mav.addObject("list",list);
+				count = dao.getCount(mem_username);
+				linkStr = "&action=listwriter&mem_username="+mem_username;
+				
+			}
+		}
+		else if(action.equals("search")) {
+			list = dao.search(key, searchType, pgNum);
+			if(list!=null && list.size()!=0) {
+				mav.addObject("msg",key+"을(를) 포함하는 글 리스트");
+				mav.addObject("list",list);
+				count = dao.getCount(key, searchType);
+				linkStr = "&searchType="+searchType+"&key="+key+"&action=search";
+			}
+			else {
+				mav.addObject("snull",key+"을 포함하는 검색글이 없습니다.");
+			}
+		}
+		else if(action.equals("delete")) {
+			dao.delete(post_id);
+			mav.setViewName("redirect:http://localhost:8000/javas/jobad?pgNum="+session.getAttribute("pgNum"));
+			return mav;
+		}
+		mav.addObject("totalCount",count);
+		mav.addObject("pagelist",new JobadDAO2().getPageLinkList(pgNum, linkStr, count));
+		mav.addObject("pgNum",pgNum);
+		mav.setViewName("jobadView");
 		return mav;
 	}
-	//게시판 글 하나를 출력하는 메서드
-	@RequestMapping(value = "/listOne", method = RequestMethod.GET)
-	public ModelAndView listOne(int post_id) {
-		ModelAndView mav = new ModelAndView();
-		JobadVO vo = dao.listOne(post_id);
-		vo.setPost_id(vo.getPost_id()+1);
-		dao.update(vo);
-		mav.addObject("view", vo);
-		//다른 페이지로 넘어간다.
-		mav.setViewName("OneJobad");
-		return mav;
+	@RequestMapping(value="/jobad",method=RequestMethod.POST)
+	public String doPost(@RequestParam("action")String action,
+	@RequestParam(defaultValue="0")int post_id,
+	@ModelAttribute("vo")JobadVO vo,
+	HttpSession session) {
+		LoginVO vo1 = (LoginVO)session.getAttribute("loginVO");
+		
+		vo.setMem_userid(vo1.getMem_userid());
+		vo.setMem_username(vo1.getMem_username());
+		if(action.equals("insert")) {
+			dao.insert(vo);
+		}
+		else if(action.equals("update")) {
+			dao.update(vo);
+		}
+		return "redirect:http://localhost:8000/javas/jobad?pgNum="+session.getAttribute("pgNum");
 	}
-	//작성자의 작성 글을 출력하는 메서드, 현재 페이지도 전달한다.
-	@RequestMapping(value = "/listWriter", method = RequestMethod.GET)
-	public ModelAndView listWriter(String writer,Integer pgNum) {
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("viewlist", dao.listWriter(writer,pgNum));
-		mav.setViewName("Jobad");
-		return mav;
-	}
-	//검색 타입에 따라 글을 출력하는 메서드, 현재 페이지도 전달한다.
-	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public ModelAndView search(String searchType,String key,Integer pgNum) {
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("viewlist",dao.search(searchType,key,pgNum));
-		mav.setViewName("Jobad");
-		return mav;
-	}
-	//id값으로 게시판 글을 삭제하는 메서드
-	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	public ModelAndView delete(int post_id,Integer pgNum) {
-		ModelAndView mav = new ModelAndView();
-		dao.delete(post_id);
-		mav.addObject("viewlist", dao.listAll(pgNum));
-		mav.setViewName("Jobad");
-		return mav;
-	}
-	//작성자가 입력한 내용으로 새 글을 작성하는 메서드
-	@RequestMapping(value = "/insert", method = RequestMethod.POST)
-	public ModelAndView insert(JobadVO vo,Integer pgNum) {
-		ModelAndView mav = new ModelAndView();
-		dao.insert(vo);
-		mav.addObject("viewlist",dao.listAll(pgNum));
-		mav.setViewName("Jobad");
-		return mav;
-	}
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public ModelAndView update(@ModelAttribute("view")JobadVO vo,Integer pgNum) {
-		ModelAndView mav = new ModelAndView();
-		dao.update(vo);
-		mav.addObject("viewlist",dao.listAll(pgNum));
-		mav.setViewName("Jobad");
-		return mav;
-	}
+	
 }
