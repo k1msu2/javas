@@ -14,6 +14,7 @@ import dao.WantReviewDAOImpl;
 import dao.WantadDAOImpl;
 import vo.PageVO;
 import vo.WantReviewVO;
+import vo.WantSearchVO;
 import vo.WantadVO;
 
 @Controller
@@ -24,14 +25,14 @@ public class WantadController {
 	@Autowired
 	WantReviewDAOImpl rdao;
 
-	@RequestMapping("/wantad")
-	public ModelAndView wantad2(WantadVO vo, @RequestParam(defaultValue = "1") int page) {
+	@RequestMapping("/wantad") // search 관련 된 것도 모두 같음
+	public ModelAndView wantad2(WantadVO vo, WantSearchVO svo, @RequestParam(defaultValue = "1") int page) {
 
 		System.out.println("============wantad dao========");
 		ModelAndView mav = new ModelAndView();
 		List<WantadVO> list = new ArrayList<>();
 
-		PageVO pvo = dao.pagination(page);
+		PageVO pvo = dao.pagination(page, svo);
 		list = dao.listAll(pvo);
 
 		mav.addObject("listAll", list);
@@ -84,6 +85,5 @@ public class WantadController {
 		mav.setViewName("/readwantad");
 		return mav;
 	}
-
-
+	
 }

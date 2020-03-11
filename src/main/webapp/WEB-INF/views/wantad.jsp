@@ -58,7 +58,7 @@ a {
 	<br>
 	<div id="pages">
 	</div>
-
+	<%@ include file="wantsearchform.jsp" %>
 	<script>
 		window.onload = function(){
 			document.getElementById("pages").innerHTML += "<a href='/javas/wantad?page=${pageVO.pageBeginNum-1}'>${pageVO.leftChar}</a>&nbsp&nbsp";

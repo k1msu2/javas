@@ -55,7 +55,4 @@
 		<beans:constructor-arg index="0"
 			ref="sqlSessionFactory" />
 	</beans:bean>
-	
-	
-	
 </beans:beans>
