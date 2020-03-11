@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="resource.JobadMapper">
+  	<insert id="insertJobad" parameterType="vo.JobadVO">
+  		insert into jobad values
+  		(jobad_seq.nextval,#{mem_userid}
+  		,#{post_title},#{post_content},sysdate,0,#{post_location}
+  		,#{post_payment},#{post_phone},0)
+  	</insert>
+  	<update id="updateJobad" parameterType="vo.JobadVO">
+  		update jobad set mem_userid=#{mem_userid},
+  		post_title=#{post_title},
+  		post_content=#{post_content},
+  		post_location=#{post_location},
+  		post_payment=#{post_payment},
+  		post_phone=#{post_phone} where post_id=#{post_id}
+  	</update>
+  	<delete id="deleteJobad" parameterType="_int">
+  		delete from jobad where post_id=#{post_id}
+  	</delete>
+  	<select id="getCountJobadAll" resultType="vo.JobadVO">
+  		select post_id,
+  		mem_userid,
+  		mem_username,
+  		post_title,
+  		post_content,
+  		post_writedate,
+  		post_hit,
+  		post_location,
+  		post_payment,
+  		post_phone,
+  		post_review_count from 
+  		(select post_id,jobad.mem_userid mem_userid,mem_username,post_title,post_content,
+  		to_char(post_writedate,'yyyy"년" mm"월" dd"일" hh24"시":mi"분"') post_writedate,
+  		post_hit,post_location,post_payment,post_phone,post_review_count 
+  		from jobad,meminfo where jobad.mem_userid=meminfo.mem_userid)
+  	</select>
+  	<select id="getCountJobadWriter" parameterType="string" resultType="vo.JobadVO">
+  		select post_id,
+  		mem_userid,
+  		mem_username,
+  		post_title,
+  		post_content,
+  		post_writedate,
+  		post_hit,
+  		post_location,
+  		post_payment,
+  		post_phone,
+  		post_review_count from (select post_id,jobad.mem_userid mem_userid,mem_username,post_title,post_content,
+  		to_char(post_writedate,'yyyy"년" mm"월" dd"일" hh24"시":mi"분"') post_writedate,
+  		post_hit,post_location,post_payment,post_phone,post_review_count 
+  		from jobad,meminfo where jobad.mem_userid=meminfo.mem_userid) 
+  		where mem_username=#{mem_username}
+  	</select>
+  	<select id="getCountJobadSearch" parameterType="vo.SearchVO" resultType="vo.JobadVO">
+  		select post_id,
+  		mem_userid,
+  		mem_username,
+  		post_title,
+  		post_content,
+  		post_writedate,
+  		post_hit,
+  		post_location,
+  		post_payment,
+  		post_phone,
+  		post_review_count from (select post_id,jobad.mem_userid mem_userid,mem_username,post_title,post_content,
+  		to_char(post_writedate,'yyyy"년" mm"월" dd"일" hh24"시":mi"분"') post_writedate,
+  		post_hit,post_location,post_payment,post_phone,post_review_count 
+  		from jobad,meminfo where jobad.mem_userid=meminfo.mem_userid) where ${searchExpr}
+  	</select>
+  	<select id="listAllJobad" parameterType="java.util.HashMap" resultType="vo.JobadVO">
+  		select post_id,mem_userid,mem_username,post_title,post_content,post_writedate,post_hit,post_location,post_payment,post_phone,post_review_count from 
+		(select post_id,mem_userid,mem_username,post_title,post_content,post_writedate,post_hit,post_location,post_payment
+		,post_phone,post_review_count,rownum rnum from 
+		(select post_id,jobad.mem_userid mem_userid,mem_username,post_title,post_content,to_char(post_writedate,'yyyy"년" mm"월" dd"일" hh24"시":mi"분"') post_writedate,post_hit,post_location,post_payment 
+		,post_phone,post_review_count from jobad,meminfo where jobad.mem_userid=meminfo.mem_userid
+		 order by post_writedate desc)) 
+		where rnum between #{getWritingStart} and #{getWritingEnd}
+  	</select>
+  	<select id="listWriterJobad" parameterType="java.util.HashMap" resultType="vo.JobadVO">
+  		select post_id,mem_userid,mem_username,post_title,post_content,post_writedate,post_hit,post_location,post_payment,post_phone,post_review_count from 
+		(select post_id,mem_userid,mem_username,post_title,post_content,post_writedate,post_hit,post_location,post_payment
+		,post_phone,post_review_count,rownum rnum from 
+		(select post_id,jobad.mem_userid mem_userid,mem_username,post_title,post_content,to_char(post_writedate,'yyyy"년" mm"월" dd"일" hh24"시":mi"분"') post_writedate,post_hit,post_location,post_payment 
+		,post_phone,post_review_count from jobad,meminfo where jobad.mem_userid=meminfo.mem_userid and mem_username=#{mem_username} order by post_writedate desc)) 
+		where rnum between #{getWritingStart} and #{getWritingEnd}
+  	</select>
+  	<select id="listSortJobad" parameterType="java.util.HashMap" resultType="vo.JobadVO">
+  		select post_id,mem_userid,mem_username,post_title,post_content,post_writedate,post_hit,post_location,post_payment,post_phone,post_review_count from 
+		(select post_id,mem_userid,mem_username,post_title,post_content,post_writedate,post_hit,post_location,post_payment,post_phone,post_review_count,rownum rnum from 
+		(select post_id,jobad.mem_userid mem_userid,mem_username,post_title,post_content,to_char(post_writedate,'yyyy"년" mm"월" dd"일" hh24"시":mi"분"') post_writedate,post_hit,post_location,post_payment,post_phone,post_review_count from 
+		jobad,meminfo where jobad.mem_userid=meminfo.mem_userid order by #{sortColumn} asc)) 
+		where rnum between #{getWritingStart} and #{getWritingEnd}
+  	</select>
+  	<select id="searchJobad" parameterType="vo.SearchVO" resultType="vo.JobadVO">
+  		select post_id,mem_userid,mem_username,post_title,post_content,post_writedate,post_hit,post_location,post_payment,post_phone,post_review_count from 
+		(select post_id,mem_userid,mem_username,post_title,post_content,post_writedate,post_hit,post_location,post_payment
+		,post_phone,post_review_count,rownum rnum from 
+		(select post_id,jobad.mem_userid mem_userid,mem_username,post_title,post_content,to_char(post_writedate,'yyyy"년" mm"월" dd"일" hh24"시":mi"분"') post_writedate,post_hit,post_location,post_payment 
+		,post_phone,post_review_count from jobad,meminfo where jobad.mem_userid=meminfo.mem_userid and ${searchExpr} order by post_writedate desc)) 
+		where rnum between #{getWritingStart} and #{getWritingEnd}
+  	</select>
+  	<select id="listOneJobad" parameterType="_int" resultType="vo.JobadVO">
+  		select post_id,
+  		mem_userid,
+  		mem_username,
+  		post_title,
+  		post_content,
+  		post_writedate,
+  		post_hit,
+  		post_location,
+  		post_payment,
+  		post_phone,
+  		post_review_count from (select post_id,jobad.mem_userid mem_userid,mem_username,post_title,post_content,
+  		to_char(post_writedate,'yyyy"년" mm"월" dd"일" hh24"시":mi"분"') post_writedate,
+  		post_hit,post_location,post_payment,post_phone,post_review_count 
+  		from jobad,meminfo where jobad.mem_userid=meminfo.mem_userid) where post_id=#{post_id}
+  	</select>
+  	<update id="AddPost_hit" parameterType="_int">
+  		update jobad set post_hit=post_hit+1 where post_id=#{post_id}
+  	</update>
+  </mapper>
