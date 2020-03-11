@@ -32,8 +32,7 @@ table {
 	<hr>
 	<br>
 	<br>
-		<form method="post" action="javas/meminfo">
-		<input type="hidden" name="action" value="insert"> 
+		<form method="post" action="../meminfoinsert">
         <table>
         <tr>
 			<td><b>*</b> 아이디</td> <td><input id="userid" style="width: 200px; text-align: left;" type="text" name="mem_userid"></td>
@@ -58,8 +57,8 @@ table {
 		<tr><td>&nbsp;</td></tr>
 		<tr>	
 			<td><b>*</b> 성별</td><td> <SELECT name='mem_sex'>
-			            <OPTION value='여자'>여자</OPTION>
-			            <OPTION value='남자'>남자</OPTION>
+			            <OPTION value='female'>여자</OPTION>
+			            <OPTION value='male'>남자</OPTION>
 			            </SELECT></td>
 	    </tr>
 	    <tr><td>&nbsp;</td></tr>

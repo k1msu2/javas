@@ -17,8 +17,9 @@ public class MeminfoController {
 	MeminfoDAO dao;
 	
 	
-	@RequestMapping(value = "/meminfo", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/meminfoinsert", method = RequestMethod.POST)
 	public ModelAndView meminfoinsert(MeminfoVO vo, String action) {
+		System.out.println("?");
 		ModelAndView mav = new ModelAndView();
 		List<MeminfoVO> list = null;
 		String mem_userid = vo.getMem_userid();
@@ -63,7 +64,7 @@ public class MeminfoController {
 			mav.addObject("list", list);
 		}
 		mav.addObject("list", dao.listAll());
-		mav.setViewName("meminfo");
+		mav.setViewName("meminfoview");
 		return mav;
 	}
 	
