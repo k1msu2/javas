@@ -23,11 +23,11 @@ public class WantReviewDAOImpl implements WantReviewDAO {
 
 	@Override
 	public boolean insert(WantReviewVO vo) {
-		System.out.println(vo);
+		//System.out.println(vo);
 		boolean result = false;
 		String statement = "resource.WantReviewMapper.insertWantReview";
 		if (session.insert(statement, vo) == 1) {
-			statement = "resource.WantReviewMapper.updateWantReviewCount";
+			statement = "resource.WantReviewMapper.updateWantReviewCount"; // wantad table review_count ++
 			if (session.update(statement, vo.getPost_id()) == 1) {
 				result = true;
 			}
@@ -39,8 +39,12 @@ public class WantReviewDAOImpl implements WantReviewDAO {
 	public boolean delete(int id) {
 		boolean result = false;
 		String statement = "resource.WantReviewMapper.deleteWantReview";
-		if (session.delete(statement, id) == 1)
-			result = true;
+		if (session.delete(statement, id) == 1) {
+			statement = "resource.WantReviewMapper.updateWantReviewCount2"; // wantad table review_count --
+			if (session.update(statement, id) == 1) {
+				result = true;
+			}
+		}
 		return result;
 	}
 

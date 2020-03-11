@@ -40,4 +40,15 @@ public class WantReviewController {
 		}		
 	}
 	
+	@ResponseBody
+	@RequestMapping("/wantreviewdelete")
+	public String delete(int id) {
+		System.out.println(id);
+		if(dao.delete(id)) {
+			System.out.println("삭제 성공");
+			return "success";  
+		}else {
+			return "fail";
+		}
+	}
 }
