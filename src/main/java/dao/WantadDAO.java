@@ -16,5 +16,5 @@ public interface WantadDAO {
 	public boolean update(WantadVO vo);
 	public int listCount();
 	public PageVO pagination(int page, WantSearchVO svo);
-
+	public PageVO pagination(int page);
 }

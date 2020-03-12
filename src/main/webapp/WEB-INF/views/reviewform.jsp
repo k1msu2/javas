@@ -15,8 +15,7 @@
 	
 	<div class="container">
 		<div id="reviewformbox">
-			<form enctype="multipart/form-data" id="reviewform" name="reviewform"
-				method="post">
+			<form id="reviewform" name="reviewform" method="post">
 				<input type="hidden" id="post_id" name="post_id" value="${listOne.post_id}"><br> 
 				<input type="hidden" id="review_userid" name="review_userid" value="mem01"> 
 				알바후기 <textarea id="review_comment" name="review_comment"></textarea>

@@ -47,7 +47,8 @@ public class WantadDAOImpl implements WantadDAO {
 		
 		hmap.put("beginNum", String.valueOf(pvo.getListBeginNum()));
 		hmap.put("endNum", String.valueOf(pvo.getListEndNum()));
-		
+		System.out.println("-dao listall---");
+		System.out.println(hmap);
 		list = session.selectList(statement, hmap);
 		return list;
 	}
@@ -151,6 +152,68 @@ public class WantadDAOImpl implements WantadDAO {
 			statement = "resource.WantadMapper.countWantad";
 			totalListNum = session.selectOne(statement);
 		}
+		
+		System.out.println(statement);
+		System.out.println(totalListNum);
+
+		pvo.setShowListNum(4);
+		pvo.setShowPageNum(5);
+		
+		pvo.setPage(page);
+		pvo.setTotalListNum(totalListNum);
+		
+		int showPageNum = pvo.getShowPageNum();
+		int showListNum = pvo.getShowListNum();
+		int totalPageNum = (totalListNum - 1)/showListNum+1;
+		
+		// 페이지 개수
+		pvo.setTotalPageNum(totalPageNum);
+
+		int pageBeginNum = page;
+		int pageEndNum = page;
+		if (page % showPageNum == 0) {
+			pageBeginNum = ((page/showPageNum)-1) * showPageNum + 1;
+		} else {
+			pageBeginNum = (page/showPageNum) * showPageNum+1;
+		}
+
+		if ((pageBeginNum + showPageNum) >= totalPageNum) {
+			pageEndNum = totalPageNum;
+		} else {
+			pageEndNum = pageBeginNum + showPageNum - 1;
+		}
+
+		pvo.setPageBeginNum(pageBeginNum);
+		pvo.setPageEndNum(pageEndNum);
+
+		if (pageBeginNum == 1) {
+			pvo.setLeftChar("");
+		} else {
+			pvo.setLeftChar("<");
+		}
+
+		if (pageEndNum == totalPageNum) {
+			pvo.setRightChar("");
+		} else {
+			pvo.setRightChar(">");
+		}
+
+		int listBeginNum = totalListNum - (page - 1) * showListNum;
+		int ListEndNum = -1;
+		ListEndNum = listBeginNum - showListNum + 1;
+
+		pvo.setListBeginNum(ListEndNum);
+		pvo.setListEndNum(listBeginNum);
+		return pvo;
+	}
+	
+	@Override
+	public PageVO pagination(int page) {
+		String statement = "";
+		int totalListNum = 0;
+		
+		statement = "resource.WantadMapper.countWantad";
+		totalListNum = session.selectOne(statement);
 		
 		System.out.println(statement);
 		System.out.println(totalListNum);

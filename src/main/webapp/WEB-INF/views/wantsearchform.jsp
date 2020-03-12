@@ -15,10 +15,10 @@
 				<option value='post_title' selected>제목</option>
 				<option value='post_content'>내용</option>
 				<option value='all'>제목+내용</option>
-			</select> <input id="key" type="text" name="key"> <input type="submit"
-				value="게시글 찾기">
-			<button type="button" onclick="location.href='wantad'">게시판 홈
-			</button>
+			</select> 
+			<input id="key" type="text" name="key"> 
+			<input type="submit" value="게시글 찾기">
+			<button type="button" onclick="location.href='wantad'">게시판 홈</button>
 		</form>
 	</div>
 </body>

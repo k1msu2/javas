@@ -16,7 +16,10 @@ public class MeminfoController {
 	@Autowired
 	MeminfoDAO dao;
 	
-	
+	@RequestMapping("/")
+	public String first() {
+		return "form";
+	}
 	@RequestMapping(value = "/meminfoinsert", method = RequestMethod.POST)
 	public ModelAndView meminfoinsert(MeminfoVO vo, String action) {
 		//System.out.println("?");
@@ -51,18 +54,18 @@ public class MeminfoController {
 		boolean result = dao.insert(vo);
 		System.out.println(vo);
 		if (result) {
-			mav.addObject("msg", "가입이 되었습니다.");
+			mav.addObject("msg", "媛��엯�씠 �릺�뿀�뒿�땲�떎.");
 			mav.addObject("list", list);
 
 		} else {
-			mav.addObject("msg", "가입에 실패하였습니다.");
+			mav.addObject("msg", "媛��엯�뿉 �떎�뙣�븯���뒿�땲�떎.");
 			mav.addObject("list", list);
 		}
 		mav.addObject("list", dao.listAll());
 		mav.setViewName("meminfoview");
 		return mav;
 	}
-	//회원가입 폼을 인서트 기능으로 받아 컨트롤링하는 메서드.
+	//�쉶�썝媛��엯 �뤌�쓣 �씤�꽌�듃 湲곕뒫�쑝濡� 諛쏆븘 而⑦듃濡ㅻ쭅�븯�뒗 硫붿꽌�뱶.
 	
 	
 	@RequestMapping(value = "/meminfoupdate", method = RequestMethod.POST)
@@ -93,11 +96,11 @@ public class MeminfoController {
 		
 	    boolean result = dao.update(vo);
 	    if (result) {
-		    mav.addObject("msg", mem_username + "님의 글이 성공적으로 수정되었습니다.");
+		    mav.addObject("msg", mem_username + "�떂�쓽 湲��씠 �꽦怨듭쟻�쑝濡� �닔�젙�릺�뿀�뒿�땲�떎.");
 		    mav.addObject("list", list);
 
 	    } else {
-		    mav.addObject("msg", mem_username + "님의 글이 수정에 실패했습니다.");
+		    mav.addObject("msg", mem_username + "�떂�쓽 湲��씠 �닔�젙�뿉 �떎�뙣�뻽�뒿�땲�떎.");
 		    mav.addObject("list", list);
 	    }
 	    mav.addObject("list", dao.listAll());
@@ -113,11 +116,11 @@ public class MeminfoController {
 	
 		boolean result = dao.delete(mem_userid);
 		if (result) {
-			mav.addObject("msg", "탈퇴되었습니다.");
+			mav.addObject("msg", "�깉�눜�릺�뿀�뒿�땲�떎.");
 			mav.addObject("list", list);
 
 		} else {
-			mav.addObject("msg", "탈퇴에 실패했습니다.");
+			mav.addObject("msg", "�깉�눜�뿉 �떎�뙣�뻽�뒿�땲�떎.");
 			mav.addObject("list", list);
 		}
 		mav.addObject("list", dao.listAll());
