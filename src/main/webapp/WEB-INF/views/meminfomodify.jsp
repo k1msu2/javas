@@ -24,7 +24,7 @@ table {
 	<hr>
 	<br>
 	<br>
-	<form method="post" action="/javas/meminfoupdate">
+	<form method="post" action="/javas/meminfoupdate2">
 		<table>
 			<tr>
 				<td><b>*</b> 아이디</td>
@@ -124,9 +124,10 @@ table {
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
-				<td style="text-align: center;"><input type="submit"
-					value="정보수정"> <input type="reset" value="재작성"> <input
-					onclick="back();" type="button" value="취소"></td>
+				<td style="text-align: center;">
+				<input type="submit" value="정보수정"> 
+				<input type="reset" value="재작성"> 
+				<input onclick="back();" type="button" value="취소"></td>
 			</tr>
 		</table>
 	</form>

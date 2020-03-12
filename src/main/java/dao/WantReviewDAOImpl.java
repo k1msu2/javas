@@ -23,7 +23,7 @@ public class WantReviewDAOImpl implements WantReviewDAO {
 
 	@Override
 	public boolean insert(WantReviewVO vo) {
-		//System.out.println(vo);
+		System.out.println(vo);
 		boolean result = false;
 		String statement = "resource.WantReviewMapper.insertWantReview";
 		if (session.insert(statement, vo) == 1) {
@@ -64,6 +64,16 @@ public class WantReviewDAOImpl implements WantReviewDAO {
 		List<WantReviewVO> list = null;
 		String statement = "resource.WantReviewMapper.selectWantReviewById";
 		list = session.selectList(statement, id);
+		return list;
+	}
+
+	@Override
+	public List<WantReviewVO> listAll(String userid) {
+		List<WantReviewVO> list = null;
+		System.out.println(userid);
+		String statement = "resource.WantReviewMapper.selectWantReviewByUserid";
+		list = session.selectList(statement, userid);
+		System.out.println(list);
 		return list;
 	}
 
