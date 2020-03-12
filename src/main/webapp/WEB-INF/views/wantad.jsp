@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="vo.WantadVO, vo.PageVO, java.util.List"%>
+<%@ page import="vo.WantadVO, vo.PageVO, vo.WantSearchVO, java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -61,11 +61,14 @@ a {
 	<%@ include file="wantsearchform.jsp" %>
 	<script>
 		window.onload = function(){
-			document.getElementById("pages").innerHTML += "<a href='/javas/wantad?page=${pageVO.pageBeginNum-1}'>${pageVO.leftChar}</a>&nbsp&nbsp";
+			// post로 변경하기
+			document.getElementById("pages").innerHTML += 
+				"<a href='/javas/wantad?page=${pageVO.pageBeginNum-1}&searchtype=${searchVO.searchtype}&key=${searchVO.key}'>${pageVO.leftChar}</a>&nbsp&nbsp";
 			for(var i = "${pageVO.pageBeginNum}"; i <= "${pageVO.pageEndNum}"; i++){
-				document.getElementById("pages").innerHTML += "<a href='/javas/wantad?page=" + i + "'>"+ i + "</a>&nbsp&nbsp";				
+				document.getElementById("pages").innerHTML += "<a href='/javas/wantad?page=" + i + "&searchtype=${searchVO.searchtype}&key=${searchVO.key}'>"+ i + "</a>&nbsp&nbsp";				
 			}
-			document.getElementById("pages").innerHTML += "<a href='/javas/wantad?page=${pageVO.pageEndNum+1}'>${pageVO.rightChar}</a>&nbsp&nbsp";
+			document.getElementById("pages").innerHTML += 
+				"<a href='/javas/wantad?page=${pageVO.pageEndNum+1}&searchtype=${searchVO.searchtype}&key=${searchVO.key}'>${pageVO.rightChar}</a>&nbsp&nbsp";
 		};
 	</script>
 	

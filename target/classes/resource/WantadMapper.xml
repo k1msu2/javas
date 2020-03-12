@@ -98,8 +98,8 @@
 		post_payment, post_review_count, rownum as rnum
 		from wantad where ${searchtype} like '%'||#{key}||'%' 
 		order by post_id desc)
-		where rnum between ${beginNum} and ${endNum} 
-		order by post_id desc	
+		where rnum between to_number(${beginNum}) and to_number(${endNum})
+		order by post_id desc
 	</select>
 	<select id="searchWantadAll" parameterType="java.util.Map" 
 	resultType="vo.WantadVO">
@@ -117,10 +117,10 @@
 		post_payment, post_review_count, rownum as rnum
 		from wantad where post_content like '%'||#{key}||'%'
 		order by post_id desc)
-		where rnum between ${beginNum} and ${endNum} 
+		where rnum between to_number(${beginNum}) and to_number(${endNum})
 		order by post_id desc	
 	</select>
-		<select id="searchWantaduserid" parameterType="string" 
+		<select id="searchWantaduserid" parameterType="java.util.Map" 
 	resultType="vo.WantadVO">
 		select post_id, mem_userid, post_title, post_content, post_writedate,
 		post_hit, post_location, post_payment, post_review_count
@@ -130,7 +130,7 @@
 		post_payment, post_review_count, rownum as rnum
 		from wantad where mem_userid=#{mem_userid} 
 		order by post_id desc)
-		where rnum between ${beginNum} and ${endNum} 
+		where rnum between to_number(${beginNum}) and to_number(${endNum})
 		order by post_id desc	
 	</select>
 	<select id="countWantad" resultType="_int">

@@ -22,6 +22,36 @@ public class WantadDAOImpl implements WantadDAO {
 	PageVO pvo = null;
 
 	@Override
+	public List<WantadVO> listAll(PageVO pvo, WantSearchVO svo) {
+		String statement = "";
+		Map<String, String> hmap = new HashMap<String, String>();
+		String key = svo.getKey();
+		String searchtype = svo.getSearchtype();
+		String userid = svo.getMem_userid();
+		List<WantadVO> list = null;
+		
+		if(key != null && searchtype != null && searchtype.equals("all")){
+			statement = "resource.WantadMapper.searchWantadAll";
+			hmap.put("key", key);
+		} else if(key != null && searchtype != null && searchtype.equals("post_title") || 
+				key != null && searchtype != null && searchtype.equals("post_content")) {
+			statement = "resource.WantadMapper.searchWantadTitleAndContent";
+			hmap.put("key", key);
+			hmap.put("searchtype", searchtype);
+		} else if(userid != null) {
+			statement = "resource.WantadMapper.searchWantaduserid";
+			hmap.put("mem_userid", userid);
+		} else {
+			statement = "resource.WantadMapper.selectWantadPage";
+		}
+		
+		hmap.put("beginNum", String.valueOf(pvo.getListBeginNum()));
+		hmap.put("endNum", String.valueOf(pvo.getListEndNum()));
+		
+		list = session.selectList(statement, hmap);
+		return list;
+	}
+	@Override
 	public List<WantadVO> listAll(PageVO pvo) {
 		// system.out.println("==========dao listAll pagination ===========");
 		List<WantadVO> list = null;
@@ -91,48 +121,11 @@ public class WantadDAOImpl implements WantadDAO {
 	}
 
 	@Override
-	public List<WantadVO> listUserid(PageVO pvo, WantSearchVO svo) {
-		List<WantadVO> list = null;
-		String statement = "resource.WantadMapper.searchWantaduserid";
-		Map<String, String> hmap = new HashMap<String, String>();
-		hmap.put("beginNum", String.valueOf(pvo.getListBeginNum()));
-		hmap.put("endNum", String.valueOf(pvo.getListEndNum()));
-		hmap.put("userid", svo.getMem_userid());
-		list = session.selectList(statement, hmap);
-		return list;
-	}
-
-	@Override
-	public List<WantadVO> search(PageVO pvo, WantSearchVO svo) {
-		List<WantadVO> list = null;
-		String statement = "resource.WantadMapper.searchWantadTitleAndContent";
-		Map<String, String> hmap = new HashMap<String, String>();
-		hmap.put("beginNum", String.valueOf(pvo.getListBeginNum()));
-		hmap.put("endNum", String.valueOf(pvo.getListEndNum()));
-		hmap.put("key", svo.getKey());
-		hmap.put("searchtype", svo.getSearchtype());
-		list = session.selectList(statement, hmap);
-		return list;
-	}
-
-	@Override
-	public List<WantadVO> searchAll(PageVO pvo, WantSearchVO svo) {
-		List<WantadVO> list = null;
-		String statement = "resource.WantadMapper.searchWantadAll";
-		Map<String, String> hmap = new HashMap<String, String>();
-		hmap.put("beginNum", String.valueOf(pvo.getListBeginNum()));
-		hmap.put("endNum", String.valueOf(pvo.getListEndNum()));
-		hmap.put("key", svo.getKey());
-		list = session.selectList(statement, hmap);
-		return list;
-	}
-
-	@Override
 	public int listCount() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+	
 	@Override
 	public PageVO pagination(int page, WantSearchVO svo) {
 		String statement = "";
@@ -210,9 +203,9 @@ public class WantadDAOImpl implements WantadDAO {
 
 		pvo.setListBeginNum(ListEndNum);
 		pvo.setListEndNum(listBeginNum);
-		
-		System.out.println(pvo);
 		return pvo;
 
 	}
+
+
 }

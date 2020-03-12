@@ -26,8 +26,8 @@ public class WantSearchVO {
 	public void setMem_userid(String mem_userid) {
 		this.mem_userid = mem_userid;
 	}
-
-
-	
-	
+	@Override
+	public String toString() {
+		return "WantSearchVO [searchtype=" + searchtype + ", key=" + key + ", mem_userid=" + mem_userid + "]";
+	}	
 }

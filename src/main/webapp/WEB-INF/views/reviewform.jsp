@@ -91,17 +91,17 @@
 			request.onload = function(event) {
 				if (request.status == 200) {
 					var str = request.responseText;
-					var ReviewList = JSON.parse(str);
-					console.log(ReviewList);
+					var reviewList = JSON.parse(str);
+					console.log(reviewList);
 					var target = document.getElementById("reviewlistbox");
 					target.innerHTML = "<table><tr>";
-					for(var i in ReviewList){					
-					target.innerHTML += "<td width=100>" + ReviewList[i].review_userid + "</td> &nbsp; &nbsp;";
-					target.innerHTML += "<td width=400>" + ReviewList[i].review_comment + "</td> &nbsp; &nbsp;";
-					target.innerHTML += "<td width=200>" + ReviewList[i].review_rate + "</td> &nbsp; &nbsp;";
-					target.innerHTML += "<td width=200>" + ReviewList[i].review_date + "</td> &nbsp; &nbsp;";
+					for(var i in reviewList){					
+					target.innerHTML += "<td width=100>" + reviewList[i].review_userid + "</td> &nbsp; &nbsp;";
+					target.innerHTML += "<td width=400>" + reviewList[i].review_comment + "</td> &nbsp; &nbsp;";
+					target.innerHTML += "<td width=200>" + reviewList[i].review_rate + "</td> &nbsp; &nbsp;";
+					target.innerHTML += "<td width=200>" + reviewList[i].review_date + "</td> &nbsp; &nbsp;";
 					target.innerHTML += "<td><button>수정</button></td> &nbsp;";
-					target.innerHTML += "<td><button onclick='reqDeleteReview("+ReviewList[i].review_id+")'>삭제</button></td><br>";
+					target.innerHTML += "<td><button onclick='reqDeleteReview("+reviewList[i].review_id+")'>삭제</button></td><br>";
 					}
 					target.innerHTML += "</tr></table>"
 					
