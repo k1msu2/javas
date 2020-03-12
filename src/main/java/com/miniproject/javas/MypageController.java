@@ -18,4 +18,13 @@ public class MypageController {
 		mav.setViewName("mypage");
 		return mav;		
 	}
+	
+	@RequestMapping("/modifymeminfo")
+	public ModelAndView modifymeminfo(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		LoginVO vo1 = (LoginVO)session.getAttribute("loginVO");
+		mav.addObject("loginVO", vo1);
+		mav.setViewName("modifymeminfo");
+		return mav;	
+	}
 }
