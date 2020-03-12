@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
+<script src="juso.js"></script>
 </head>
 <style>
 b {
@@ -68,7 +69,8 @@ table {
 		</tr>
 		<tr><td>&nbsp;</td></tr>
 		<tr>	
-			<td><b>*</b> 주소</td><td> <input id="address" style="width: 200px; text-align: left;" type="text" name="mem_address"></td>
+			<td><b>*</b> 주소 <input type="button" value="주소 검색" onclick="goPopup();"></td><td> <input id="address" style="width: 200px; text-align: left;" type="text" name="mem_address"
+			class="form-control" required="true" readonly="true"></td>
 		</tr>
 		<tr><td>&nbsp;</td></tr>
 		<tr>	
