@@ -9,7 +9,8 @@
 </head>
 <body>
 <header>
-<h1>${msg}</h1>
+<h1>${msg}</h1><br>
+<h5><a href="/javas/resources/form.html">메인페이지로...</a></h5>
 <% LoginVO loginVO = (LoginVO)session.getAttribute("loginVO"); %>
 <% if(loginVO==null){ %>
 	<button onclick="location.href='/javas/resources/loginForm.html'">로그인하기</button>
@@ -75,7 +76,7 @@ if(list!=null && list.size()!=0){
 %>
 <% if(vo==null){ %>
 <button onclick="isAdmin('insert');">새 글 작성</button>
-<button onclick="location.href='/javas/jobad'">첫 화면으로 가기</button>
+<button onclick="location.href='/javas/jobad'">맨앞 페이지로 가기</button>
 <form action="/javas/jobad" method="get">
 	<input type="hidden" name="action" value="search">
 	<select name="searchType">
