@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import vo.WantReviewVO;
 
 @Repository
-public class WantReviewDAOImpl implements ReviewDAO {
+public class WantReviewDAOImpl implements WantReviewDAO {
 	@Autowired
 	SqlSession session = null;
 

@@ -115,6 +115,8 @@ if(vo!=null){
 	<button onclick="isAdmin('delete');">글 삭제하기</button>
 	<button onclick="isAdmin('update');">글 수정하기</button>
 </div>
+<hr>
+	<%@ include file="reviewform.jsp" %>
 <%
 }
 %>
