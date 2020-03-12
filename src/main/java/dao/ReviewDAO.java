@@ -4,7 +4,7 @@ import java.util.List;
 
 import vo.WantReviewVO;
 
-public interface WantReviewDAO {
+public interface ReviewDAO {
 	public List<WantReviewVO> listAll();
 	public List<WantReviewVO> listAll(int id);
 	public boolean insert(WantReviewVO vo);

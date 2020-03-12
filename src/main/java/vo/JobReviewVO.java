@@ -1,6 +1,6 @@
 package vo;
 
-public class WantReviewVO implements ReviewVO{
+public class JobReviewVO implements ReviewVO{
 	private int review_id;
 	private int post_id;
 	private String review_userid;
