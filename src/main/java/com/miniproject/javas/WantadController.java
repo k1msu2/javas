@@ -25,30 +25,26 @@ public class WantadController {
 	@Autowired
 	WantReviewDAOImpl rdao;
 
-	@RequestMapping("/wantad") 
-	public ModelAndView wantad2(WantadVO vo, 
-			WantSearchVO svo, 
-			@RequestParam(defaultValue = "1") int page) {
+	@RequestMapping("/wantad") // search 愿��젴 �맂 寃껊룄 紐⑤몢 媛숈쓬
+	public ModelAndView wantad2(WantadVO vo, WantSearchVO svo, @RequestParam(defaultValue = "1") int page) {
 
+		System.out.println("============wantad dao========");
 		ModelAndView mav = new ModelAndView();
 		List<WantadVO> list = new ArrayList<>();
 
 		PageVO pvo = dao.pagination(page, svo);
-		list = dao.listAll(pvo, svo);
+		list = dao.listAll(pvo);
 
 		mav.addObject("listAll", list);
 		mav.addObject("pageVO", pvo);
-		mav.addObject("searchVO", svo);
-		
-		System.out.println(list);
-		System.out.println(pvo);
-		System.out.println(svo);
+
 		mav.setViewName("wantad");
 		return mav;
 	}
 
 	@RequestMapping("/wantadall")
 	public ModelAndView wantad(WantadVO vo) {
+		System.out.println("============wantad dao========");
 		ModelAndView mav = new ModelAndView();
 		List<WantadVO> list = new ArrayList<>();
 		list = dao.listAll();
@@ -66,8 +62,9 @@ public class WantadController {
 
 	@RequestMapping("/wantadinsert")
 	public ModelAndView insert(WantadVO vo) {
-
+		// System.out.println(vo);
 		dao.insert(vo);
+
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("listAll", dao.listAll());
 		mav.setViewName("/wantad");
@@ -88,6 +85,5 @@ public class WantadController {
 		mav.setViewName("/readwantad");
 		return mav;
 	}
-	
 	
 }
