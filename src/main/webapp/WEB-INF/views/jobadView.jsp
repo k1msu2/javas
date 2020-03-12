@@ -116,7 +116,7 @@ if(vo!=null){
 	<button onclick="isAdmin('update');">글 수정하기</button>
 </div>
 <hr>
-	<%@ include file="reviewform.jsp" %>
+	<%@ include file="jobreviewform.jsp" %>
 <%
 }
 %>
