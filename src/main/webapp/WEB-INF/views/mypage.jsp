@@ -25,7 +25,7 @@
 	</div>
 	
 	<hr>
-	<button onclick="location.href='/javas/modifymeminfo'">정보수정</button>&nbsp;&nbsp;&nbsp;
+	<button onclick="location.href='/javas/meminfomodify'">정보수정</button>&nbsp;&nbsp;&nbsp;
 	<button>리뷰관리</button><br><br>
 	<button>구인게시</button>&nbsp;&nbsp;&nbsp;
 	<button>구직게시</button><br>

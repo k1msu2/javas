@@ -19,12 +19,18 @@ public class MypageController {
 		return mav;		
 	}
 	
-	@RequestMapping("/modifymeminfo")
+	@RequestMapping("/meminfomodify")
 	public ModelAndView modifymeminfo(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		LoginVO vo1 = (LoginVO)session.getAttribute("loginVO");
 		mav.addObject("loginVO", vo1);
-		mav.setViewName("modifymeminfo");
+		mav.setViewName("meminfomodify");
 		return mav;	
+	}
+	
+	@RequestMapping("/meminfoupdate")
+	public ModelAndView meminfoupdate(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+	return mav;
 	}
 }
