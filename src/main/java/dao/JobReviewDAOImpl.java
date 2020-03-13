@@ -1,27 +1,21 @@
 package dao;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import vo.JobReviewVO;
+import vo.JobadVO;
 
 @Repository
 public class JobReviewDAOImpl{
 	@Autowired
 	SqlSession session;
-	public List<JobReviewVO> listAll(int post_id,int curPage){
+	public List<JobReviewVO> listAll(int post_id){
 		String statement = "resource.JobReviewMapper.listAllJobReview";
-		Map<String,Integer> map = new HashMap<>();
-		PagingControl page = new PagingControl(5,5,getCount(),curPage);
-		map.put("post_id", post_id);
-		map.put("getWritingStart", page.getWritingStart());
-		map.put("getWritingEnd", page.getWritingEnd());
-		return session.selectList(statement, map);
+		return session.selectList(statement, post_id);
 	}
 	public int getCount() {
 		String statement = "resource.JobReviewMapper.getCountJobReview";

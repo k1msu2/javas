@@ -38,44 +38,53 @@ if(loginVO2==null){
 			var request = new XMLHttpRequest();
 			var formElement = document.getElementById("reviewform");
 			var formdata = new FormData(formElement);
-			
-			request.open('post', '/javas/jobreview2', true);
+			console.log(formdata);
+			request.open('post', '/javas/jobreviewinsert', true);
 			request.send(formdata);
 			
 			request.onload = function(event) {
 				var str = request.responseText;
-				if (str == "success") {
-					alert("댓글 등록 성공");
+				reqReviewList();	
+			}
+		}
+		function reqUpdateReview(review_id) {
+			var request = new XMLHttpRequest();
+			var formElement = document.getElementById("reviewform");
+			var formdata = new FormData(formElement);
+			
+			formdata.enctype='multipart/form-data';
+			formdata.method='post';
+			formdata.action='/javas/jobreviewupdate';
+			
+			formdata.append('review_id', review_id);
+			console.log(review_id);
+			request.open('post', '/javas/jobreviewupdate', true);
+			request.send(formdata);
+
+			request.onload = function(event) {
+				if (request.status == 200) {
+					var str = request.responseText;
 					reqReviewList();
-				} else {
-					alert("댓글 등록 실패");
 				}
 			}
 		}
-		
 		function reqDeleteReview(review_id) {
 			var request = new XMLHttpRequest();
 			var formdata = new FormData();
 			
 			formdata.enctype='multipart/form-data';
 			formdata.method='post';
-			formdata.action='/javas/jobreview1';
+			formdata.action='/javas/jobreviewdelete';
 			
 			formdata.append('review_id', review_id);
 			console.log(review_id);
-			request.open('post', '/javas/jobreview1', true);
+			request.open('post', '/javas/jobreviewdelete', true);
 			request.send(formdata);
 
 			request.onload = function(event) {
 				if (request.status == 200) {
 					var str = request.responseText;
-					if (str == "success") {
-						alert("댓글 삭제 성공");
-						reqReviewList();
-
-					} else {
-						alert("댓글 삭제 실패");
-					}
+					reqReviewList();	
 				}
 			}
 		}
@@ -85,11 +94,11 @@ if(loginVO2==null){
 			
 			formdata.enctype='multipart/form-data';
 			formdata.method='post';
-			formdata.action='/javas/jobreview1';
+			formdata.action='/javas/jobreview';
 			
 			formdata.append('post_id', ${vo.post_id});
 
-			request.open('post', '/javas/jobreview1', true);
+			request.open('post', '/javas/jobreview', true);
 			request.send(formdata);
 			
 			request.onload = function(event) {
@@ -104,7 +113,7 @@ if(loginVO2==null){
 					target.innerHTML += "<td width=400>" + reviewList[i].review_comment + "</td> &nbsp; &nbsp;";
 					target.innerHTML += "<td width=200>" + reviewList[i].review_rate + "</td> &nbsp; &nbsp;";
 					target.innerHTML += "<td width=200>" + reviewList[i].review_date + "</td> &nbsp; &nbsp;";
-					target.innerHTML += "<td><button>수정</button></td> &nbsp;";
+					target.innerHTML += "<td><button onclick='reqUpdateReview("+reviewList[i].review_id+")'>수정</button></td> &nbsp;";
 					target.innerHTML += "<td><button onclick='reqDeleteReview("+reviewList[i].review_id+")'>삭제</button></td><br>";
 					}
 					target.innerHTML += "</tr></table>"

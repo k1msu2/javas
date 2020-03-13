@@ -1,66 +1,63 @@
 package com.miniproject.javas;
-import java.util.List;
-
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import dao.JobReviewDAOImpl;
 import vo.JobReviewVO;
-import vo.LoginVO;
 
 @Controller
 public class JobReviewController{
 	@Autowired
 	JobReviewDAOImpl dao;
-	@RequestMapping(value="/jobreview1")
-	public ModelAndView doGet(@RequestParam(value="action",required=false)String action,
-	@RequestParam(defaultValue="1")int curPage,
-	@RequestParam(defaultValue="0")int post_id,
-	@RequestParam(defaultValue="0")int review_id,
-	HttpSession session) {
-		ModelAndView mav = new ModelAndView();
-		List<JobReviewVO> list = null;
-		int count = 0;
-		String linkStr = "";
-		if(action==null) {
-			list = dao.listAll(post_id,curPage);
-			session.setAttribute("pgNum",curPage);
-			if(list!=null && list.size()!=0) {
-				mav.addObject("list",list);
-			}
-			count = dao.getCount();
-		}
-		else if(action.equals("delete")) {
-			dao.delete(review_id);
-			mav.setViewName("redirect:http://localhost:8000/javas/jobreview?pgNum="+session.getAttribute("curPage"));
-			return mav;
-		}
-		mav.addObject("totalCount",count);
-		mav.addObject("pagelist",new JobReviewDAOImpl().getPageLinkList(curPage, linkStr, count));
-		mav.addObject("pgNum",curPage);
-		mav.setViewName("jobreviewView");
-		return mav;
+	@ResponseBody
+	@RequestMapping("/jobreview")
+	public String jobreview(int post_id) throws JsonProcessingException{
+		return new ObjectMapper().writeValueAsString(dao.listAll(post_id));
 	}
-	@RequestMapping(value="/jobreview2")
-	public String doPost(@RequestParam("action")String action,
-	@RequestParam(value="review_id",defaultValue="0")int review_id,
-	@ModelAttribute("vo")JobReviewVO vo,
-	HttpSession session) {
-		LoginVO vo1 = (LoginVO)session.getAttribute("loginVO");
-		vo.setReview_userid(vo1.getMem_userid());
+	@ResponseBody
+	@RequestMapping("/jobreview{action}")
+	public String insert(JobReviewVO vo,@PathVariable("action") String action,
+			@RequestParam(value="review_id",defaultValue="0")int review_id,
+			@RequestParam(value="post_id",defaultValue="0")int post_id){
 		if(action.equals("insert")) {
 			dao.insert(vo);
 		}
 		else if(action.equals("update")) {
 			dao.update(vo);
 		}
-		return "redirect:http://localhost:8000/javas/jobreview?pgNum="+session.getAttribute("curPage");
+		else if(action.equals("delete")) {
+			dao.delete(review_id);
+		}
+		return "redirect:http://localhost:8000/javas/jobad?action=listone&post_id="+post_id;
 	}
+	/*
+	@ResponseBody
+	@RequestMapping("/jobreviewupdate")
+	public String update(JobReviewVO vo) {
+		if(dao.update(vo)) {
+			return "success";
+		}
+		else {
+			return "fail";
+		}
+	}
+	@ResponseBody
+	@RequestMapping("/jobreviewdelete")
+	public String delete(int review_id) {
+		System.out.println("delete!! : "+review_id);
+		if(dao.delete(review_id)) {
+			return "success";
+		}
+		else {
+			return "fail";
+		}
+	}
+	*/
 }

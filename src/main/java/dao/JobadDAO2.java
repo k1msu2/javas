@@ -28,6 +28,7 @@ public class JobadDAO2 {
 	public boolean update(JobadVO vo) {
 		boolean flag = false;
 		String statement = "resource.JobadMapper.updateJobad";
+		System.out.println("session : "+session);
 		if(session.update(statement,vo) == 1) {
 			flag = true;
 		}

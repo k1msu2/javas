@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("utf-8"); %>
+<% response.setContentType("text/html; charset=utf-8"); %>
 <%@ page import="vo.WantadVO, vo.WantReviewVO, java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -47,7 +49,33 @@
 				}
 			}
 		}
-		
+		function reqUpdateReview(review_id) {
+			var request = new XMLHttpRequest();
+			var formElement = document.getElementById("reviewform");
+			var formdata = new FormData(formElement);
+			
+			formdata.enctype='multipart/form-data';
+			formdata.method='post';
+			formdata.action='/javas/wantreviewupdate';
+			
+			formdata.append('review_id', review_id);
+			console.log(review_id);
+			request.open('post', '/javas/wantreviewupdate', true);
+			request.send(formdata);
+
+			request.onload = function(event) {
+				if (request.status == 200) {
+					var str = request.responseText;
+					if (str == "success") {
+						alert("댓글 수정 성공");
+						reqReviewList();
+
+					} else {
+						alert("댓글 수정 실패");
+					}
+				}
+			}
+		}
 		function reqDeleteReview(review_id) {
 			var request = new XMLHttpRequest();
 			var formdata = new FormData();
@@ -102,9 +130,9 @@
 					target.innerHTML += "<td><button>수정</button></td> &nbsp;";
 					target.innerHTML += "<td><button onclick='reqDeleteReview("+reviewList[i].review_id+")'>삭제</button></td><br>";
 					}
-					target.innerHTML += "</tr></table>"
+					target.innerHTML += "</tr></table>";
 					
-				}
+				};
 			}
 			
 		}

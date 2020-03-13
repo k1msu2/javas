@@ -98,7 +98,6 @@ public class JobadController {
 	@ModelAttribute("vo")JobadVO vo,
 	HttpSession session) {
 		LoginVO vo1 = (LoginVO)session.getAttribute("loginVO");
-		
 		vo.setMem_userid(vo1.getMem_userid());
 		vo.setMem_username(vo1.getMem_username());
 		if(action.equals("insert")) {

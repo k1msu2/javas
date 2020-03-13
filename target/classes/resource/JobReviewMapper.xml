@@ -3,17 +3,16 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="resource.JobReviewMapper">
-	<select id="listAllJobReview" parameterType="java.util.HashMap" resultType="vo.JobReviewVO">
-		select review_id,post_id,review_userid,review_comment,review_date,
-		review_rate from 
-		(select review_id,post_id,review_userid,review_comment,review_date,review_rate, 
-		rnum from (select review_id,post_id,review_userid,review_comment,
+	<select id="listAllJobReview" parameterType="_int" resultType="vo.JobReviewVO">
+		select review_id,post_id,review_userid,review_comment,
 		to_char(review_date,'yyyy"년" mm"월" dd"일" hh24"시":mi"분"') review_date,
-		review_rate,rownum rnum from jobreview where post_id=#{post_id})) 
-		where rnum between #{getWritingStart} and #{getWritingEnd}
+		review_rate from jobreview where post_id=#{post_id} 
+		order by review_date
 	</select>
 	<select id="getCountJobReview" resultType="vo.JobReviewVO">
-		select count(*) from jobreview
+		select review_id,post_id,review_userid,review_comment,
+		to_char(review_date,'yyyy"년" mm"월" dd"일" hh24"시":mi"분"') review_date,
+		review_rate from jobreview
 	</select>
 	<insert id="insertJobReview" parameterType="vo.JobReviewVO">
 		insert into jobreview values 
@@ -25,6 +24,6 @@
 		review_rate=#{review_rate} where review_id=#{review_id}
 	</update>
 	<delete id="deleteJobReview" parameterType="_int">
-  		delete from jobad where review_id=#{review_id}
+  		delete from jobreview where review_id=#{review_id}
   	</delete>
 </mapper>
