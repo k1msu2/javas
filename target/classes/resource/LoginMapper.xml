@@ -5,8 +5,8 @@
   <mapper namespace="resource.LoginMapper">
   <select id="getVO" parameterType="string" resultType="vo.LoginVO">
 	  	select mem_userid,mem_password,mem_username,mem_email,
-	  	to_char(mem_birthday,'yyyy"년" mm"월" dd"일" hh24"시":mi"분"') mem_birthday,mem_sex,
-	  	mem_phone,mem_address,to_char(mem_register_date,'yyyy"년" mm"월" dd"일" hh24"시":mi"분"') mem_register_date,
+	  	to_char(mem_birthday,'yyyy"년" mm"월" dd"일"') mem_birthday,mem_sex,
+	  	mem_phone,mem_address,to_char(mem_register_date,'yyyy-mm-dd') mem_register_date,
 	  	mem_photo,mem_is_employer from meminfo where mem_userid=#{mem_userid}
 	</select>
 	</mapper>

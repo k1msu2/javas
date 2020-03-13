@@ -1,5 +1,8 @@
 package vo;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+
 public class LoginVO {
 	private String mem_userid;
 	private String mem_password;
