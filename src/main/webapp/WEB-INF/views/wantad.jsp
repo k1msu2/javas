@@ -35,7 +35,7 @@ a {
 		<button onclick="logout();">로그아웃</button>
 	</c:if>
 	<div id="writebtn">
-		<button type="button" onclick="location.href='wantadform'">
+		<button type="button" onclick="location.href='wantad/form'">
 			작성하기</button>
 	</div>
 	<hr>
@@ -60,7 +60,7 @@ a {
 					style="table-layout: fixed; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;"
 					onmouseover="this.style.background='Gainsboro'"
 					onmouseout="this.style.background='white'"
-					onclick="location.href='/javas/wantadview?id=${vo.post_id}'">
+					onclick="location.href='/javas/wantad/view?id=${vo.post_id}'">
 
 					<td width=100><c:out value="${vo.post_id}" /></td>
 					<th width=100><c:out value="${vo.mem_userid}" /></th>

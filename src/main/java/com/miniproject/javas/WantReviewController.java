@@ -22,14 +22,14 @@ public class WantReviewController {
 	}
 
 	@ResponseBody
-	@RequestMapping("/wantreviewinsert")
+	@RequestMapping("/wantreview/insert")
 	public String insert(WantReviewVO vo) {
 		if (dao.insert(vo)) return "success";
 		else return "fail";
 	}
 
 	@ResponseBody
-	@RequestMapping("/wantreviewdelete")
+	@RequestMapping("/wantreview/delete")
 	public String delete(int review_id) {
 		if (dao.delete(review_id)) return "success";
 		else return "fail";

@@ -20,6 +20,11 @@ public class MeminfoController {
 	public String first() {
 		return "form";
 	}
+	
+	@RequestMapping("/meminfo")
+	public String meminfo() {
+		return "meminfo";
+	}
 	@RequestMapping(value = "/meminfoinsert", method = RequestMethod.POST)
 	public ModelAndView meminfoinsert(MeminfoVO vo, String action) {
 		//System.out.println("?");

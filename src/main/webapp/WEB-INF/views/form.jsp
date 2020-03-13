@@ -12,8 +12,9 @@
 <button onclick="location.href='/javas/jobad'"> 대타 구인 </button>&nbsp;&nbsp;&nbsp;
 <button onclick="location.href='/javas/wantad'"> 대타 구직 </button><br><br>
 
-<button onclick="location.href='/javas/resources/meminfo.jsp'">회원가입</button>&nbsp;&nbsp;&nbsp;
-<button onclick="location.href='/javas/resources/loginForm.html'">로그인</button>&nbsp;&nbsp;&nbsp;
+<button onclick="location.href='/javas/meminfo'">회원가입</button>&nbsp;&nbsp;&nbsp;
+<button onclick="location.href='/javas/loginform'">로그인</button>&nbsp;&nbsp;&nbsp;
+<button onclick="location.href='/javas/logout'">로그아웃</button>
 <button>마이페이지</button>
 
 <!-- 잉력시장 메인 화면을 제 나름대로 만들었습니다. 여기서 회원가입 버튼을 클릭하면 회원가입으로 넘어갑니다. -->

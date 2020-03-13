@@ -32,8 +32,7 @@ public class WantadController {
 	
 	@RequestMapping("/wantad") // search 愿��젴 �맂 寃껊룄 紐⑤몢 媛숈쓬
 	public ModelAndView wantad2(WantadVO vo, 
-			WantSearchVO svo, 
-			@RequestParam(defaultValue = "1") int page) {
+			WantSearchVO svo, @RequestParam(defaultValue = "1") int page) {
 
 		ModelAndView mav = new ModelAndView();
 		List<WantadVO> list = new ArrayList<>();
@@ -49,7 +48,7 @@ public class WantadController {
 		return mav;
 	}
 
-	@RequestMapping("/wantadall")
+	@RequestMapping("/wantad/all")
 	public ModelAndView wantad(WantadVO vo) {
 		ModelAndView mav = new ModelAndView();
 		List<WantadVO> list = new ArrayList<>();
@@ -60,13 +59,13 @@ public class WantadController {
 		return mav;
 	}
 
-	@RequestMapping("/wantadform")
+	@RequestMapping("/wantad/form")
 	public String form(WantadVO vo) {
 
 		return "wantadform";
 	}
 
-	@RequestMapping("/wantadinsert1")
+	@RequestMapping("/wantad/insert1")
 	public ModelAndView insert(WantadVO vo) {
 		// System.out.println(vo);
 		dao.insert(vo);
@@ -77,7 +76,7 @@ public class WantadController {
 		return mav;
 	}
 
-	@RequestMapping("/wantadinsert")
+	@RequestMapping("/wantad/insert2")
 	public ModelAndView insert2(WantadVO vo,
 			@RequestParam(defaultValue = "1") int page) {
 		ModelAndView mav = new ModelAndView();
@@ -96,7 +95,16 @@ public class WantadController {
 		return mav;
 	}
 	
-	@RequestMapping("/wantadview")
+	@RequestMapping("/wantad/insert")
+	public String insert3(WantadVO vo) {
+		if(dao.insert(vo)) {
+			return "success";
+		}else {
+			return "fail";
+		}	
+	}
+	
+	@RequestMapping("/wantad/view")
 	public ModelAndView read(int id) {
 		ModelAndView mav = new ModelAndView();
 		WantadVO vo = dao.listOne(id);
