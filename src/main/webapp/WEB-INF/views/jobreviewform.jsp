@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="vo.WantadVO, vo.WantReviewVO, java.util.List"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="vo.JobadVO, vo.JobReviewVO,vo.LoginVO, java.util.List"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+<% LoginVO loginVO2 = (LoginVO)session.getAttribute("loginVO"); 
+if(loginVO2==null){
+	loginVO2 = new LoginVO();
+}
+%>
 	<div class="container">
 		<div id="reviewlistbox"></div>
 	</div>
@@ -17,7 +21,8 @@
 		<div id="reviewformbox">
 			<form id="reviewform" name="reviewform" method="post">
 				<input type="hidden" id="post_id" name="post_id" value="${vo.post_id}"><br> 
-				<input type="hidden" id="review_userid" name="review_userid" value="mem01"> 
+				<input type="hidden" id="review_userid" name="review_userid" value="<%= loginVO2.getMem_userid() %>">
+				<input type="hidden" id="action" name="action" value="insert"> 
 				알바후기 <textarea id="review_comment" name="review_comment"></textarea>
 				알바 평점<input id="review_rate" name="review_rate"> 
 				<input type="hidden" id="review_id" name="review_id" value="0">
@@ -34,7 +39,7 @@
 			var formElement = document.getElementById("reviewform");
 			var formdata = new FormData(formElement);
 			
-			request.open('post', '/javas/jobreviewinsert', true);
+			request.open('post', '/javas/jobreview2', true);
 			request.send(formdata);
 			
 			request.onload = function(event) {
@@ -54,11 +59,11 @@
 			
 			formdata.enctype='multipart/form-data';
 			formdata.method='post';
-			formdata.action='/javas/jobreviewdelete';
+			formdata.action='/javas/jobreview1';
 			
 			formdata.append('review_id', review_id);
 			console.log(review_id);
-			request.open('post', '/javas/jobreviewdelete', true);
+			request.open('post', '/javas/jobreview1', true);
 			request.send(formdata);
 
 			request.onload = function(event) {
@@ -80,11 +85,11 @@
 			
 			formdata.enctype='multipart/form-data';
 			formdata.method='post';
-			formdata.action='/javas/jobreview';
+			formdata.action='/javas/jobreview1';
 			
 			formdata.append('post_id', ${vo.post_id});
 
-			request.open('post', '/javas/jobreview', true);
+			request.open('post', '/javas/jobreview1', true);
 			request.send(formdata);
 			
 			request.onload = function(event) {

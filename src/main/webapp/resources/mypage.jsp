@@ -20,6 +20,8 @@
 <div>
 <button>나의 정보 확인/수정</button>
 <button>나의 리뷰 확인하기</button>
+<button onclick="location.href='/javas/jobad'">구직 게시판으로 이동</button>
+<button onclick="location.href='/javas/wantad'">구인 게시판으로 이동</button>
 </div>
 </body>
 </html>
