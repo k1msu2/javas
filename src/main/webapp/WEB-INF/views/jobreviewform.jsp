@@ -26,7 +26,7 @@ if(loginVO2==null){
 				알바후기 <textarea id="review_comment" name="review_comment"></textarea>
 				알바 평점<input id="review_rate" name="review_rate"> 
 				<input type="hidden" id="review_id" name="review_id" value="0">
-				<button onclick="reqInsertReview()">등록</button>
+				<input type="button" value="등록" onclick="reqInsertReview();">
 				<input type="reset" value="재작성">
 			</form>
 		</div>

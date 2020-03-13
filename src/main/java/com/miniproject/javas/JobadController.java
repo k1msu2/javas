@@ -83,6 +83,7 @@ public class JobadController {
 		}
 		else if(action.equals("delete")) {
 			dao.delete(post_id);
+			System.out.println("action : "+action);
 			mav.setViewName("redirect:http://localhost:8000/javas/jobad?pgNum="+session.getAttribute("pgNum"));
 			return mav;
 		}
