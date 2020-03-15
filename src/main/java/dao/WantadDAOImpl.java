@@ -105,7 +105,7 @@ public class WantadDAOImpl implements WantadDAO {
 	@Override
 	public boolean delete(int id) {
 		boolean result = false;
-		String statement = "resource.WantadMapper.deleteNews";
+		String statement = "resource.WantadMapper.deleteWantad";
 		if (session.delete(statement, id) == 1)
 			result = true;
 		return result;
@@ -114,8 +114,7 @@ public class WantadDAOImpl implements WantadDAO {
 	@Override
 	public boolean update(WantadVO vo) {
 		boolean result = false;
-		String statement = "resource.WantadMapper.updateNews";
-		// system.out.println(vo);
+		String statement = "resource.WantadMapper.updateWantad";
 		if (session.insert(statement, vo) == 1)
 			result = true;
 		return result;

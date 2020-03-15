@@ -11,7 +11,7 @@
 </head>
 <body>
 	<h1>구직 게시판 글</h1>
-	<button onclick="location.href='wantad'">구직 게시판으로</button>
+	<button onclick="location.href='/javas/wantad/'">구직 게시판으로</button>
 	<hr>
 	<c:if test="${!empty listOne}">
 		<c:out value="${listOne.post_title}" />
@@ -21,6 +21,8 @@
 		<c:out value="${listOne.post_writedate}" />
 		<br>
 	</c:if>
+	<button onclick="location.href='/javas/wantad/modify'">수정</button>
+	<button onclick="location.href='/javas/wantad/delete'">삭제</button>
 	<hr>
 	<%@ include file="reviewform.jsp" %>
 </body>

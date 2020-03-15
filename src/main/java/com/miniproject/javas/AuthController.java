@@ -11,4 +11,9 @@ public class AuthController {
 		
 		return "authloginfail";
 	}
+	
+	@RequestMapping("/authfail")
+	public String authfail() {
+		return "authfail";
+	}
 }

@@ -72,23 +72,18 @@
 		</interceptor>
 
 		<interceptor>
-			<mapping path="/**" />
-			<mapping path="/**/*" />
-			<exclude-mapping path="/**" />
-			<exclude-mapping path="/**/*" />
+			<mapping path="/wantad/form" />
+			<mapping path="/mypage"/>
 			<beans:bean class="interceptor.AuthLoginInterceptor" />
 		</interceptor>
 
 		<interceptor>
-			<mapping path="/**" />
-			<mapping path="/**/*" />
-			<exclude-mapping path="/**" />
+			<mapping path="/wantad/form"/>
 			<beans:bean class="interceptor.AuthEmployeeInterceptor" />
 		</interceptor>
 
 		<interceptor>
-			<mapping path="/**" />
-			<mapping path="/**/*" />
+			<mapping path="/**"/>
 			<exclude-mapping path="/**" />
 			<beans:bean class="interceptor.AuthEmployerInterceptor" />
 		</interceptor>

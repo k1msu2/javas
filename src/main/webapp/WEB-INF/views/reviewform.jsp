@@ -17,10 +17,8 @@
 	<div class="container">
 		<div id="reviewformbox">
 			<form id="reviewform" name="reviewform" method="post">
-				<input type="hidden" id="post_id" name="post_id"
-					value="${listOne.post_id}"><br> <input type="text"
-					id="review_userid" name="review_userid"
-					value="${loginVO.mem_userid}"> 알바후기
+				<input type="hidden" id="post_id" name="post_id" value="${listOne.post_id}"><br> <input type="text"
+					id="review_userid" name="review_userid" value="${loginVO.mem_userid}"> 알바후기
 				<textarea id="review_comment" name="review_comment"></textarea>
 				알바 평점<input id="review_rate" name="review_rate"> <input
 					type="hidden" id="review_id" name="review_id" value="0">
@@ -61,6 +59,7 @@
 			formdata.method='post';
 			formdata.action='/javas/wantreview/delete';
 			
+			formdata.append('post_id', ${listOne.post_id});
 			formdata.append('review_id', review_id);
 			console.log(review_id);
 			request.open('post', '/javas/wantreview/delete', true);
@@ -72,7 +71,6 @@
 					if (str == "success") {
 						alert("댓글 삭제 성공");
 						reqReviewList();
-
 					} else {
 						alert("댓글 삭제 실패");
 					}

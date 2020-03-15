@@ -118,4 +118,32 @@ public class WantadController {
 		return mav;
 	}
 	
+	@RequestMapping("/wantad/modify")
+	public ModelAndView modify(WantadVO vo) {
+		System.out.println(vo);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("listOne", vo);
+		mav.setViewName("wantadmodify");
+		return mav;
+	}
+	
+	@RequestMapping("/wantad/update")
+	public String update(WantadVO vo){
+		if(dao.update(vo)){
+			return "success";
+		} else {
+			return "fail";
+		}
+	}
+	@RequestMapping("/wantad/delete")
+	public String delete(WantadVO vo) {
+		// 리뷰도 삭제하고 글도 삭제하고 해야함
+		// 현재는 글 삭제만 구현
+		if(dao.delete(vo.getPost_id())){
+			return "success";
+		} else {
+			return "fail";
+		}
+	}
+	
 }

@@ -29,6 +29,7 @@ public class AuthEmployeeInterceptor implements HandlerInterceptor{
 			if(loginVO.getMem_is_employer() == 1) {
 				System.out.println("AuthEmployeeInterceptor fail!!");	
 				System.out.println("알바 아님. 사장 접근권한 없음");
+				response.sendRedirect("/javas/authfail");
 				return false;
 			}else {
 				System.out.println("AuthEmployeeInterceptor success!!");	

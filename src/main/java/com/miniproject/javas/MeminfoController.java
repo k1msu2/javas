@@ -16,11 +16,6 @@ public class MeminfoController {
 	@Autowired
 	MeminfoDAO dao;
 	
-	@RequestMapping("/")
-	public String first() {
-		return "form";
-	}
-	
 	@RequestMapping("/meminfo")
 	public String meminfo() {
 		return "meminfo";

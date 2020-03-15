@@ -27,12 +27,14 @@ a {
 	<h1>구직게시판</h1>
 	<br>
 	<c:if test="${empty loginVO}">
-		<button onclick="location.href='/javas/resources/loginForm.html'">로그인
-			하기</button>
+		<button onclick="location.href='/javas/login/form'">로그인 하기</button>
 	</c:if>
 	<c:if test="${!empty loginVO}">
-		<h4><c:out value="${loginVO.mem_userid}"/> 님 환영합니다!</h4>
-		<button onclick="logout();">로그아웃</button>
+		<h4>
+			<c:out value="${loginVO.mem_userid}" />
+			님 환영합니다!
+		</h4>
+		<button onclick="location.href='/javas/logout'">로그아웃</button>
 	</c:if>
 	<div id="writebtn">
 		<button type="button" onclick="location.href='wantad/form'">
@@ -81,12 +83,9 @@ a {
 	<div id="pages"></div>
 	<%@ include file="wantsearchform.jsp"%>
 	<script>
-		function logout() {
-			location.href = '/javas/resources/logout.jsp';
-		};
-
 		window.onload = function() {
 			document.getElementById("pages").innerHTML += "<a href='/javas/wantad?page=${pageVO.pageBeginNum-1}&searchtype=${searchVO.searchtype}&key=${searchVO.key}'>${pageVO.leftChar}</a>&nbsp&nbsp";
+
 			for (var i = "${pageVO.pageBeginNum}"; i <= "${pageVO.pageEndNum}"; i++) {
 				document.getElementById("pages").innerHTML += "<a href='/javas/wantad?page="
 						+ i

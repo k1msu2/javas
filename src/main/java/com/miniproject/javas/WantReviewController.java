@@ -13,25 +13,25 @@ import vo.WantReviewVO;
 @Controller
 public class WantReviewController {
 	@Autowired
-	WantReviewDAOImpl dao;
+	WantReviewDAOImpl rdao;
 
 	@ResponseBody
 	@RequestMapping("/wantreview")
 	public String wantreview(int post_id) throws Exception{
-		return new ObjectMapper().writeValueAsString(dao.listAll(post_id));
+		return new ObjectMapper().writeValueAsString(rdao.listAll(post_id));
 	}
 
 	@ResponseBody
 	@RequestMapping("/wantreview/insert")
-	public String insert(WantReviewVO vo) {
-		if (dao.insert(vo)) return "success";
+	public String insert(WantReviewVO rvo) {
+		if (rdao.insert(rvo)) return "success";
 		else return "fail";
 	}
 
 	@ResponseBody
 	@RequestMapping("/wantreview/delete")
-	public String delete(int review_id) {
-		if (dao.delete(review_id)) return "success";
+	public String delete(WantReviewVO rvo) {
+		if (rdao.delete(rvo)) return "success";
 		else return "fail";
 	}
 }
