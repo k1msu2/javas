@@ -74,12 +74,13 @@ if(list!=null && list.size()!=0){
 <%
 }
 %>
-<% if(vo==null){ %>
+<% if(list!=null && list.size()!=0){ %>
 <button onclick="isAdmin('insert');">새 글 작성</button>
 <button onclick="location.href='/javas/jobad'">맨앞 페이지로 가기</button>
 <form action="/javas/jobad" method="get">
 	<input type="hidden" name="action" value="search">
 	<select name="searchType">
+		<option value="location">위치</option>
 		<option value="title">제목</option>
 		<option value="content">내용</option>
 		<option value="title_content">제목+내용</option>
