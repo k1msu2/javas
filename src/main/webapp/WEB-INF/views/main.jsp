@@ -8,6 +8,7 @@
 </head>
     <title>Negotiate - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
@@ -30,10 +31,10 @@
     	<div class="container py-3">
     		<div class="row no-gutters d-flex align-items-center align-items-stretch">
     			<div class="col-md-4 d-flex align-items-center py-4">
-    				<a class="navbar-brand" href="index.html">잉력시장 <span>surpluspower market</span></a>
+    				<a class="navbar-brand" href="/javas/main" style="font-family: 'Do Hyeon', sans-serif;">잉/력/시/장 <span>Surplus-Power Market</span></a>
     			</div>
 	    		<div class="col-lg-8 d-block">
-		    		<div class="row d-flex">
+		    		<div class="row d-flex" style="font-family: 'Do Hyeon', sans-serif;">
 					    <div class="col-md d-flex topper align-items-center align-items-stretch py-md-4">
 					    	<div class="icon d-flex justify-content-center align-items-center"><span class="ion-ios-paper-plane"></span></div>
 					    	<div class="text">
@@ -59,7 +60,7 @@
 			    </div>
 		    </div>
 		  </div>
-		  <div class="top-social-menu py-2 bg-light">
+		  <div class="top-social-menu py-2 bg-light" >
 		  	<div class="container">
 		  		<div class="row">
 			    	<div class="col">
@@ -83,13 +84,13 @@
 	      </button>
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav mr-auto">
-	        	<li class="nav-item active"><a href="/javas/main" class="nav-link">홈</a></li>
-	        	<li class="nav-item"><a href="about.html" class="nav-link">소개</a></li>
-	        	<li class="nav-item"><a href="team.html" class="nav-link">팀원</a></li>
-	        	<li class="nav-item"><a href="/javas/jobad" class="nav-link">대타 구인</a></li>
-	        	<li class="nav-item"><a href="/javas/wantad" class="nav-link">대타 구직</a></li>
-	        	<li class="nav-item"><a href="/javas/resources/meminfo.jsp" class="nav-link">회원가입</a></li>
-	          <li class="nav-item"><a href="loginForm.html" class="nav-link">로그인</a></li>
+	        	<li class="nav-item active"><a href="/javas/main" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">홈</a></li>
+	        	<li class="nav-item"><a href="about.html" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">소개</a></li>
+	        	<li class="nav-item"><a href="team.html" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">팀원</a></li>
+	        	<li class="nav-item"><a href="/javas/jobad" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">대타 구인</a></li>
+	        	<li class="nav-item"><a href="/javas/wantad" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">대타 구직</a></li>
+	        	<li class="nav-item"><a href="/javas/resources/meminfo.jsp" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">회원가입</a></li>
+	          <li class="nav-item"><a href="loginForm.html" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">로그인</a></li>
 	        </ul>
 	      </div>
 	    </div>
@@ -104,7 +105,7 @@
           <div class="col-md-7 ftco-animate mb-md-5">
           	<span class="subheading">Surplus-power Market</span>
             <h1 class="mb-4">나의 일을 대신 하는 <br> 최고의 인력</h1>
-            <p><a href="about.html" class="btn btn-primary px-4 py-3> mt-3">잉력시장 소개</a></p>
+            <p><a href="about.html" class="btn btn-primary px-4 py-3> mt-3" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">잉력시장 소개</a></p>
           </div>
         </div>
         </div>
