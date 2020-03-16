@@ -30,7 +30,7 @@ public class WantadController {
 	@Autowired
 	WantReviewDAOImpl rdao;
 	
-	@RequestMapping("/wantad") // search 愿��젴 �맂 寃껊룄 紐⑤몢 媛숈쓬
+	@RequestMapping("/wantad")
 	public ModelAndView wantad2(WantadVO vo, 
 			WantSearchVO svo, @RequestParam(defaultValue = "1") int page) {
 

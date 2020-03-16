@@ -82,19 +82,6 @@ a {
 	<br>
 	<div id="pages"></div>
 	<%@ include file="wantsearchform.jsp"%>
-	<script>
-		window.onload = function() {
-			document.getElementById("pages").innerHTML += "<a href='/javas/wantad?page=${pageVO.pageBeginNum-1}&searchtype=${searchVO.searchtype}&key=${searchVO.key}'>${pageVO.leftChar}</a>&nbsp&nbsp";
-
-			for (var i = "${pageVO.pageBeginNum}"; i <= "${pageVO.pageEndNum}"; i++) {
-				document.getElementById("pages").innerHTML += "<a href='/javas/wantad?page="
-						+ i
-						+ "&searchtype=${searchVO.searchtype}&key=${searchVO.key}'>"
-						+ i + "</a>&nbsp&nbsp";
-			}
-			document.getElementById("pages").innerHTML += "<a href='/javas/wantad?page=${pageVO.pageEndNum+1}&searchtype=${searchVO.searchtype}&key=${searchVO.key}'>${pageVO.rightChar}</a>&nbsp&nbsp<br><br>";
-		};
-	</script>
-
+	<%@ include file="wantadpage.jsp"%>
 </body>
 </html>

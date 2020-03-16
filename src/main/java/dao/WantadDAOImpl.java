@@ -203,6 +203,7 @@ public class WantadDAOImpl implements WantadDAO {
 
 		pvo.setListBeginNum(ListEndNum);
 		pvo.setListEndNum(listBeginNum);
+		System.out.println(pvo);
 		return pvo;
 	}
 	
