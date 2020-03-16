@@ -1,5 +1,7 @@
 package com.miniproject.javas;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,12 +41,27 @@ public class MypageController {
 		return mav;
 	}
 
-	@RequestMapping("/meminfoupdate2")
-	public String meminfoupdate(MeminfoVO vo) {
-		if (dao.update(vo)) {
+	@RequestMapping("/meminfoupdate")
+	public String meminfoupdate(MeminfoVO vo, HttpSession session) {
+
+		LoginVO vo1 = (LoginVO) session.getAttribute("loginVO");
+		
+	    boolean result = dao.update(vo);
+		if (result) {
 			System.out.println("수정 성공");
+			vo1.setMem_password(vo.getMem_password());
+			vo1.setMem_email(vo.getMem_email());
+			vo1.setMem_phone(vo.getMem_phone());
+			vo1.setMem_address(vo.getMem_address());
+			vo1.setMem_register_date(vo.getMem_register_date());
+			vo1.setMem_photo(vo.getMem_photo());
+			vo1.setMem_is_employer(vo.getMem_is_employer());
+			System.out.println(vo);
+			session.setAttribute("msg1", "수정되었습니다.");
+			session.setAttribute("loginVO", vo1);
 		} else {
 			System.out.println("수정 실패");
+			return "modifyError";
 		}
 		return "redirect:mypage";
 	}
