@@ -12,6 +12,7 @@
     <title>Negotiate - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="css/animate.css">
@@ -33,7 +34,7 @@
     	<div class="container py-3">
     		<div class="row no-gutters d-flex align-items-center align-items-stretch">
     			<div class="col-md-4 d-flex align-items-center py-4">
-    				<a class="navbar-brand" href="index.html">잉력시장 <span>surpluspower market</span></a>
+    				<a class="navbar-brand" href="index.html" style="font-family: 'Do Hyeon', 'sans-serif'">잉/력/시/장 <span>surpluspower market</span></a>
     			</div>
 	    		<div class="col-lg-8 d-block">
 		    		<div class="row d-flex">
