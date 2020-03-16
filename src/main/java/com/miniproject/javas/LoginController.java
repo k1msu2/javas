@@ -31,8 +31,7 @@ public class LoginController {
 				return "LoginError";
 			} else {
 				session.setAttribute("loginVO", vo);
-				return "redirect:main"; // 메인 페이지에서 마이페이지 버튼 생성으로 변경
-
+				return "redirect:afterlogin"; // 메인 페이지에서 마이페이지 버튼 생성으로 변경
 			}
 		}
 	}
