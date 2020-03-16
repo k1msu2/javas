@@ -140,8 +140,8 @@ table {
 				<td style="text-align: center;" width="500px">
 				<input  onclick="f();" type="submit" value="정보수정"> 
 				<input type="reset" value="재작성"> 
-				<input onclick="location.href='/javas/mypage'" type="button" value="취소">
-				</td>
+				<input onclick="location.href='${header.referer}'" type="button" value="취소"></td>
+
 			</tr>
 		</table>
 	</form>

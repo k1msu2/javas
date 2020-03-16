@@ -67,7 +67,7 @@ if(list!=null && list.size()!=0){
 <%
 	}
 %>
-	</table>0
+	</table>
 <%
 	out.print(request.getAttribute("pagelist"));
 %>
