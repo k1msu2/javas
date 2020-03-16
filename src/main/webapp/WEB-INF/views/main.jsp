@@ -106,7 +106,6 @@
 				<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 				<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 				<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-				<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 				<c:if test="${!empty loginVO}">
 					<li class="nav-item"><a href="/javas/mypage" class="nav-link">마이페이지</a></li>
 					<li class="nav-item"><a href="/javas/logout" class="nav-link">로그아웃</a></li>
