@@ -78,4 +78,11 @@ public class LoginVO {
 	public void setMem_is_employer(int mem_is_employer) {
 		this.mem_is_employer = mem_is_employer;
 	}
+	@Override
+	public String toString() {
+		return "LoginVO [mem_userid=" + mem_userid + ", mem_password=" + mem_password + ", mem_username=" + mem_username
+				+ ", mem_email=" + mem_email + ", mem_birthday=" + mem_birthday + ", mem_sex=" + mem_sex
+				+ ", mem_phone=" + mem_phone + ", mem_address=" + mem_address + ", mem_register_date="
+				+ mem_register_date + ", mem_photo=" + mem_photo + ", mem_is_employer=" + mem_is_employer + "]";
+	}
 }

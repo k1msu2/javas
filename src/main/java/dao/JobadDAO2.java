@@ -28,6 +28,7 @@ public class JobadDAO2 {
 	public boolean update(JobadVO vo) {
 		boolean flag = false;
 		String statement = "resource.JobadMapper.updateJobad";
+		System.out.println("session : "+session);
 		if(session.update(statement,vo) == 1) {
 			flag = true;
 		}
@@ -58,8 +59,12 @@ public class JobadDAO2 {
 		else if(searchType.equals("title")) {
 			searchExpr = "post_title like '%"+key+"%'";
 		}
+		else if(searchType.equals("location")) {
+			searchExpr = "post_location like '%"+key+"%'";
+		}
 		else {
-			searchExpr = "post_title like '%"+key+"%'"+" or post_content like '%"+key+"%'";
+			searchExpr = "post_title like '%"+key+"%'"+" or post_content like '%"+key+"%'"
+					+ " or post_location like '%"+key+"%'";
 		}
 		SearchVO vo = new SearchVO();
 		vo.setGetWritingStart(0);
@@ -126,8 +131,12 @@ public class JobadDAO2 {
 		else if(searchType.equals("title")) {
 			searchExpr = "post_title like '%"+key+"%'";
 		}
+		else if(searchType.equals("location")) {
+			searchExpr = "post_location like '%"+key+"%'";
+		}
 		else {
-			searchExpr = "post_title like '%"+key+"%'"+" or post_content like '%"+key+"%'";
+			searchExpr = "post_title like '%"+key+"%'"+" or post_content like '%"+key+"%'"
+					+ " or post_location like '%"+key+"%'";
 		}
 		SearchVO vo = new SearchVO();
 		vo.setGetWritingStart(page.getWritingStart());
