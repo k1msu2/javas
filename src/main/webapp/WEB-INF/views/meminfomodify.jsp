@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="vo.LoginVO, java.util.ArrayList"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>내 정보</title>
+<script src="/javas/resources/juso.js"></script>
 </head>
 <style>
 b {
@@ -18,18 +20,21 @@ table {
 	margin-left: auto;
 	margin-right: auto;
 }
+
 </style>
 <body>
-	<h1>회원가입</h1>
+	<h1>내 정보</h1>
 	<hr>
 	<br>
 	<br>
-	<form method="post" action="/javas/meminfoupdate2">
+	<form method="post" action="/javas/meminfoupdate">
+		<input type="hidden" name="action" value="update">
 		<table>
+			<input type="hidden" id="mem_userid" name="mem_userid"
+				value="${loginVO.mem_userid}">
 			<tr>
 				<td><b>*</b> 아이디</td>
-				<td><input id="userid" style="width: 200px; text-align: left;"
-					type="text" name="mem_userid" value="${loginVO.mem_userid}"></td>
+				<td>${loginVO.mem_userid}</td>
 
 			</tr>
 			<tr>
@@ -46,9 +51,7 @@ table {
 			</tr>
 			<tr>
 				<td><b>*</b> 이름</td>
-				<td><input id="username"
-					style="width: 200px; text-align: left;" type="text"
-					name="mem_username" value="${loginVO.mem_username}"></td>
+				<td>${loginVO.mem_username}</td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
@@ -63,19 +66,21 @@ table {
 			</tr>
 			<tr>
 				<td><b>*</b> 생일</td>
-				<td><input id="birthday"
-					style="width: 200px; text-align: left;" type="date"
-					name="mem_birthday" value="${loginVO.mem_birthday}"></td>
+				<td>${loginVO.mem_birthday}</td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
 				<td><b>*</b> 성별</td>
-				<td><SELECT name='mem_sex'>
-						<OPTION value='female'>여자</OPTION>
-						<OPTION value='male'>남자</OPTION>
-				</SELECT></td>
+				<td>
+				<c:if test="${loginVO.mem_sex == 'male'}">
+				         남자
+				</c:if>
+				<c:if test="${loginVO.mem_sex == 'female'}">
+					  여자	
+				</c:if>
+				</td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
@@ -90,8 +95,8 @@ table {
 			</tr>
 			<tr>
 				<td><b>*</b> 주소</td>
-				<td><input id="address" style="width: 200px; text-align: left;"
-					type="text" name="mem_address" value="${loginVO.mem_address}"></td>
+				<td> <input type="button" value="주소 검색" onclick="goPopup();"><input id="address" style="width: 200px; text-align: left;"
+					type="text" name="mem_address" value="${loginVO.mem_address}" class="form-control" required="true" readonly="true"></td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
@@ -115,21 +120,35 @@ table {
 			</tr>
 			<tr>
 				<td><b>*</b> 직업</td>
-				<td><SELECT name='mem_is_employer'>
-						<OPTION value='1'>사업자</OPTION>
-						<OPTION value='2'>파트타이머</OPTION>
+				<td><SELECT name='mem_is_employer'
+					value="${loginVO.mem_is_employer}">
+						<c:if test="${loginVO.mem_is_employer == 2}">
+							<OPTION value='1'>사업자</OPTION>
+							<OPTION value='2' selected>파트타이머</OPTION>
+						</c:if>
+						<c:if test="${loginVO.mem_is_employer == 1}">
+							<OPTION value='1' selected>사업자</OPTION>
+							<OPTION value='2' >파트타이머</OPTION>
+						</c:if>
+
 				</SELECT></td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
-				<td style="text-align: center;">
-				<input type="submit" value="정보수정"> 
+				<td style="text-align: center;" width="500px">
+				<input  onclick="f();" type="submit" value="정보수정"> 
 				<input type="reset" value="재작성"> 
-				<input onclick="back();" type="button" value="취소"></td>
+				<input onclick="location.href='/javas/mypage'" type="button" value="취소">
+				</td>
 			</tr>
 		</table>
 	</form>
 </body>
+<script>
+function f() {
+	alert('${ msg1 }');
+}
+</script>
 </html>

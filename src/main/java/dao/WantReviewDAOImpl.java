@@ -37,13 +37,14 @@ public class WantReviewDAOImpl implements ReviewDAO {
 	}
 
 	@Override
-	public boolean delete(int id) {
+	public boolean delete(WantReviewVO vo) {
 		boolean result = false;
 		String statement = "resource.WantReviewMapper.deleteWantReview";
-		if (session.delete(statement, id) == 1) {
+		if (session.delete(statement, vo.getReview_id()) == 1) {
 			// wantad table review_count --
+			System.out.println("delete post_id: " + vo);
 			statement = "resource.WantReviewMapper.updateWantReviewCount2"; 
-			if (session.update(statement, id) == 1) {
+			if (session.update(statement, vo.getPost_id()) == 1) {
 				result = true;
 			}
 		}
