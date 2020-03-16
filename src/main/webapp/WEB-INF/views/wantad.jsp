@@ -28,15 +28,17 @@ a {
 	<br>
 	<h5><a href="/javas/resources/form.html">메인페이지로...</a></h5>
 	<c:if test="${empty loginVO}">
-		<button onclick="location.href='/javas/resources/loginForm.html'">로그인
-			하기</button>
+		<button onclick="location.href='/javas/login/form'">로그인 하기</button>
 	</c:if>
 	<c:if test="${!empty loginVO}">
-		<h4><c:out value="${loginVO.mem_userid}"/> 님 환영합니다!</h4>
-		<button onclick="logout();">로그아웃</button>
+		<h4>
+			<c:out value="${loginVO.mem_userid}" />
+			님 환영합니다!
+		</h4>
+		<button onclick="location.href='/javas/logout'">로그아웃</button>
 	</c:if>
 	<div id="writebtn">
-		<button type="button" onclick="location.href='wantadform'">
+		<button type="button" onclick="location.href='wantad/form'">
 			작성하기</button>
 	</div>
 	<hr>
@@ -61,7 +63,7 @@ a {
 					style="table-layout: fixed; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;"
 					onmouseover="this.style.background='Gainsboro'"
 					onmouseout="this.style.background='white'"
-					onclick="location.href='/javas/wantadview?id=${vo.post_id}'">
+					onclick="location.href='/javas/wantad/view?id=${vo.post_id}'">
 
 					<td width=100><c:out value="${vo.post_id}" /></td>
 					<th width=100><c:out value="${vo.mem_userid}" /></th>
@@ -81,22 +83,6 @@ a {
 	<br>
 	<div id="pages"></div>
 	<%@ include file="wantsearchform.jsp"%>
-	<script>
-		function logout() {
-			location.href = '/javas/resources/logout.jsp';
-		};
-
-		window.onload = function() {
-			document.getElementById("pages").innerHTML += "<a href='/javas/wantad?page=${pageVO.pageBeginNum-1}&searchtype=${searchVO.searchtype}&key=${searchVO.key}'>${pageVO.leftChar}</a>&nbsp&nbsp";
-			for (var i = "${pageVO.pageBeginNum}"; i <= "${pageVO.pageEndNum}"; i++) {
-				document.getElementById("pages").innerHTML += "<a href='/javas/wantad?page="
-						+ i
-						+ "&searchtype=${searchVO.searchtype}&key=${searchVO.key}'>"
-						+ i + "</a>&nbsp&nbsp";
-			}
-			document.getElementById("pages").innerHTML += "<a href='/javas/wantad?page=${pageVO.pageEndNum+1}&searchtype=${searchVO.searchtype}&key=${searchVO.key}'>${pageVO.rightChar}</a>&nbsp&nbsp<br><br>";
-		};
-	</script>
-
+	<%@ include file="wantadpage.jsp"%>
 </body>
 </html>

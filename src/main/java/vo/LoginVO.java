@@ -1,5 +1,8 @@
 package vo;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+
 public class LoginVO {
 	private String mem_userid;
 	private String mem_password;
@@ -80,9 +83,6 @@ public class LoginVO {
 	}
 	@Override
 	public String toString() {
-		return "LoginVO [mem_userid=" + mem_userid + ", mem_password=" + mem_password + ", mem_username=" + mem_username
-				+ ", mem_email=" + mem_email + ", mem_birthday=" + mem_birthday + ", mem_sex=" + mem_sex
-				+ ", mem_phone=" + mem_phone + ", mem_address=" + mem_address + ", mem_register_date="
-				+ mem_register_date + ", mem_photo=" + mem_photo + ", mem_is_employer=" + mem_is_employer + "]";
+		return "LoginVO [mem_userid=" + mem_userid + ", mem_is_employer=" + mem_is_employer + "]";
 	}
 }
