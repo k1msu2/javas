@@ -17,12 +17,12 @@ public class JobReviewController{
 	@Autowired
 	JobReviewDAOImpl dao;
 	@ResponseBody
-	@RequestMapping("/jobreview")
+	@RequestMapping(value="/jobreview", produces="application/json; charset=UTF-8")
 	public String jobreview(int post_id) throws JsonProcessingException{
 		return new ObjectMapper().writeValueAsString(dao.listAll(post_id));
 	}
 	@ResponseBody
-	@RequestMapping("/jobreview{action}")
+	@RequestMapping(value="/jobreview{action}", produces="application/json; charset=UTF-8")
 	public String insert(JobReviewVO vo,@PathVariable("action") String action,
 			@RequestParam(value="review_id",defaultValue="0")int review_id,
 			@RequestParam(value="post_id",defaultValue="0")int post_id){
@@ -37,27 +37,4 @@ public class JobReviewController{
 		}
 		return "redirect:http://localhost:8000/javas/jobad?action=listone&post_id="+post_id;
 	}
-	/*
-	@ResponseBody
-	@RequestMapping("/jobreviewupdate")
-	public String update(JobReviewVO vo) {
-		if(dao.update(vo)) {
-			return "success";
-		}
-		else {
-			return "fail";
-		}
-	}
-	@ResponseBody
-	@RequestMapping("/jobreviewdelete")
-	public String delete(int review_id) {
-		System.out.println("delete!! : "+review_id);
-		if(dao.delete(review_id)) {
-			return "success";
-		}
-		else {
-			return "fail";
-		}
-	}
-	*/
 }
