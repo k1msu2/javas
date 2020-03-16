@@ -74,6 +74,7 @@
 		<interceptor>
 			<mapping path="/wantad/form" />
 			<mapping path="/mypage"/>
+			<mapping path="/afterlogin"/>
 			<beans:bean class="interceptor.AuthLoginInterceptor" />
 		</interceptor>
 
