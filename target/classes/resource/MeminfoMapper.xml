@@ -6,7 +6,7 @@
 
     <select id="selectMeminfo" resultType="vo.MeminfoVO">
 		select mem_userid, mem_password, mem_username, mem_email, mem_birthday, mem_sex, mem_phone, mem_address, 
-		       mem_register_date, mem_photo, mem_is_employer from meminfo
+		       to_date(mem_register_date,'yyyy-mm-dd') mem_register_date, mem_photo, mem_is_employer from meminfo
 	</select>
 	
 	<select id="selectMeminfoOne" parameterType="string" resultType="vo.MeminfoVO">
@@ -20,7 +20,7 @@
 	
 	<update id="updateMeminfo" parameterType="vo.MeminfoVO">
 		update meminfo set
-		mem_password = #{mem_password}, mem_username = #{mem_username}, mem_email = #{mem_email}, mem_birthday = #{mem_birthday}, 
+		mem_password = #{mem_password}, mem_email = #{mem_email}, 
 		mem_phone = #{mem_phone}, mem_address = #{mem_address}, mem_register_date = #{mem_register_date}, mem_photo = #{mem_photo}, 
 		mem_is_employer = #{mem_is_employer} where mem_userid = #{mem_userid}
 	</update>

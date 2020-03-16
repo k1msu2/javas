@@ -11,14 +11,15 @@
 <hr>
 
 <h2>회원가입을 축하합니다.</h2>
-<!-- OOO님 회원 가입을 축하합니다, 기능으로 구현하고 싶습니다. -->
 
 <a onclick="back();">메인화면으로</a>
 
 </body>
 <script>
 function back(){
+
 window.location.href="/javas/main";
+
 }
 </script>
 </html>
