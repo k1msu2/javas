@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="vo.WantadVO, vo.WantReviewVO, vo.LoginVO, java.util.List"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="vo.JobadVO, vo.JobReviewVO,vo.LoginVO, java.util.List"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+<% LoginVO loginVO2 = (LoginVO)session.getAttribute("loginVO"); 
+if(loginVO2==null){
+	loginVO2 = new LoginVO();
+}
+%>
 	<div class="container">
 		<div id="reviewlistbox"></div>
 	</div>
@@ -16,12 +20,13 @@
 	<div class="container">
 		<div id="reviewformbox">
 			<form id="reviewform" name="reviewform" method="post">
-				<input type="hidden" id="post_id" name="post_id" value="${listOne.post_id}"><br> 
-				<input type="text" id="review_userid" name="review_userid" value="${loginVO.mem_userid}"> 
+				<input type="hidden" id="post_id" name="post_id" value="${vo.post_id}"><br> 
+				<input type="hidden" id="review_userid" name="review_userid" value="<%= loginVO2.getMem_userid() %>">
+				<input type="hidden" id="action" name="action" value="insert"> 
 				알바후기 <textarea id="review_comment" name="review_comment"></textarea>
 				알바 평점<input id="review_rate" name="review_rate"> 
 				<input type="hidden" id="review_id" name="review_id" value="0">
-				<button onclick="reqInsertReview()">등록</button>
+				<input type="button" value="등록" onclick="reqInsertReview();">
 				<input type="reset" value="재작성">
 			</form>
 		</div>
@@ -33,18 +38,13 @@
 			var request = new XMLHttpRequest();
 			var formElement = document.getElementById("reviewform");
 			var formdata = new FormData(formElement);
-			
-			request.open('post', '/javas/wantreviewinsert', true);
+			console.log(formdata);
+			request.open('post', '/javas/jobreviewinsert', true);
 			request.send(formdata);
 			
 			request.onload = function(event) {
 				var str = request.responseText;
-				if (str == "success") {
-					alert("댓글 등록 성공");
-					reqReviewList();
-				} else {
-					alert("댓글 등록 실패");
-				}
+				reqReviewList();	
 			}
 		}
 		function reqUpdateReview(review_id) {
@@ -54,23 +54,17 @@
 			
 			formdata.enctype='multipart/form-data';
 			formdata.method='post';
-			formdata.action='/javas/wantreviewupdate';
+			formdata.action='/javas/jobreviewupdate';
 			
 			formdata.append('review_id', review_id);
 			console.log(review_id);
-			request.open('post', '/javas/wantreviewupdate', true);
+			request.open('post', '/javas/jobreviewupdate', true);
 			request.send(formdata);
 
 			request.onload = function(event) {
 				if (request.status == 200) {
 					var str = request.responseText;
-					if (str == "success") {
-						alert("댓글 수정 성공");
-						reqReviewList();
-
-					} else {
-						alert("댓글 수정 실패");
-					}
+					reqReviewList();
 				}
 			}
 		}
@@ -80,23 +74,17 @@
 			
 			formdata.enctype='multipart/form-data';
 			formdata.method='post';
-			formdata.action='/javas/wantreviewdelete';
+			formdata.action='/javas/jobreviewdelete';
 			
 			formdata.append('review_id', review_id);
 			console.log(review_id);
-			request.open('post', '/javas/wantreviewdelete', true);
+			request.open('post', '/javas/jobreviewdelete', true);
 			request.send(formdata);
 
 			request.onload = function(event) {
 				if (request.status == 200) {
 					var str = request.responseText;
-					if (str == "success") {
-						alert("댓글 삭제 성공");
-						reqReviewList();
-
-					} else {
-						alert("댓글 삭제 실패");
-					}
+					reqReviewList();	
 				}
 			}
 		}
@@ -106,11 +94,11 @@
 			
 			formdata.enctype='multipart/form-data';
 			formdata.method='post';
-			formdata.action='/javas/wantreview';
+			formdata.action='/javas/jobreview';
 			
-			formdata.append('post_id', ${listOne.post_id});
+			formdata.append('post_id', ${vo.post_id});
 
-			request.open('post', '/javas/wantreview', true);
+			request.open('post', '/javas/jobreview', true);
 			request.send(formdata);
 			
 			request.onload = function(event) {
@@ -125,12 +113,12 @@
 					target.innerHTML += "<td width=400>" + reviewList[i].review_comment + "</td> &nbsp; &nbsp;";
 					target.innerHTML += "<td width=200>" + reviewList[i].review_rate + "</td> &nbsp; &nbsp;";
 					target.innerHTML += "<td width=200>" + reviewList[i].review_date + "</td> &nbsp; &nbsp;";
-					target.innerHTML += "<td><button>수정</button></td> &nbsp;";
+					target.innerHTML += "<td><button onclick='reqUpdateReview("+reviewList[i].review_id+")'>수정</button></td> &nbsp;";
 					target.innerHTML += "<td><button onclick='reqDeleteReview("+reviewList[i].review_id+")'>삭제</button></td><br>";
 					}
-					target.innerHTML += "</tr></table>";
+					target.innerHTML += "</tr></table>"
 					
-				};
+				}
 			}
 			
 		}
