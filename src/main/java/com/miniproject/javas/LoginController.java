@@ -33,7 +33,7 @@ public class LoginController {
 			}
 			else {
 				session.setAttribute("loginVO", vo);
-				return "redirect:http://localhost:8000/javas/resources/mypage.jsp";
+				return "redirect:mypage";
 			}
 		}
 	}
