@@ -92,9 +92,7 @@ public class WantadController {
 			System.out.println("등록 실패");
 		}
 		mav.setViewName("redirect:wantad");
-		
-		System.out.println(pvo);
-		System.out.println(list);
+
 		return mav;
 	}
 	
@@ -103,7 +101,6 @@ public class WantadController {
 		ModelAndView mav = new ModelAndView();
 		WantadVO vo = dao.listOne(id);
 		mav.addObject("listOne", vo);
-		System.out.println(vo);
 		if (vo.getPost_review_count() > 0) {
 			List<WantReviewVO> list = rdao.listAll(id);
 			System.out.println(list);
