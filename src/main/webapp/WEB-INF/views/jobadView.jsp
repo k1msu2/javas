@@ -105,7 +105,6 @@ JobadVO vo = (JobadVO)request.getAttribute("vo");
 	        	<li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
 	        	<li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
 	        	<li class="nav-item"><a href="team.html" class="nav-link">Team</a></li>
-	        	<li class="nav-item"><a href="project.html" class="nav-link">Case Studies</a></li>
 	        	<li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
 	        	<li class="nav-item active"><a href="blog.html" class="nav-link">Blog</a></li>
 	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
@@ -150,7 +149,7 @@ if(list!=null && list.size()!=0){
 	                <p class="mb-0"><a href="#" class="btn btn-primary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
 	                <p class="ml-auto mb-0">
 	                	<a href="#" class="mr-2">Admin</a>
-	                	<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
+	                	<a href="#" class="meta-chat"><span class="icon-chat"></span> <%= vo1.getPost_review_count() %></a>
 	                </p>
                 </div>
               </div>
@@ -161,9 +160,6 @@ if(list!=null && list.size()!=0){
 %>
 		</div>
 		</section>
-<%
-}
-%>
 		<section>
         <div class="row mt-5">
           <div class="col text-center">
@@ -175,6 +171,28 @@ if(list!=null && list.size()!=0){
           </div>
         </div>
 		</section>
+<% 	if(list!=null && list.size()!=0){ %>
+<div style="text-align : center;">
+	<div>
+		<button onclick="isAdmin('insert');">새 글 작성</button>
+		<button onclick="location.href='/javas/jobad'">맨앞 페이지로 가기</button>
+		<form action="/javas/jobad" method="get">
+			<input type="hidden" name="action" value="search">
+			<select name="searchType">
+				<option value="location">위치</option>
+				<option value="title">제목</option>
+				<option value="content">내용</option>
+				<option value="title_content">제목+내용</option>
+			</select>
+			<input type="text" name="key">
+			<input type="submit" value="검색">
+		</form>
+	</div>
+</div>
+<% 
+	}
+} 
+%>
     <footer class="ftco-footer ftco-bg-dark ftco-section">
       <div class="container">
         <div class="row mb-5">
