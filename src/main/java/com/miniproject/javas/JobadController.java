@@ -87,6 +87,7 @@ public class JobadController {
 			mav.setViewName("redirect:http://localhost:8000/javas/jobad?pgNum="+session.getAttribute("pgNum"));
 			return mav;
 		}
+		
 		mav.addObject("totalCount",count);
 		mav.addObject("pagelist",new JobadDAO2().getPageLinkList(pgNum, linkStr, count));
 		mav.addObject("pgNum",pgNum);
