@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="vo.WantadVO, vo.WantReviewVO, vo.LoginVO, java.util.List"%>
+<%@ page
+	import="vo.WantadVO, vo.WantReviewVO, vo.LoginVO, java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -12,21 +13,21 @@
 	<div class="container">
 		<div id="reviewlistbox"></div>
 	</div>
-	
+
 	<div class="container">
 		<div id="reviewformbox">
 			<form id="reviewform" name="reviewform" method="post">
-				<input type="hidden" id="post_id" name="post_id" value="${listOne.post_id}"><br> 
-				<input type="text" id="review_userid" name="review_userid" value="${loginVO.mem_userid}"> 
-				알바후기 <textarea id="review_comment" name="review_comment"></textarea>
-				알바 평점<input id="review_rate" name="review_rate"> 
-				<input type="hidden" id="review_id" name="review_id" value="0">
+				<input type="hidden" id="post_id" name="post_id" value="${listOne.post_id}"><br> <input type="text"
+					id="review_userid" name="review_userid" value="${loginVO.mem_userid}"> 알바후기
+				<textarea id="review_comment" name="review_comment"></textarea>
+				알바 평점<input id="review_rate" name="review_rate"> <input
+					type="hidden" id="review_id" name="review_id" value="0">
 				<button onclick="reqInsertReview()">등록</button>
 				<input type="reset" value="재작성">
 			</form>
 		</div>
 	</div>
-	
+
 	<script>
 		// 리뷰 등록하기
 		function reqInsertReview() {
@@ -34,16 +35,18 @@
 			var formElement = document.getElementById("reviewform");
 			var formdata = new FormData(formElement);
 			
-			request.open('post', '/javas/wantreviewinsert', true);
+			request.open('post', '/javas/wantreview/insert', true);
 			request.send(formdata);
 			
 			request.onload = function(event) {
-				var str = request.responseText;
-				if (str == "success") {
-					alert("댓글 등록 성공");
-					reqReviewList();
-				} else {
-					alert("댓글 등록 실패");
+				if (request.status == 200) {
+					var str = request.responseText;
+					if (str == "success") {
+						alert("댓글 등록 성공");
+						reqReviewList();
+					} else {
+						alert("댓글 등록 실패");
+					}
 				}
 			}
 		}
@@ -80,11 +83,12 @@
 			
 			formdata.enctype='multipart/form-data';
 			formdata.method='post';
-			formdata.action='/javas/wantreviewdelete';
+			formdata.action='/javas/wantreview/delete';
 			
+			formdata.append('post_id', ${listOne.post_id});
 			formdata.append('review_id', review_id);
 			console.log(review_id);
-			request.open('post', '/javas/wantreviewdelete', true);
+			request.open('post', '/javas/wantreview/delete', true);
 			request.send(formdata);
 
 			request.onload = function(event) {
@@ -93,7 +97,6 @@
 					if (str == "success") {
 						alert("댓글 삭제 성공");
 						reqReviewList();
-
 					} else {
 						alert("댓글 삭제 실패");
 					}

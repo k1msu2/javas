@@ -16,9 +16,9 @@ public class MeminfoController {
 	@Autowired
 	MeminfoDAO dao;
 	
-	@RequestMapping("/")
-	public String first() {
-		return "form";
+	@RequestMapping("/meminfo")
+	public String meminfo() {
+		return "meminfo";
 	}
 	@RequestMapping(value = "/meminfoinsert", method = RequestMethod.POST)
 	public ModelAndView meminfoinsert(MeminfoVO vo, String action) {

@@ -93,7 +93,7 @@ public class JobadController {
 		mav.setViewName("jobadView");
 		return mav;
 	}
-	@RequestMapping(value="/jobad",method=RequestMethod.POST)
+	@RequestMapping(value= {"/jobad"},method=RequestMethod.POST)
 	public String doPost(@RequestParam("action")String action,
 	@RequestParam(defaultValue="0")int post_id,
 	@ModelAttribute("vo")JobadVO vo,
