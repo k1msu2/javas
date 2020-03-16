@@ -17,7 +17,9 @@
 </body>
 <script>
 function back(){
-window.location.href="/javas/";
+
+window.location.href="/javas/main";
+
 }
 </script>
 </html>

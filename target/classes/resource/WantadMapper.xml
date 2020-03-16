@@ -14,11 +14,13 @@
 		select post_id, mem_userid, post_title, post_content, post_writedate,
 		post_hit,
 		post_location, post_payment, post_review_count
-		from (select post_id, mem_userid, post_title, post_content,
-		post_writedate, post_hit,
-		post_location, post_payment, post_review_count, rownum as rnum
+		from (select
+		post_id, mem_userid, post_title, post_content,
+		post_writedate,
+		post_hit,
+		post_location, post_payment, post_review_count, rownum as
+		rnum
 		from wantad order by post_id desc)
-		<!-- where rnum between 4 and 6 -->
 		where rnum between ${beginNum} and ${endNum} order by post_id desc
 	</select>
 	<select id="selectWantad1" parameterType="_int"
@@ -88,65 +90,84 @@
 		update wantad set
 		post_hit = post_hit + 1 where post_id = #{post_id}
 	</update>
-	<select id="searchWantadTitleAndContent" parameterType="java.util.Map" 
-	resultType="vo.WantadVO">
-		select post_id, mem_userid, post_title, post_content, post_writedate,
-		post_hit, post_location, post_payment, post_review_count
-		from 
-		(select post_id, mem_userid, post_title, 
-		post_content, post_writedate, post_hit, post_location, 
+	<select id="searchWantadTitleAndContent"
+		parameterType="java.util.Map" resultType="vo.WantadVO">
+		select post_id, mem_userid,
+		post_title, post_content, post_writedate,
+		post_hit, post_location,
+		post_payment, post_review_count
+		from
+		(select post_id, mem_userid, post_title,
+		post_content, post_writedate, post_hit, post_location,
 		post_payment, post_review_count, rownum as rnum
-		from wantad where ${searchtype} like '%'||#{key}||'%' 
+		from wantad where ${searchtype} like
+		'%'||#{key}||'%'
+		order by post_id desc)
+		where rnum between to_number(${beginNum}) and
+		to_number(${endNum})
+		order by post_id desc
+	</select>
+	<select id="searchWantadAll" parameterType="java.util.Map"
+		resultType="vo.WantadVO">
+		select rownum, rnum, post_id, mem_userid, post_title, post_content,
+		post_writedate,
+		post_hit, post_location, post_payment, post_review_count
+		from(
+		select rownum as rnum, post_id, mem_userid, post_title, post_content,
+		post_writedate,
+		post_hit, post_location, post_payment, post_review_count
+		from
+		(select post_id, mem_userid, post_title,
+		post_content, post_writedate, post_hit, post_location,
+		post_payment, post_review_count
+		from wantad where post_title like '%'||#{key}||'%'
+		union
+		select post_id, mem_userid, post_title,
+		post_content, post_writedate, post_hit, post_location,
+		post_payment, post_review_count
+		from wantad where post_content like '%'||#{key}||'%')
 		order by post_id desc)
 		where rnum between to_number(${beginNum}) and to_number(${endNum})
 		order by post_id desc
+
 	</select>
-	<select id="searchWantadAll" parameterType="java.util.Map" 
-	resultType="vo.WantadVO">
-		select post_id, mem_userid, post_title, post_content, post_writedate,
-		post_hit, post_location, post_payment, post_review_count
-		from 
-		(select post_id, mem_userid, post_title, 
-		post_content, post_writedate, post_hit, post_location, 
+	<select id="searchWantaduserid" parameterType="java.util.Map"
+		resultType="vo.WantadVO">
+		select post_id, mem_userid, post_title, post_content,
+		post_writedate,
+		post_hit, post_location, post_payment,
+		post_review_count
+		from
+		(select post_id, mem_userid, post_title,
+		post_content, post_writedate, post_hit, post_location,
 		post_payment, post_review_count, rownum as rnum
-		from wantad where post_title like '%'||#{key}||'%' 
+		from wantad where
+		mem_userid=#{mem_userid}
+		order by post_id desc)
+		where rnum between to_number(${beginNum}) and
+		to_number(${endNum})
 		order by post_id desc
-		union 
-		select post_id, mem_userid, post_title, 
-		post_content, post_writedate, post_hit, post_location, 
-		post_payment, post_review_count, rownum as rnum
-		from wantad where post_content like '%'||#{key}||'%'
-		order by post_id desc)
-		where rnum between to_number(${beginNum}) and to_number(${endNum})
-		order by post_id desc	
-	</select>
-		<select id="searchWantaduserid" parameterType="java.util.Map" 
-	resultType="vo.WantadVO">
-		select post_id, mem_userid, post_title, post_content, post_writedate,
-		post_hit, post_location, post_payment, post_review_count
-		from 
-		(select post_id, mem_userid, post_title, 
-		post_content, post_writedate, post_hit, post_location, 
-		post_payment, post_review_count, rownum as rnum
-		from wantad where mem_userid=#{mem_userid} 
-		order by post_id desc)
-		where rnum between to_number(${beginNum}) and to_number(${endNum})
-		order by post_id desc	
 	</select>
 	<select id="countWantad" resultType="_int">
-		select count(post_id) from wantad
+		select count(post_id) from
+		wantad
 	</select>
-	<select id="countWantaduserid" parameterType="string" resultType="_int">
-		select count(post_id) from wantad where mem_userid=#{mem_userid}
+	<select id="countWantaduserid" parameterType="string"
+		resultType="_int">
+		select count(post_id) from wantad where
+		mem_userid=#{mem_userid}
 	</select>
-	<select id="countWantadsearch" parameterType="java.util.Map" resultType="_int">
-		select count(post_id) from wantad where ${searchtype} like '%'||#{key}||'%'
+	<select id="countWantadsearch" parameterType="java.util.Map"
+		resultType="_int">
+		select count(post_id) from wantad where ${searchtype} like
+		'%'||#{key}||'%'
 	</select>
-	<select id="countWantadsearchall" parameterType="string" resultType="_int">
-		select count(post_id) from 
-		(select post_id from wantad where post_title like '%'||#{key}||'%' 
-		union 
-		select post_id from wantad where post_content like '%'||#{key}||'%') 
+	<select id="countWantadsearchall" parameterType="string"
+		resultType="_int">
+		select count(post_id) from
+		(select post_id from wantad where post_title like '%'||#{key}||'%'
+		union
+		select post_id from wantad where post_content like '%'||#{key}||'%')
 	</select>
-	
+
 </mapper>

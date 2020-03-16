@@ -83,6 +83,7 @@ public class JobadController {
 		}
 		else if(action.equals("delete")) {
 			dao.delete(post_id);
+			System.out.println("action : "+action);
 			mav.setViewName("redirect:http://localhost:8000/javas/jobad?pgNum="+session.getAttribute("pgNum"));
 			return mav;
 		}
@@ -92,13 +93,12 @@ public class JobadController {
 		mav.setViewName("jobadView");
 		return mav;
 	}
-	@RequestMapping(value="/jobad",method=RequestMethod.POST)
+	@RequestMapping(value= {"/jobad"},method=RequestMethod.POST)
 	public String doPost(@RequestParam("action")String action,
 	@RequestParam(defaultValue="0")int post_id,
 	@ModelAttribute("vo")JobadVO vo,
 	HttpSession session) {
 		LoginVO vo1 = (LoginVO)session.getAttribute("loginVO");
-		
 		vo.setMem_userid(vo1.getMem_userid());
 		vo.setMem_username(vo1.getMem_username());
 		if(action.equals("insert")) {

@@ -86,8 +86,16 @@ public class PageVO {
 	@Override
 	public String toString() {
 		return "PageVO [page=" + page + ", totalListNum=" + totalListNum + ", showListNum=" + showListNum
-				+ ", showPageNum=" + showPageNum + ", totalPageNum=" + totalPageNum + ", pageBeginNum=" + pageBeginNum
-				+ ", pageEndNum=" + pageEndNum + ", listBeginNum=" + listBeginNum + ", listEndNum=" + listEndNum + "]";
+				+ ", showPageNum=" + showPageNum + ", totalPageNum=" + totalPageNum + ", rightChar=" + rightChar
+				+ ", leftChar=" + leftChar + ", pageBeginNum=" + pageBeginNum + ", pageEndNum=" + pageEndNum
+				+ ", listBeginNum=" + listBeginNum + ", listEndNum=" + listEndNum + ", getPage()=" + getPage()
+				+ ", getTotalListNum()=" + getTotalListNum() + ", getShowListNum()=" + getShowListNum()
+				+ ", getShowPageNum()=" + getShowPageNum() + ", getTotalPageNum()=" + getTotalPageNum()
+				+ ", getRightChar()=" + getRightChar() + ", getLeftChar()=" + getLeftChar() + ", getPageBeginNum()="
+				+ getPageBeginNum() + ", getPageEndNum()=" + getPageEndNum() + ", getListBeginNum()="
+				+ getListBeginNum() + ", getListEndNum()=" + getListEndNum() + ", getClass()=" + getClass()
+				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
+
 	
 }
