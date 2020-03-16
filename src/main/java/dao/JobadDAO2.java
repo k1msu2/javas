@@ -78,34 +78,34 @@ public class JobadDAO2 {
 		if(page.isPreData()) {
 			buffer.append("<a href='/javas/jobad?pgNum=");
 			buffer.append((page.getPageStart()-1)+linkStr+"'>");
-			buffer.append("<img src='/javas/resources/images/left.png' width='15'></a> ");
+			buffer.append("<img src='/javas/resources/images/left.png' width='45'></a> ");
 		}
 		for(int i = page.getPageStart();i<=page.getPageEnd();i++) {
 			if(i == curPage) {
-				buffer.append("<a href='/javas/jobad?pgNum="+i+linkStr+"'"+" style='font-weight:bold;'>"+i+"</a> ");
+				buffer.append("<a href='/javas/jobad?pgNum="+i+linkStr+"'"+" style='font-weight:bold;font-size:45px;'>"+i+"</a> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp");
 			}
 			else {
-				buffer.append("<a href='/javas/jobad?pgNum="+i+linkStr+"'"+">"+i+"</a> ");
+				buffer.append("<a href='/javas/jobad?pgNum="+i+linkStr+"'"+" style='font-weight:bold;font-size:45px;'>"+i+"</a> ");
 			}
 		}
 		if(page.isNextData()) {
 			buffer.append("<a href='/javas/jobad?pgNum=");
 			buffer.append((page.getPageEnd()+1)+linkStr+"'>");
-			buffer.append(" <img src='/javas/resources/images/right.png' width='15'></a>");
+			buffer.append(" <img src='/javas/resources/images/right.png' width='45'></a>");
 		}
 		return buffer.toString();
 	}
 	public List<JobadVO> listAll(int curPage){
 		String statement = "resource.JobadMapper.listAllJobad";
 		Map<String,String> map = new HashMap<>();
-		PagingControl page = new PagingControl(10,5,getCount(),curPage);
+		PagingControl page = new PagingControl(9,5,getCount(),curPage);
 		map.put("getWritingStart",Integer.toString(page.getWritingStart()));
 		map.put("getWritingEnd",Integer.toString(page.getWritingEnd()));
 		return session.selectList(statement,map);
 	}
 	public List<JobadVO> listWriter(String mem_username,int curPage){
 		String statement = "resource.JobadMapper.listWriterJobad";
-		PagingControl page = new PagingControl(10,5,getCount(mem_username),curPage);
+		PagingControl page = new PagingControl(9,5,getCount(mem_username),curPage);
 		Map<String,String> map = new HashMap<>();
 		map.put("mem_username", mem_username);
 		map.put("getWritingStart",Integer.toString(page.getWritingStart()));
@@ -114,7 +114,7 @@ public class JobadDAO2 {
 	}
 	public List<JobadVO> listSort(String sortColumn,int curPage){
 		String statement = "resource.JobadMapper.listSortJobad";
-		PagingControl page = new PagingControl(10,5,getCount(),curPage);
+		PagingControl page = new PagingControl(9,5,getCount(),curPage);
 		Map<String,String> map = new HashMap<>();
 		map.put("sortColumn",sortColumn);
 		map.put("getWritingStart",Integer.toString(page.getWritingStart()));
@@ -124,7 +124,7 @@ public class JobadDAO2 {
 	public List<JobadVO> search(String key,String searchType,int curPage){
 		String statement = "resource.JobadMapper.searchJobad";
 		String searchExpr = "";
-		PagingControl page = new PagingControl(10,5,getCount(key,searchType),curPage);
+		PagingControl page = new PagingControl(9,5,getCount(key,searchType),curPage);
 		if(searchType.equals("content")) {
 			searchExpr = "post_content like '%"+key+"%'";
 		}
