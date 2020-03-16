@@ -82,6 +82,4 @@ public class LoginVO {
 	public String toString() {
 		return "LoginVO [mem_userid=" + mem_userid + ", mem_is_employer=" + mem_is_employer + "]";
 	}
-	
-	
 }

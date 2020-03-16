@@ -26,6 +26,7 @@ a {
 <body>
 	<h1>구직게시판</h1>
 	<br>
+	<h5><a href="/javas/resources/form.html">메인페이지로...</a></h5>
 	<c:if test="${empty loginVO}">
 		<button onclick="location.href='/javas/login/form'">로그인 하기</button>
 	</c:if>

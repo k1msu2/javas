@@ -11,12 +11,12 @@ import dao.WantReviewDAOImpl;
 import vo.WantReviewVO;
 
 @Controller
-public class WantReviewController {
+public class WantReviewController{
 	@Autowired
 	WantReviewDAOImpl rdao;
 
 	@ResponseBody
-	@RequestMapping("/wantreview")
+	@RequestMapping(value="/wantreview",produces="applicaiton/json; charset=UTF-8")
 	public String wantreview(int post_id) throws Exception{
 		return new ObjectMapper().writeValueAsString(rdao.listAll(post_id));
 	}

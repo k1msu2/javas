@@ -37,8 +37,7 @@ table {
 		<form method="post" action="../meminfoinsert">
         <table>
         <tr>
-			<td><b>*</b> 아이디</td> <td><input id="userid" style="width: 200px; text-align: left;" type="text" name="mem_userid"></td>
-			
+			<td><b>*</b> 아이디</td><td><input id="userid" style="width: 200px; text-align: left;" type="text" name="mem_userid"></td>
 		</tr>
 		<tr><td>&nbsp;</td></tr>
 		<tr>
