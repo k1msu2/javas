@@ -156,8 +156,8 @@ width : 300px;
 				<td id = table3 colspan ="2" style = "text-align: center;">
 				<input  onclick="f();" type="submit" value="정보수정"> 
 				<input type="reset" value="재작성"> 
-				<input onclick="location.href='/javas/mypage'" type="button" value="취소">
-				</td>
+				<input onclick="location.href='${header.referer}'" type="button" value="취소"></td>
+
 			</tr>
 		</table>
 	</form>

@@ -26,4 +26,14 @@
 	<delete id="deleteJobReview" parameterType="_int">
   		delete from jobreview where review_id=#{review_id}
   	</delete>
+  	<update id="pluscountJobad" parameterType="_int">
+  		update jobad set post_review_count=post_review_count+1 
+  		where post_id=#{post_id}
+  	</update>
+  	<update id="minuscountJobad" parameterType="_int">
+  		update jobad set post_review_count=post_review_count-1 where post_id=#{post_id}
+  	</update>
+  	<select id="getPostId" parameterType="_int" resultType="_int">
+  		select post_id from jobreview where review_id=#{review_id}
+  	</select>
 </mapper>

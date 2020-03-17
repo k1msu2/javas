@@ -48,7 +48,10 @@ public class JobReviewDAOImpl{
 		String statement = "resource.JobReviewMapper.insertJobReview";
 		boolean flag = false;
 		if((session.insert(statement,vo))==1) {
-			flag = true;
+			statement = "resource.JobReviewMapper.pluscountJobad";
+			if (session.update(statement, vo.getPost_id()) == 1) {
+				flag = true;
+			}
 		}
 		return flag;
 	}
@@ -61,10 +64,15 @@ public class JobReviewDAOImpl{
 		return flag;
 	}
 	public boolean delete(int review_id) {
-		String statement = "resource.JobReviewMapper.deleteJobReview";
+		String statement = "resource.JobReviewMapper.getPostId";
+		int post_id = session.selectOne(statement,review_id);
+		statement = "resource.JobReviewMapper.deleteJobReview";
 		boolean flag = false;
 		if((session.delete(statement,review_id))==1) {
-			flag = true;
+			statement = "resource.JobReviewMapper.minuscountJobad";
+			if((session.update(statement, post_id))==1) {
+				flag = true;
+			}
 		}
 		return flag;
 	}
