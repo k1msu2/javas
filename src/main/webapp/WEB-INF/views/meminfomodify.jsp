@@ -39,7 +39,7 @@ width : 300px;
 
 </style>
 <body>
-	<h1>내 정보</h1>
+	<h1 style="font-family: 'Do Hyeon', sans-serif;">내 정보</h1>
 	<hr>
 	<br>
 	<br>
