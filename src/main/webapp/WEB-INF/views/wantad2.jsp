@@ -183,78 +183,197 @@
 			</div>
 		</div>
 	</section>
+	<br>
+	<br>
+
+
 
 	<section class="ftco-section">
 		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 ftco-animate">
-					<c:if test="${!empty listAll}">
-						<c:forEach var="vo" items="${listAll}" varStatus="status">
-							<!-- <div class="col-md-6 col-lg-4 ftco-animate"> -->
-							<div class="blog-entry">
-								<a href="wantad/view?id=${vo.post_id}"
-									class="block-15 d-flex align-items-end"
-									style="background-image: url('images/none.PNG'); width: 300px">
-								</a>
-								<div class="text border border-top-0 p-4">
-									<h3 class="heading">
-										<a href="wantad/view?id=${vo.post_id}"> <c:out
-												value="${vo.post_title}" /></a>
-									</h3>
-									<p>
-										<c:out value="${vo.post_content}" />
+			<div class="col-lg-6 ftco-animate">
+
+				<c:if test="${!empty listAll}">
+					<c:forEach var="vo" items="${listAll}" varStatus="status">
+						<!-- <div class="col-md-6 col-lg-4 ftco-animate"> -->
+						<div class="blog-entry">
+							<a href="wantad/view?id=${vo.post_id}"
+								class="block-20 d-flex align-items-end"
+								style="background-image: url('images/none.PNG'); width: 300px">
+							</a>
+							<div class="text border border-top-0 p-4">
+								<h3 class="heading">
+									<a href="wantad/view?id=${vo.post_id}"> <c:out
+											value="${vo.post_title}" /></a>
+								</h3>
+								<p>
+									<c:out value="${vo.post_content}" />
+								</p>
+								<div class="d-flex align-items-center mt-4">
+									<p class="mb-0">
+										<button
+											onclick="location.href='/javas/wantad/view?id=${vo.post_id}'"
+											class="btn btn-primary">
+											더보기.. <span class="ion-ios-arrow-round-forward"></span>
+										</button>
 									</p>
-									<div class="d-flex align-items-center mt-4">
-										<p class="mb-0">
-											<button
-												onclick="location.href='/javas/wantad/view?id=${vo.post_id}'"
-												class="btn btn-primary">
-												더보기.. <span class="ion-ios-arrow-round-forward"></span>
-											</button>
-										</p>
-										<p class="ml-auto mb-0">
-											<a href="#" class="mr-2"><c:out value="${vo.mem_userid}" />
-												님</a> <a href="#" class="meta-chat"><span class="icon-chat"></span>
-												<c:out value="${vo.post_review_count}" /></a>
-										</p>
+									<p class="ml-auto mb-0">
+										<a href="#" class="mr-2"><c:out value="${vo.mem_userid}" />
+											님</a> <a href="#" class="meta-chat"><span class="icon-chat"></span>
+											<c:out value="${vo.post_review_count}" /></a>
+									</p>
+								</div>
+							</div>
+							<!-- 	</div> -->
+						</div>
+					</c:forEach>
+				</c:if>
+			</div>
+							<div class="col-lg-6 sidebar ftco-animate">
+					<div class="sidebar-box">
+						<div id="mapid"></div>
+					</div>
+				</div>
+			<div class="row mt-5">
+				<div class="col text-center">
+					<div class="block-27">
+						<div id="pages">
+							<%@ include file="wantadpage.jsp"%>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+	<footer class="ftco-footer ftco-bg-dark ftco-section">
+		<div class="container">
+			<div class="row mb-5">
+				<div class="col-md-6 col-lg-3">
+					<div class="ftco-footer-widget mb-5">
+						<h2 class="ftco-heading-2">Have a Questions?</h2>
+						<div class="block-23 mb-3">
+							<ul>
+								<li><span class="icon icon-map-marker"></span><span
+									class="text">203 Fake St. Mountain View, San Francisco,
+										California, USA</span></li>
+								<li><a href="#"><span class="icon icon-phone"></span><span
+										class="text">+2 392 3929 210</span></a></li>
+								<li><a href="#"><span class="icon icon-envelope"></span><span
+										class="text">info@yourdomain.com</span></a></li>
+							</ul>
+						</div>
+						<ul
+							class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
+							<li class="ftco-animate"><a href="#"><span
+									class="icon-twitter"></span></a></li>
+							<li class="ftco-animate"><a href="#"><span
+									class="icon-facebook"></span></a></li>
+							<li class="ftco-animate"><a href="#"><span
+									class="icon-instagram"></span></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-2">
+					<div class="ftco-footer-widget mb-5 ml-md-4">
+						<h2 class="ftco-heading-2">Links</h2>
+						<ul class="list-unstyled">
+							<li><a href="#"><span
+									class="ion-ios-arrow-round-forward mr-2"></span>Home</a></li>
+							<li><a href="#"><span
+									class="ion-ios-arrow-round-forward mr-2"></span>About</a></li>
+							<li><a href="#"><span
+									class="ion-ios-arrow-round-forward mr-2"></span>Services</a></li>
+							<li><a href="#"><span
+									class="ion-ios-arrow-round-forward mr-2"></span>Projects</a></li>
+							<li><a href="#"><span
+									class="ion-ios-arrow-round-forward mr-2"></span>Contact</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4">
+					<div class="ftco-footer-widget mb-5">
+						<h2 class="ftco-heading-2">Recent Blog</h2>
+						<div class="block-21 mb-4 d-flex">
+							<a class="blog-img mr-4"
+								style="background-image: url(images/image_1.jpg);"></a>
+							<div class="text">
+								<h3 class="heading">
+									<a href="#">Even the all-powerful Pointing has no control
+										about</a>
+								</h3>
+								<div class="meta">
+									<div>
+										<a href="#"><span class="icon-calendar"></span> Oct. 16,
+											2019</a>
+									</div>
+									<div>
+										<a href="#"><span class="icon-person"></span> Admin</a>
+									</div>
+									<div>
+										<a href="#"><span class="icon-chat"></span> 19</a>
 									</div>
 								</div>
-								<!-- 	</div> -->
 							</div>
-						</c:forEach>
-					</c:if>
-					<div class="row mt-5">
-						<div class="col text-center">
-							<div class="block-27">
-								<div id="pages">
-									<%@ include file="wantadpage.jsp"%>
+						</div>
+						<div class="block-21 mb-5 d-flex">
+							<a class="blog-img mr-4"
+								style="background-image: url(images/image_2.jpg);"></a>
+							<div class="text">
+								<h3 class="heading">
+									<a href="#">Even the all-powerful Pointing has no control
+										about</a>
+								</h3>
+								<div class="meta">
+									<div>
+										<a href="#"><span class="icon-calendar"></span> Oct. 16,
+											2019</a>
+									</div>
+									<div>
+										<a href="#"><span class="icon-person"></span> Admin</a>
+									</div>
+									<div>
+										<a href="#"><span class="icon-chat"></span> 19</a>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<!-- .col-md-8 -->
-
-
-				<div class="col-lg-6 sidebar ftco-animate">
-					<div class="sidebar-box">
-						<form action="#" class="search-form">
+				<div class="col-md-6 col-lg-3">
+					<div class="ftco-footer-widget mb-5">
+						<h2 class="ftco-heading-2">Subscribe Us!</h2>
+						<form action="#" class="subscribe-form">
 							<div class="form-group">
-								<span class="icon icon-search"></span> <input type="text"
-									class="form-control" placeholder="xx동을 입력하세요">
+								<input type="text" class="form-control mb-2 text-center"
+									placeholder="Enter email address"> <input type="submit"
+									value="Subscribe" class="form-control submit px-3">
 							</div>
 						</form>
-						<p id="demo">현재 위치에서 검색하려면 버튼을 누르세요</p>
-						<button onclick="getLocation()">실행</button>
-						<br>
-						<br>
-					</div>
-					<div class="sidebar-box ftco-animate">
-						<div id="mapid"></div>
 					</div>
 				</div>
 			</div>
-	</section>
+			<div class="row">
+				<div class="col-md-12 text-center">
+
+					<p>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						Copyright &copy;
+						<script>
+							document.write(new Date().getFullYear());
+						</script>
+						All rights reserved | This template is made with <i
+							class="icon-heart" aria-hidden="true"></i> by <a
+							href="https://colorlib.com" target="_blank">Colorlib</a>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+
 
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">
@@ -265,41 +384,6 @@
 				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
 	</div>
 
-	<script>
-		var x = document.getElementById("demo");
-		function getLocation() {
-			if (navigator.geolocation) {
-				navigator.geolocation.getCurrentPosition(showPosition,
-						showError);
-			} else {
-				x.innerHTML = " 이 브라우저는 geolocation을 지원하지 않습니다.";
-			}
-		}
-		function showPosition(position) {
-			x.innerHTML = "위도: " + position.coords.latitude + "<br />경도: "
-					+ position.coords.longitude;
-
-		}
-		function showError(error) {
-			switch (error.code) {
-			case error.PERMISSION_DENIED:
-				x.innerHTML = "사용자가 위치 기능 사용을 거부했습니다."
-				break;
-
-			case error.POSITION_UNAVAILABLE:
-				x.innerHTML = "위치를 구할 수 없습니다.";
-				break;
-
-			case error.TIMEOUT:
-				x.innerHTML = "사용자가 위치 기능 사용을 거부했습니다.";
-				break;
-
-			case error.UNKNOWN_ERROR:
-				x.innerHTML = "기타 에러";
-				break;
-			}
-		}
-	</script>
 
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery-migrate-3.0.1.min.js"></script>

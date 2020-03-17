@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.List,vo.JobadVO,vo.LoginVO"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -19,31 +19,17 @@
     <link rel="stylesheet" href="css/aos.css">
 
     <link rel="stylesheet" href="css/ionicons.min.css">
-    <link rel="stylesheet" href="css/bootstrap-select.min.css">
+    
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-  <% LoginVO loginVO = (LoginVO)session.getAttribute("loginVO"); %>
-  <% if(loginVO==null){ %>
-	<button onclick="location.href='/javas/resources/loginForm.html'">로그인하기</button>
-<% 
-}
-else{
-%>
-		<h4><%= loginVO.getMem_username() %>님 환영합니다!</h4>
-		<button onclick="logout();">로그아웃</button>
-<%
-}
-List<JobadVO> list = (List<JobadVO>)request.getAttribute("list");
-JobadVO vo = (JobadVO)request.getAttribute("vo");
-%>
 	  <div class="bg-top navbar-light d-flex flex-column-reverse">
     	<div class="container py-3">
     		<div class="row no-gutters d-flex align-items-center align-items-stretch">
     			<div class="col-md-4 d-flex align-items-center py-4">
-    				<a class="navbar-brand" href="/javas" style="font-family: 'Do Hyeon', 'sans-serif'">잉/력/시/장 <span>surpluspower market</span></a>
+    				<a class="navbar-brand" href="index.html">Negotiate <span>Consulting Agency</span></a>
     			</div>
 	    		<div class="col-lg-8 d-block">
 		    		<div class="row d-flex">
@@ -102,9 +88,10 @@ JobadVO vo = (JobadVO)request.getAttribute("vo");
         </form>
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav mr-auto">
-	        	<li class="nav-item"><a href="/javas" class="nav-link">Home</a></li>
+	        	<li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
 	        	<li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
 	        	<li class="nav-item"><a href="team.html" class="nav-link">Team</a></li>
+	        	<li class="nav-item"><a href="project.html" class="nav-link">Case Studies</a></li>
 	        	<li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
 	        	<li class="nav-item active"><a href="blog.html" class="nav-link">Blog</a></li>
 	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
@@ -125,108 +112,162 @@ JobadVO vo = (JobadVO)request.getAttribute("vo");
         </div>
       </div>
     </section>
-<%
-if(list!=null && list.size()!=0){
-%>
+		
 		<section class="ftco-section">
 			<div class="container">
 				<div class="row">
-<%
-	for(JobadVO vo1 : list){
-%>
           <div class="col-md-6 col-lg-4 ftco-animate">
             <div class="blog-entry">
-              <a href="blog-single.html" class="block-20 d-flex align-items-end">
-				<div class="meta-date text-center p-2">
-                  <span class="day"><%= vo1.getPost_writedate() %></span>
+              <a href="blog-single.html" class="block-20 d-flex align-items-end" style="background-image: url('images/image_1.jpg');">
+								<div class="meta-date text-center p-2">
+                  <span class="day">15</span>
+                  <span class="mos">Oct.</span>
+                  <span class="yr">2019</span>
                 </div>
               </a>
-              <img src="/javas/resources/images2/<%= vo1.getMem_userid() %>.png" width="100">
               <div class="text border border-top-0 p-4">
-                <h3 class="heading"><a href="/javas/jobad?action=listone&post_id=<%= vo1.getPost_id() %>"><%= vo1.getPost_title() %></a></h3>
-                <a href="/javas/jobad?action=listWriter&mem_username=<%= vo1.getMem_username() %>"><%= vo1.getMem_username() %></a>
-                <p><%= vo1.getPost_content() %></p>
-                <p><%= vo1.getPost_location() %></p>
+                <h3 class="heading"><a href="#">Finance And Legal Working Streams Occur Throughout</a></h3>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
                 <div class="d-flex align-items-center mt-4">
-	                <p class="mb-0"><a href="/javas/jobad?action=listone&post_id=<%= vo1.getPost_id() %>" class="btn btn-primary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
+	                <p class="mb-0"><a href="#" class="btn btn-primary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
 	                <p class="ml-auto mb-0">
 	                	<a href="#" class="mr-2">Admin</a>
-	                	<a href="#" class="meta-chat"><span class="icon-chat"></span> <%= vo1.getPost_review_count() %></a>
+	                	<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
 	                </p>
                 </div>
               </div>
             </div>
           </div>
-<%
-	}
-%>
-		</div>
-		</section>
-		<section>
-        <div class="row mt-5">
-          <div class="col text-center">
-            <div class="block-27">
-<%
-				out.print(request.getAttribute("pagelist"));
-%>
+          <div class="col-md-6 col-lg-4 ftco-animate">
+            <div class="blog-entry">
+              <a href="blog-single.html" class="block-20 d-flex align-items-end" style="background-image: url('images/image_2.jpg');">
+								<div class="meta-date text-center p-2">
+                  <span class="day">15</span>
+                  <span class="mos">Oct.</span>
+                  <span class="yr">2019</span>
+                </div>
+              </a>
+              <div class="text border border-top-0 p-4">
+                <h3 class="heading"><a href="#">Finance And Legal Working Streams Occur Throughout</a></h3>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                <div class="d-flex align-items-center mt-4">
+	                <p class="mb-0"><a href="#" class="btn btn-primary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
+	                <p class="ml-auto mb-0">
+	                	<a href="#" class="mr-2">Admin</a>
+	                	<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
+	                </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 ftco-animate">
+            <div class="blog-entry">
+              <a href="blog-single.html" class="block-20 d-flex align-items-end" style="background-image: url('images/image_3.jpg');">
+								<div class="meta-date text-center p-2">
+                  <span class="day">15</span>
+                  <span class="mos">Oct.</span>
+                  <span class="yr">2019</span>
+                </div>
+              </a>
+              <div class="text border border-top-0 p-4">
+                <h3 class="heading"><a href="#">Finance And Legal Working Streams Occur Throughout</a></h3>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                <div class="d-flex align-items-center mt-4">
+	                <p class="mb-0"><a href="#" class="btn btn-primary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
+	                <p class="ml-auto mb-0">
+	                	<a href="#" class="mr-2">Admin</a>
+	                	<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
+	                </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4 ftco-animate">
+            <div class="blog-entry">
+              <a href="blog-single.html" class="block-20 d-flex align-items-end" style="background-image: url('images/image_4.jpg');">
+								<div class="meta-date text-center p-2">
+                  <span class="day">15</span>
+                  <span class="mos">Oct.</span>
+                  <span class="yr">2019</span>
+                </div>
+              </a>
+              <div class="text border border-top-0 p-4">
+                <h3 class="heading"><a href="#">Finance And Legal Working Streams Occur Throughout</a></h3>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                <div class="d-flex align-items-center mt-4">
+	                <p class="mb-0"><a href="#" class="btn btn-primary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
+	                <p class="ml-auto mb-0">
+	                	<a href="#" class="mr-2">Admin</a>
+	                	<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
+	                </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 ftco-animate">
+            <div class="blog-entry">
+              <a href="blog-single.html" class="block-20 d-flex align-items-end" style="background-image: url('images/image_5.jpg');">
+								<div class="meta-date text-center p-2">
+                  <span class="day">15</span>
+                  <span class="mos">Oct.</span>
+                  <span class="yr">2019</span>
+                </div>
+              </a>
+              <div class="text border border-top-0 p-4">
+                <h3 class="heading"><a href="#">Finance And Legal Working Streams Occur Throughout</a></h3>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                <div class="d-flex align-items-center mt-4">
+	                <p class="mb-0"><a href="#" class="btn btn-primary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
+	                <p class="ml-auto mb-0">
+	                	<a href="#" class="mr-2">Admin</a>
+	                	<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
+	                </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 ftco-animate">
+            <div class="blog-entry">
+              <a href="blog-single.html" class="block-20 d-flex align-items-end" style="background-image: url('images/image_6.jpg');">
+								<div class="meta-date text-center p-2">
+                  <span class="day">15</span>
+                  <span class="mos">Oct.</span>
+                  <span class="yr">2019</span>
+                </div>
+              </a>
+              <div class="text border border-top-0 p-4">
+                <h3 class="heading"><a href="#">Finance And Legal Working Streams Occur Throughout</a></h3>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                <div class="d-flex align-items-center mt-4">
+	                <p class="mb-0"><a href="#" class="btn btn-primary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
+	                <p class="ml-auto mb-0">
+	                	<a href="#" class="mr-2">Admin</a>
+	                	<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
+	                </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+        <div class="row mt-5">
+          <div class="col text-center">
+            <div class="block-27">
+              <ul>
+                <li><a href="#">&lt;</a></li>
+                <li class="active"><span>1</span></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&gt;</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+			</div>
 		</section>
-<% 	if(list!=null && list.size()!=0){ %>
-<div style="text-align : center;">
-	<div>
-		<button class="btn btn-primary" onclick="isAdmin('insert');">새 글 작성</button>
-		<button class="btn btn-primary" onclick="location.href='/javas/jobad'">맨앞 페이지로 가기</button>
-		<br><br>
-		<form action="/javas/jobad" method="get">
-			<input type="hidden" name="action" value="search">
-			<select class="selectpicker" name="searchType">
-				<option value="location">위치</option>
-				<option value="title">제목</option>
-				<option value="content">내용</option>
-				<option value="title_content">제목+내용</option>
-			</select>
-			<input type="text" name="key">
-			<input type="submit" value="검색">
-		</form>
-	</div>
-</div>
-<% 
-	}
-}
-if(request.getAttribute("snull")!=null){
-%>
-	<h1><%= (String)request.getAttribute("snull") %></h1>
-	<button onclick="location.href='/javas/jobad'">목록 가기</button>
-<%
-}
-if(vo!=null){
-%>
-<div style="text-align : center;">
-	<ul class="list-unstyled">
-	<li>유저 아이디 : <%= vo.getMem_userid() %></li>
-	<li>유저 이름 : <%= vo.getMem_username() %></li>
-	<li>글 제목 : <%= vo.getPost_title() %></li>
-	<li>글 내용 : <%= vo.getPost_content() %></li>
-	<li>작성 날짜 : <%= vo.getPost_writedate() %></li>
-	<li>조회수 : <%= vo.getPost_hit() %></li>
-	<li>장소 : <%= vo.getPost_location() %></li>
-	<li>시급 : <%= vo.getPost_payment() %></li>
-	<li>전화번호 : <%= vo.getPost_phone() %></li>
-	<li>리뷰 수 : <%= vo.getPost_review_count() %></li>
-	</ul>
-	<button onclick="location.href='/javas/jobad?pgNum=${sessionScope.pgNum}'">목록 가기</button>
-	<button onclick="isAdmin('delete');">글 삭제하기</button>
-	<button onclick="isAdmin('update');">글 수정하기</button>
-</div>
-<hr>
-<div style="text-align : center;">
-	<%@ include file="jobreviewform.jsp" %>
-</div>
-<%
-}
-%>
+		
     <footer class="ftco-footer ftco-bg-dark ftco-section">
       <div class="container">
         <div class="row mb-5">
@@ -314,6 +355,7 @@ if(vo!=null){
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
+
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
   <script src="js/popper.min.js"></script>
@@ -329,73 +371,6 @@ if(vo!=null){
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
-  <script src="js/bootstrap-select.js"></script>
-  <script>
-  $(window).on('load', function (){
-		$('.selectpicker').selectpicker({
-		  		'selectedText': 'cat'
-		});
-  });
-  </script>
-  <script>
-	function logout(){
-		location.href = '/javas/resources/logout.jsp';
-	};
-	function isAdmin(command){
-		<% if(loginVO==null){ %>
-			if(command=="insert"){
-				window.alert("로그인을 하셔야 글 작성을 하실 수 있습니다!");
-				location.href = '/javas/jobad?pgNum='+${sessionScope.pgNum};
-			}
-			<% if(vo!=null){ %>
-			if(command=="update"){
-				window.alert("로그인을 하셔야 글 수정을 하실 수 있습니다!");
-				location.href = '/javas/jobad?action=listone&post_id='+<%= vo.getPost_id() %>;
-			}
-			else if(command=="delete"){
-				window.alert("로그인을 하셔야 글 삭제를 하실 수 있습니다!");
-				location.href = '/javas/jobad?action=listone&post_id='+<%= vo.getPost_id() %>;
-			}
-			<% } %>
-		<% } 
-		else{
-		%>
-			if(command=="insert"){
-				location.href = '/javas/resources/jobadInsertForm.jsp';
-			}
-			<% if(vo!=null){ %>
-			else if(command=="update"){
-				<% if(loginVO.getMem_userid().equals(vo.getMem_userid())){ %>
-					
-					location.href = '/javas/resources/jobadUpdateForm.jsp';
-				
-				<% } 
-				else{
-				%>
-					
-					window.alert("해당 유저만 글 수정을 하실 수 있어요!");
-					location.href = '/javas/jobad?action=listone&post_id='+<%= vo.getPost_id() %>;
-				
-				<% } %>
-			}
-			else if(command=="delete"){
-				<% if(loginVO.getMem_userid().equals(vo.getMem_userid())){ %>
-					
-					location.href = '/javas/jobad?action=delete&post_id='+<%= vo.getPost_id() %>;
-				
-				<% } 
-				else{
-				%>
-					
-					window.alert("해당 유저만 글 삭제를 하실 수 있어요!");
-					location.href = '/javas/jobad?action=listone&post_id='+<%= vo.getPost_id() %>;
-				
-				<% } %>
-			}
-		<% } 
-		}
-		%>
-	}
-	</script>
+    
   </body>
 </html>
