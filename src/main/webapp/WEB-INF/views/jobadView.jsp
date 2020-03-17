@@ -43,7 +43,7 @@ JobadVO vo = (JobadVO)request.getAttribute("vo");
     	<div class="container py-3">
     		<div class="row no-gutters d-flex align-items-center align-items-stretch">
     			<div class="col-md-4 d-flex align-items-center py-4">
-    				<a class="navbar-brand" href="/javas">Negotiate <span>Consulting Agency</span></a>
+    				<a class="navbar-brand" href="/javas" style="font-family: 'Do Hyeon', 'sans-serif'">잉/력/시/장 <span>surpluspower market</span></a>
     			</div>
 	    		<div class="col-lg-8 d-block">
 		    		<div class="row d-flex">
@@ -337,5 +337,65 @@ if(vo!=null){
 		});
   });
   </script>
+  <script>
+	function logout(){
+		location.href = '/javas/resources/logout.jsp';
+	};
+	function isAdmin(command){
+		<% if(loginVO==null){ %>
+			if(command=="insert"){
+				window.alert("로그인을 하셔야 글 작성을 하실 수 있습니다!");
+				location.href = '/javas/jobad?pgNum='+${sessionScope.pgNum};
+			}
+			<% if(vo!=null){ %>
+			if(command=="update"){
+				window.alert("로그인을 하셔야 글 수정을 하실 수 있습니다!");
+				location.href = '/javas/jobad?action=listone&post_id='+<%= vo.getPost_id() %>;
+			}
+			else if(command=="delete"){
+				window.alert("로그인을 하셔야 글 삭제를 하실 수 있습니다!");
+				location.href = '/javas/jobad?action=listone&post_id='+<%= vo.getPost_id() %>;
+			}
+			<% } %>
+		<% } 
+		else{
+		%>
+			if(command=="insert"){
+				location.href = '/javas/resources/jobadInsertForm.jsp';
+			}
+			<% if(vo!=null){ %>
+			else if(command=="update"){
+				<% if(loginVO.getMem_userid().equals(vo.getMem_userid())){ %>
+					
+					location.href = '/javas/resources/jobadUpdateForm.jsp';
+				
+				<% } 
+				else{
+				%>
+					
+					window.alert("해당 유저만 글 수정을 하실 수 있어요!");
+					location.href = '/javas/jobad?action=listone&post_id='+<%= vo.getPost_id() %>;
+				
+				<% } %>
+			}
+			else if(command=="delete"){
+				<% if(loginVO.getMem_userid().equals(vo.getMem_userid())){ %>
+					
+					location.href = '/javas/jobad?action=delete&post_id='+<%= vo.getPost_id() %>;
+				
+				<% } 
+				else{
+				%>
+					
+					window.alert("해당 유저만 글 삭제를 하실 수 있어요!");
+					location.href = '/javas/jobad?action=listone&post_id='+<%= vo.getPost_id() %>;
+				
+				<% } %>
+			}
+		<% } 
+		}
+		%>
+	}
+	</script>
   </body>
 </html>

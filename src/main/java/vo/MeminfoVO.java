@@ -15,6 +15,13 @@ public class MeminfoVO {
 	private String mem_register_date;
 	private String mem_photo;
 	private int mem_is_employer;
+	private MultipartFile uploadFile;
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
+	}
 	public String getMem_userid() {
 		return mem_userid;
 	}
