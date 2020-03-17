@@ -9,7 +9,7 @@
 <body>
 <script>
 alert("로그아웃 성공!");
-window.location.href="/javas/";
+window.location.href="/javas/main";
 </script>
 </body>
 </html>
