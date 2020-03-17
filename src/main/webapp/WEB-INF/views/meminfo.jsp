@@ -193,7 +193,7 @@ width : 400px;
 		</tr>
 		<tr><td>&nbsp;</td></tr>
 		<tr>	
-			<td id = table4>프로필 사진</td><td> <input id="photo" style="width: 200px; text-align: left;" type="text" name="mem_photo"> </td>
+			<td id = table4>프로필 사진</td><td> <input id="photo" style="width: 200px; text-align: left;" type="file" name="uploadFile"> </td>
 		</tr>
 		<tr><td>&nbsp;</td></tr>
 		<tr>
