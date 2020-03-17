@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="css/aos.css">
 
     <link rel="stylesheet" href="css/ionicons.min.css">
-    
+    <link rel="stylesheet" href="css/bootstrap-select.min.css">
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
@@ -142,11 +142,12 @@ if(list!=null && list.size()!=0){
                 </div>
               </a>
               <div class="text border border-top-0 p-4">
-                <h3 class="heading"><a href="#"><%= vo1.getPost_title() %></a></h3>
+                <h3 class="heading"><a href="/javas/jobad?action=listone&post_id=<%= vo1.getPost_id() %>"><%= vo1.getPost_title() %></a></h3>
+                <a href="/javas/jobad?action=listWriter&mem_username=<%= vo1.getMem_username() %>"><%= vo1.getMem_username() %></a>
                 <p><%= vo1.getPost_content() %></p>
                 <p><%= vo1.getPost_location() %></p>
                 <div class="d-flex align-items-center mt-4">
-	                <p class="mb-0"><a href="#" class="btn btn-primary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
+	                <p class="mb-0"><a href="/javas/jobad?action=listone&post_id=<%= vo1.getPost_id() %>" class="btn btn-primary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
 	                <p class="ml-auto mb-0">
 	                	<a href="#" class="mr-2">Admin</a>
 	                	<a href="#" class="meta-chat"><span class="icon-chat"></span> <%= vo1.getPost_review_count() %></a>
@@ -174,11 +175,12 @@ if(list!=null && list.size()!=0){
 <% 	if(list!=null && list.size()!=0){ %>
 <div style="text-align : center;">
 	<div>
-		<button onclick="isAdmin('insert');">새 글 작성</button>
-		<button onclick="location.href='/javas/jobad'">맨앞 페이지로 가기</button>
+		<button class="btn btn-primary" onclick="isAdmin('insert');">새 글 작성</button>
+		<button class="btn btn-primary" onclick="location.href='/javas/jobad'">맨앞 페이지로 가기</button>
+		<br><br>
 		<form action="/javas/jobad" method="get">
 			<input type="hidden" name="action" value="search">
-			<select name="searchType">
+			<select class="selectpicker" name="searchType">
 				<option value="location">위치</option>
 				<option value="title">제목</option>
 				<option value="content">내용</option>
@@ -191,7 +193,38 @@ if(list!=null && list.size()!=0){
 </div>
 <% 
 	}
-} 
+}
+if(request.getAttribute("snull")!=null){
+%>
+	<h1><%= (String)request.getAttribute("snull") %></h1>
+	<button onclick="location.href='/javas/jobad'">목록 가기</button>
+<%
+}
+if(vo!=null){
+%>
+<div style="text-align : center;">
+	<ul class="list-unstyled">
+	<li>유저 아이디 : <%= vo.getMem_userid() %></li>
+	<li>유저 이름 : <%= vo.getMem_username() %></li>
+	<li>글 제목 : <%= vo.getPost_title() %></li>
+	<li>글 내용 : <%= vo.getPost_content() %></li>
+	<li>작성 날짜 : <%= vo.getPost_writedate() %></li>
+	<li>조회수 : <%= vo.getPost_hit() %></li>
+	<li>장소 : <%= vo.getPost_location() %></li>
+	<li>시급 : <%= vo.getPost_payment() %></li>
+	<li>전화번호 : <%= vo.getPost_phone() %></li>
+	<li>리뷰 수 : <%= vo.getPost_review_count() %></li>
+	</ul>
+	<button onclick="location.href='/javas/jobad?pgNum=${sessionScope.pgNum}'">목록 가기</button>
+	<button onclick="isAdmin('delete');">글 삭제하기</button>
+	<button onclick="isAdmin('update');">글 수정하기</button>
+</div>
+<hr>
+<div style="text-align : center;">
+	<%@ include file="jobreviewform.jsp" %>
+</div>
+<%
+}
 %>
     <footer class="ftco-footer ftco-bg-dark ftco-section">
       <div class="container">
@@ -280,7 +313,6 @@ if(list!=null && list.size()!=0){
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
-
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
   <script src="js/popper.min.js"></script>
@@ -296,6 +328,13 @@ if(list!=null && list.size()!=0){
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
-    
+  <script src="js/bootstrap-select.js"></script>
+  <script>
+  $(window).on('load', function (){
+		$('.selectpicker').selectpicker({
+		  		'selectedText': 'cat'
+		});
+  });
+  </script>
   </body>
 </html>
