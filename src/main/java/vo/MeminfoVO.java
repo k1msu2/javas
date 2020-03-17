@@ -1,5 +1,7 @@
 package vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class MeminfoVO {
 
 	private String mem_userid;
@@ -13,6 +15,13 @@ public class MeminfoVO {
 	private String mem_register_date;
 	private String mem_photo;
 	private int mem_is_employer;
+	private MultipartFile uploadFile;
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
+	}
 	public String getMem_userid() {
 		return mem_userid;
 	}
@@ -79,7 +88,6 @@ public class MeminfoVO {
 	public void setMem_is_employer(int mem_is_employer) {
 		this.mem_is_employer = mem_is_employer;
 	}	
-	
 	@Override
 	public String toString() {
 		return "MeminfoVO [mem_userid=" + mem_userid + ", mem_password=" + mem_password + ", mem_username="
