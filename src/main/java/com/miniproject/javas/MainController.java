@@ -10,16 +10,16 @@ public class MainController {
 		return "main";
 	}
 	
-	@RequestMapping({"/", "about"})
+	@RequestMapping({"about"})
 	public String two() {
 		return "about";
 	}
 	
-	@RequestMapping({"/", "developers"})
+	@RequestMapping({"developers"})
 	public String three() {
 		return "team";
 	}
-	
+
 	@RequestMapping("afterlogin")
 	public String afterlogin() {
 		return "redirect:main";
