@@ -112,7 +112,7 @@
 				</c:if>         	
 				<c:if test="${empty loginVO}">
 	          	<li class="nav-item"><a href="/javas/login/form" class="nav-link">로그인</a></li>
-	          	<li class="nav-item"><a href="/javas/resources/meminfo.jsp" class="nav-link">회원가입</a></li>
+	          	<li class="nav-item"><a href="/javas/meminfo" class="nav-link">회원가입</a></li>
 	          	</c:if>
 	          
 	        </ul>
