@@ -1,15 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ page import="vo.MeminfoVO, java.util.ArrayList"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ page
+	import="vo.WantadVO, vo.LoginVO, vo.PageVO, vo.WantSearchVO, java.util.List"%>
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>회원가입</title>
-    <script src="juso.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
+<html lang="en">
+  <head>
+    <title>잉력시장 : 개발진</title>
+    <meta charset="utf-8">
+   <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
@@ -28,29 +27,9 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
-</head>
-<style>
-b {
-
-color : red;
-
-}
-
-table {
-    width: 500px;
-    height: 200px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-#table4{
-border-bottom:none;
-width : 400px;
-}  
- 
-</style>
-<body>
-    <div class="bg-top navbar-light d-flex flex-column-reverse">
+  </head>
+  <body>
+	  <div class="bg-top navbar-light d-flex flex-column-reverse">
     	<div class="container py-3">
     		<div class="row no-gutters d-flex align-items-center align-items-stretch">
     			<div class="col-md-4 d-flex align-items-center py-4">
@@ -109,7 +88,7 @@ width : 400px;
 	          <ul class="navbar-nav mr-auto">
 	            <li class="nav-item"><a href="/javas/main" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">홈</a></li>
 	            <li class="nav-item"><a href="/javas/about" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">소개</a></li>
-	        	<li class="nav-item"><a href="/javas/developers" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">개발진</a></li>
+	        	<li class="nav-item active"><a href="/javas/developers" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">개발진</a></li>
 	        	<li class="nav-item"><a href="/javas/jobad" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">대타 구인</a></li>
 	        	<li class="nav-item"><a href="/javas/wantad" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">대타 구직</a></li>
 	            <li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
@@ -131,91 +110,95 @@ width : 400px;
 				</c:if>         	
 				<c:if test="${empty loginVO}">
 	          	<li class="nav-item"><a href="/javas/login/form" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">로그인</a></li>
-	          	<li class="nav-item active"><a href="/javas/meminfo" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">회원가입</a></li>
+	          	<li class="nav-item"><a href="/javas/meminfo" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">회원가입</a></li>
 	          	</c:if>
 	        </ul>
 	      </div>
 	    </div>
 	  </nav>
     <!-- END nav -->
+    
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('/javas/resources/images/bg_1.jpg');">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+            <h1 class="mb-2 bread">개발진</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="/javas/main">홈 <i class="ion-ios-arrow-forward"></i></a></span> <span>개발진 <i class="ion-ios-arrow-forward"></i></span></p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-	<%
-		ArrayList<MeminfoVO> list = (ArrayList<MeminfoVO>) request.getAttribute("list");
-	%>
-	
-	<br>
-	<br>
-	<h1 style="font-family: 'Do Hyeon', sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;회원가입</h1>
-	<!-- 회원가입 폼. -->
-	<hr style="width:90%;">
-	<br>
-	<br>
-		<form method="post" action="../meminfoinsert">
-        <table>
-        <tr>
-			<td id = table4><b>*</b> 아이디</td><td><input id="userid" style="width: 200px; text-align: left;" type="text" name="mem_userid"></td>
-		</tr>
-		<tr><td>&nbsp;</td></tr>
-		<tr>
-			<td id = table4><b>*</b> 비밀번호</td><td><input id="password" style="width: 200px; text-align: left;" type="password" name="mem_password"></td>
-		</tr>
-		<tr><td>&nbsp;</td></tr>
-		<tr>
-			<td id = table4><b>*</b> 이름</td><td><input id="username" style="width: 200px; text-align: left;" type="text" name="mem_username"></td>
-		</tr>
-		<tr><td>&nbsp;</td></tr>
-		<tr>
-			<td id = table4><b>*</b> 이메일</td><td><input id="email" style="width: 200px; text-align: left;" type="email" name="mem_email"></td>
-		</tr>
-		<tr><td>&nbsp;</td></tr>
-		<tr>	
-			<td id = table4><b>*</b> 생일</td><td><input id="birthday" style="width: 200px; text-align: left;" type="date" name="mem_birthday"></td>
-		</tr>
-		<tr><td>&nbsp;</td></tr>
-		<tr>	
-			<td id = table4><b>*</b> 성별</td><td> <SELECT name='mem_sex'>
-			            <OPTION value='female'>여자</OPTION>
-			            <OPTION value='male'>남자</OPTION>
-			            </SELECT></td>
-	    </tr>
-	    <tr><td>&nbsp;</td></tr>
-	    <tr>
-			<td id = table4><b>*</b> 핸드폰 번호</td><td><input id="phone" style="width: 200px; text-align: left;" type="number" name="mem_phone"></td>
-		</tr>
-		<tr><td>&nbsp;</td></tr>
-		<tr>	
-			<td id = table4><b>*</b> 주소 <input type="button" value="주소 검색" onclick="goPopup();"></td><td> <input id="address" style="width: 200px; text-align: left;" type="text" name="mem_address"
-			class="form-control" required="true" readonly="true"></td>
-		</tr>
-		<tr><td>&nbsp;</td></tr>
-		<tr>	
-			<td id = table4>구인/구직 일시</td><td> <input id="register" style="width: 200px; text-align: left;" type="date" name="mem_register_date"></td>
-		</tr>
-		<tr><td>&nbsp;</td></tr>
-		<tr>	
-			<td id = table4>프로필 사진</td><td> <input id="photo" style="width: 200px; text-align: left;" type="text" name="mem_photo"> </td>
-		</tr>
-		<tr><td>&nbsp;</td></tr>
-		<tr>
-			<td id = table4><b>*</b> 직업 </td><td> <SELECT name='mem_is_employer'>
-				        <OPTION value='1'>사업자</OPTION>
-				        <OPTION value='2'>파트타이머</OPTION>
-			            </SELECT></td>
-		</tr>
-		<tr><td>&nbsp;</td></tr>
-		<tr><td>&nbsp;</td></tr>
-		<tr><td>&nbsp;</td></tr>
-		<tr>
-				<td id = table3 colspan ="2" style = "text-align: center;">
-				<input  onclick="f();" type="submit" value="정보수정"> 
-				<input type="reset" value="재작성"> 
-				<input onclick="location.href='/javas/mypage'" type="button" value="취소">
-				</td>
-			</tr>
-		</table>
-		</form>
-		<br><br><br><br><br><br>
- <footer class="ftco-footer ftco-bg-dark ftco-section">
+    <section class="ftco-section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 col-lg-3 ftco-animate" style = "margin : auto;">
+						<div class="staff border">
+							<div class="img-wrap d-flex align-items-stretch">
+								<div class="img align-self-stretch" style="background-image: url(/javas/resources/images/staff-1.jpg);"></div>
+							</div>
+							<div class="text pt-3 px-3 pb-4 text-center">
+								<h3>김수이</h3>
+								<span class="position mb-2">CAPTAIN</span>
+								<div class="faded">
+									<p>캡틴, 총 책임자</p>
+									<ul class="ftco-social text-center">
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-twitter"></span></a></li>
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-facebook"></span></a></li>
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-google-plus"></span></a></li>
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-instagram"></span></a></li>
+		              </ul>
+	              </div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-3 ftco-animate" style = "margin : auto;">
+						<div class="staff border">
+							<div class="img-wrap d-flex align-items-stretch">
+								<div class="img align-self-stretch" style="background-image: url(/javas/resources/images/staff-2.jpg);"></div>
+							</div>
+							<div class="text pt-3 px-3 pb-4 text-center" >
+								<h3>황지원</h3>
+								<span class="position mb-2">ANTMAN</span>
+								<div class="faded">
+									<p>앤트맨, 팀에서 중요한 역할</p>
+									<ul class="ftco-social text-center">
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-twitter"></span></a></li>
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-facebook"></span></a></li>
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-google-plus"></span></a></li>
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-instagram"></span></a></li>
+		              </ul>
+	              </div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-3 ftco-animate" style = "margin : auto;">
+						<div class="staff border">
+							<div class="img-wrap d-flex align-items-stretch">
+								<div class="img align-self-stretch" style="background-image: url(/javas/resources/images/staff-3.jpg);"></div>
+							</div>
+							<div class="text pt-3 px-3 pb-4 text-center">
+								<h3>정해림</h3>
+								<span class="position mb-2">SPIDERMAN</span>
+								<div class="faded">
+									<p>스파이더맨, 팀의 디자이너</p>
+									<ul class="ftco-social text-center">
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-twitter"></span></a></li>
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-facebook"></span></a></li>
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-google-plus"></span></a></li>
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-instagram"></span></a></li>
+		              </ul>
+	              </div>
+							</div>
+						</div>
+					</div>
+					</div>
+					</div>
+		</section>
+
+		
+   <footer class="ftco-footer ftco-bg-dark ftco-section">
     <h2 style = "color : #ffffff; text-align : center;">Have a Questions?</h2>
     <div style = "text-align : center;">
     <span class="icon icon-map-marker"></span><span class="text">212 Teheran-ro, Gangnam-gu, Seoul, Republic of Korea (06220)</span>
@@ -228,7 +211,12 @@ width : 400px;
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
     </footer>
     
-		
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
   <script src="js/popper.min.js"></script>
@@ -242,5 +230,6 @@ width : 400px;
   <script src="js/jquery.animateNumber.min.js"></script>
   <script src="js/scrollax.min.js"></script>
   <script src="js/main.js"></script>
-</body>
+    
+  </body>
 </html>
