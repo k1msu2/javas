@@ -29,7 +29,6 @@ public class MeminfoController {
 	}
 	@RequestMapping(value = "/meminfoinsert", method = RequestMethod.POST)
 	public ModelAndView meminfoinsert(MeminfoVO vo, String action) {
-		//System.out.println("?");
 		ModelAndView mav = new ModelAndView();
 		List<MeminfoVO> list = null;
 		String mem_userid = vo.getMem_userid();
