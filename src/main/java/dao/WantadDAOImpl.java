@@ -155,7 +155,7 @@ public class WantadDAOImpl implements WantadDAO {
 		System.out.println(statement);
 		System.out.println(totalListNum);
 
-		pvo.setShowListNum(4);
+		pvo.setShowListNum(6);
 		pvo.setShowPageNum(5);
 		
 		pvo.setPage(page);

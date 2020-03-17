@@ -1,14 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page
 	import="vo.WantadVO, vo.LoginVO, vo.PageVO, vo.WantSearchVO, java.util.List"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>잉력시장 : 마이페이지</title>
-   <meta charset="utf-8">
+<html lang="en">
+  <head>
+    <title>잉력시장 : 개발진</title>
+    <meta charset="utf-8">
    <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -28,9 +27,9 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-	 <div class="bg-top navbar-light d-flex flex-column-reverse">
+  </head>
+  <body>
+	  <div class="bg-top navbar-light d-flex flex-column-reverse">
     	<div class="container py-3">
     		<div class="row no-gutters d-flex align-items-center align-items-stretch">
     			<div class="col-md-4 d-flex align-items-center py-4">
@@ -88,8 +87,8 @@
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	          <ul class="navbar-nav mr-auto">
 	            <li class="nav-item"><a href="/javas/main" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">홈</a></li>
-	        	<li class="nav-item"><a href="/javas/about" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">소개</a></li>
-	        	<li class="nav-item"><a href="/javas/developers" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">개발진</a></li>
+	            <li class="nav-item"><a href="/javas/about" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">소개</a></li>
+	        	<li class="nav-item active"><a href="/javas/developers" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">개발진</a></li>
 	        	<li class="nav-item"><a href="/javas/jobad" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">대타 구인</a></li>
 	        	<li class="nav-item"><a href="/javas/wantad" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">대타 구직</a></li>
 	            <li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
@@ -106,7 +105,7 @@
 				<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 				<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 				<c:if test="${!empty loginVO}">
-					<li class="nav-item active"><a href="/javas/mypage" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">마이페이지</a></li>
+					<li class="nav-item"><a href="/javas/mypage" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">마이페이지</a></li>
 					<li class="nav-item"><a href="/javas/logout" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">로그아웃</a></li>
 				</c:if>         	
 				<c:if test="${empty loginVO}">
@@ -118,70 +117,88 @@
 	    </div>
 	  </nav>
     <!-- END nav -->
+    
     <section class="hero-wrap hero-wrap-2" style="background-image: url('/javas/resources/images/bg_1.jpg');">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-2 bread">마이페이지</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="/javas/main">홈 <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="/javas/mypage">마이페이지 <i class="ion-ios-arrow-forward"></i></a></span></p>
+            <h1 class="mb-2 bread">개발진</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="/javas/main">홈 <i class="ion-ios-arrow-forward"></i></a></span> <span>개발진 <i class="ion-ios-arrow-forward"></i></span></p>
           </div>
         </div>
       </div>
     </section>
-		<section class="ftco-section">
+
+    <section class="ftco-section">
 			<div class="container">
 				<div class="row">
-          <div class="col-md-3 col-md-pull-9 sidebar ftco-animate">
-             <div class="icon d-flex justify-content-center align-items-center"><span><img width=80px src="/javas/resources/images/none.PNG"></span></div>
-			<div class="text" style="text-align : center;">
-			     <c:if test="${!empty loginVO}">
-			       <h4><c:out value="${loginVO.mem_userid}" />님 <br>환영합니다!</h4>
-		         </c:if>
-		    </div>
-		    <br>
-              <ul class="categories" style="text-align : center;">
-                <li><a onclick="displayone()">정보 수정</a></li>
-                <li><a onclick="displaytwo()">리뷰 관리</a></li>
-                <li><a href="/javas/jobad">구인 게시</a></li>
-                <li><a href="/javas/wandad">구직 게시</a></li>
-                <li><a onclick="displaythree()">1:1 문의</a></li>
-              </ul>
-          </div><!-- END COL -->
-          
-          
-          <div class="col-md-9 col-md-push-3 ftco-animate">
-          
-              <section id="header" class="ftco-intro ftco-no-pb img" style="background-image: url(/javas/resources/images/image_1.jpg);">
-    	         <div class="container">
-    		       <div class="row justify-content-center">
-                      <div class="col-md-10 text-center heading-section heading-section-white ftco-animate">
-                           <br><br><br><br>
-                          <h2 class="mb-0">Welcome to 잉/력/시/장</h2>
-                           <br><br><br><br>
-                      </div>
-                   </div>	
-    	         </div>
-              </section>
-              
-              <div id="displayone"  style="display:none" >
-            	<%@ include file="meminfomodify.jsp"%>
-              </div>
-        
-              <div id="displaytwo"  style="display:none" >
-            	<%@ include file="myreviews.jsp"%>
-              </div>
-              
-               <div id="displaythree"  style="display:none" >
-            	<%@ include file="contact.jsp"%>
-              </div>
-             
-                       
-		  </div>
-			
+					<div class="col-md-6 col-lg-3 ftco-animate" style = "margin : auto;">
+						<div class="staff border">
+							<div class="img-wrap d-flex align-items-stretch">
+								<div class="img align-self-stretch" style="background-image: url(/javas/resources/images/staff-1.jpg);"></div>
+							</div>
+							<div class="text pt-3 px-3 pb-4 text-center">
+								<h3>김수이</h3>
+								<span class="position mb-2">CAPTAIN</span>
+								<div class="faded">
+									<p>캡틴, 총 책임자</p>
+									<ul class="ftco-social text-center">
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-twitter"></span></a></li>
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-facebook"></span></a></li>
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-google-plus"></span></a></li>
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-instagram"></span></a></li>
+		              </ul>
+	              </div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-3 ftco-animate" style = "margin : auto;">
+						<div class="staff border">
+							<div class="img-wrap d-flex align-items-stretch">
+								<div class="img align-self-stretch" style="background-image: url(/javas/resources/images/staff-2.jpg);"></div>
+							</div>
+							<div class="text pt-3 px-3 pb-4 text-center" >
+								<h3>황지원</h3>
+								<span class="position mb-2">ANTMAN</span>
+								<div class="faded">
+									<p>앤트맨, 팀에서 중요한 역할</p>
+									<ul class="ftco-social text-center">
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-twitter"></span></a></li>
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-facebook"></span></a></li>
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-google-plus"></span></a></li>
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-instagram"></span></a></li>
+		              </ul>
+	              </div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-3 ftco-animate" style = "margin : auto;">
+						<div class="staff border">
+							<div class="img-wrap d-flex align-items-stretch">
+								<div class="img align-self-stretch" style="background-image: url(/javas/resources/images/staff-3.jpg);"></div>
+							</div>
+							<div class="text pt-3 px-3 pb-4 text-center">
+								<h3>정해림</h3>
+								<span class="position mb-2">SPIDERMAN</span>
+								<div class="faded">
+									<p>스파이더맨, 팀의 디자이너</p>
+									<ul class="ftco-social text-center">
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-twitter"></span></a></li>
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-facebook"></span></a></li>
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-google-plus"></span></a></li>
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-instagram"></span></a></li>
+		              </ul>
+	              </div>
+							</div>
+						</div>
+					</div>
+					</div>
+					</div>
 		</section>
+
 		
-      <footer class="ftco-footer ftco-bg-dark ftco-section">
+   <footer class="ftco-footer ftco-bg-dark ftco-section">
     <h2 style = "color : #ffffff; text-align : center;">Have a Questions?</h2>
     <div style = "text-align : center;">
     <span class="icon icon-map-marker"></span><span class="text">212 Teheran-ro, Gangnam-gu, Seoul, Republic of Korea (06220)</span>
@@ -199,27 +216,6 @@
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
-  <script>
-  
-  var displayone = function(e){
-		document.getElementById("displayone").style.display = "block";
-		document.getElementById("header").style.display = "none";
-		document.getElementById("displaytwo").style.display = "none";
-		document.getElementById("displaythree").style.display = "none";
-  }
-  var displaytwo = function(e){
-		document.getElementById("displaytwo").style.display = "block";
-		document.getElementById("header").style.display = "none";
-		document.getElementById("displayone").style.display = "none";
-		document.getElementById("displaythree").style.display = "none";
-  }
-  var displaythree = function(e){
-		document.getElementById("displaythree").style.display = "block";
-		document.getElementById("header").style.display = "none";
-		document.getElementById("displayone").style.display = "none";
-		document.getElementById("displaytwo").style.display = "none";
- }
-  </script>
 
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
@@ -234,5 +230,6 @@
   <script src="js/jquery.animateNumber.min.js"></script>
   <script src="js/scrollax.min.js"></script>
   <script src="js/main.js"></script>
-</body>
+    
+  </body>
 </html>

@@ -8,13 +8,25 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<style>
+table {
+ width : 900px;
+ height: 40px;
+ text-align : center;
+}
+tr,th {
+  border-bottom: 1px solid #444444;
+  border-light: 1px solid #444444;
+  text-align : center;
+}
+</style>
 <body>
 	<table class="head">
 		<tr>
-			<th width=100>게시글번호</th>
-			<th width=100>게시글리뷰번호</th>
+			<th width=100>글번호</th>
+			<th width=100>리뷰번호</th>
+			<th width=300>내용</th>
 			<th width=100>작성자</th>
-			<th width=400>내용</th>
 			<th width=200>날짜</th>
 			<th width=100>별점</th>
 		</tr>
