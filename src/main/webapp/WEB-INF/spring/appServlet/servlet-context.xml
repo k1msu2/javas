@@ -14,9 +14,14 @@
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 
-	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
+		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
-
+	<resources mapping="/css/**" location="/resources/css/" />
+	<resources mapping="/js/**" location="/resources/js/" />
+	<resources mapping="/images/**" location="/resources/images/" />
+	<resources mapping="/fonts/**" location="/resources/fonts/" />
+	<resources mapping="/scss/**" location="/resources/scss/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
@@ -32,6 +37,14 @@
 	<context:component-scan base-package="dao" />
 	<context:component-scan base-package="vo" />
 
+<!-- String host, String user, String pwd -->
+<!-- "127.0.0.1", "test", "1234" -->
+	<beans:bean id="FTPService" class="dao.FTPService">
+		<beans:constructor-arg index ="0" value="localhost"/> 
+		<beans:constructor-arg index ="1" value="test"/>
+		<beans:constructor-arg index ="2" value="1234"/>
+	</beans:bean>
+	
 	<beans:bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 	<beans:bean id="dataSource"
@@ -39,7 +52,7 @@
 		<beans:property name="driverClassName"
 			value="oracle.jdbc.driver.OracleDriver" />
 		<beans:property name="url"
-			value="jdbc:oracle:thin:@70.12.115.164:1521:XE" />
+			value="jdbc:oracle:thin:@localhost:1521:XE" />
 		<beans:property name="username" value="javas" />
 		<beans:property name="password" value="1234" />
 	</beans:bean>
@@ -73,18 +86,18 @@
 
 		<interceptor>
 			<mapping path="/wantad/form" />
-			<mapping path="/mypage"/>
-			<mapping path="/afterlogin"/>
+			<mapping path="/mypage" />
+			<mapping path="/afterlogin" />
 			<beans:bean class="interceptor.AuthLoginInterceptor" />
 		</interceptor>
 
 		<interceptor>
-			<mapping path="/wantad/form"/>
+			<mapping path="/wantad/form" />
 			<beans:bean class="interceptor.AuthEmployeeInterceptor" />
 		</interceptor>
 
 		<interceptor>
-			<mapping path="/**"/>
+			<mapping path="/**" />
 			<exclude-mapping path="/**" />
 			<beans:bean class="interceptor.AuthEmployerInterceptor" />
 		</interceptor>
