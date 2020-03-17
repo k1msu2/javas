@@ -43,7 +43,7 @@ JobadVO vo = (JobadVO)request.getAttribute("vo");
     	<div class="container py-3">
     		<div class="row no-gutters d-flex align-items-center align-items-stretch">
     			<div class="col-md-4 d-flex align-items-center py-4">
-    				<a class="navbar-brand" href="index.html">Negotiate <span>Consulting Agency</span></a>
+    				<a class="navbar-brand" href="/javas">Negotiate <span>Consulting Agency</span></a>
     			</div>
 	    		<div class="col-lg-8 d-block">
 		    		<div class="row d-flex">
@@ -102,7 +102,7 @@ JobadVO vo = (JobadVO)request.getAttribute("vo");
         </form>
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav mr-auto">
-	        	<li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+	        	<li class="nav-item"><a href="/javas" class="nav-link">Home</a></li>
 	        	<li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
 	        	<li class="nav-item"><a href="team.html" class="nav-link">Team</a></li>
 	        	<li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>

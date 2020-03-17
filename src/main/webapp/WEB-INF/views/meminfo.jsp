@@ -78,7 +78,7 @@ table {
 		</tr>
 		<tr><td>&nbsp;</td></tr>
 		<tr>	
-			<td>프로필 사진</td><td> <input id="photo" style="width: 200px; text-align: left;" type="text" name="mem_photo"> </td>
+			<td>프로필 사진</td><td> <input id="photo" style="width: 200px; text-align: left;" type="file" name="mem_photo"> </td>
 		</tr>
 		<tr><td>&nbsp;</td></tr>
 		<tr>

@@ -1,6 +1,5 @@
 package com.miniproject.javas;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,7 +65,6 @@ public class MeminfoController {
 		mav.setViewName("meminfoview");
 		return mav;
 	}
-	//�쉶�썝媛��엯 �뤌�쓣 �씤�꽌�듃 湲곕뒫�쑝濡� 諛쏆븘 而⑦듃濡ㅻ쭅�븯�뒗 硫붿꽌�뱶.
 	
 	@RequestMapping(value = "/newsdelete", method = RequestMethod.GET)
 	public ModelAndView newsdelete(MeminfoVO vo, String action) {
