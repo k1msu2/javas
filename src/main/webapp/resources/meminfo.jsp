@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="vo.MeminfoVO, java.util.ArrayList"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,8 +38,7 @@ table {
 		<form method="post" action="../meminfoinsert">
         <table>
         <tr>
-			<td><b>*</b> 아이디</td> <td><input id="userid" style="width: 200px; text-align: left;" type="text" name="mem_userid"></td>
-			
+			<td><b>*</b> 아이디</td><td><input id="userid" style="width: 200px; text-align: left;" type="text" name="mem_userid"></td>
 		</tr>
 		<tr><td>&nbsp;</td></tr>
 		<tr>
@@ -91,7 +91,7 @@ table {
 		<tr> 
 			<td style = "text-align : center;"><input type="submit" value="회원가입"> 
 			<input type="reset" value="재작성"> 
-			<input onclick="back();" type="button" value="취소"></td>
+			<input onclick="location.href='/javas/'" type="button" value="취소"></td>
 		</tr>
 		</table>
 		</form>

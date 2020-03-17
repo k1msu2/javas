@@ -10,7 +10,7 @@
 <script>
 	window.onload = function(){
 		<% session.removeAttribute("loginVO"); %>
-		location.href = '/javas/jobad';
+		location.href = '/javas/';
 	};
 </script>
 </body>

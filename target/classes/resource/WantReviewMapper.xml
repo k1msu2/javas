@@ -15,17 +15,21 @@
 		from wantreview where post_id = #{post_id} 
 		order by review_id
 	</select>
+		<select id="selectWantReviewByUserid" parameterType="string" resultType="vo.WantReviewVO">
+		select review_id, review_userid,
+		review_comment, review_date 
+		from wantreview where review_userid = #{userid} 
+		order by review_id
+	</select>
 	<delete id="deleteWantReview" parameterType="_int">
 		delete from wantreview
 		where review_id=#{review_id}
 	</delete>
 	<insert id="insertWantReview" parameterType="vo.WantReviewVO">
 		insert into wantreview
-		(post_id, review_userid,
-		review_comment, review_date, review_rate)
+		(post_id, review_userid, review_comment, review_date, review_rate)
 		values
-		(#{post_id}, #{review_userid},
-		#{review_comment}, sysdate, #{review_rate})
+		(#{post_id}, #{review_userid}, #{review_comment}, sysdate, #{review_rate})
 	</insert>
 	<update id="updateWantReivew" parameterType="vo.WantadVO">
 		update wantreview set

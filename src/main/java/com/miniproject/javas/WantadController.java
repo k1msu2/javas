@@ -30,10 +30,9 @@ public class WantadController {
 	@Autowired
 	WantReviewDAOImpl rdao;
 	
-	@RequestMapping("/wantad") // search 愿��젴 �맂 寃껊룄 紐⑤몢 媛숈쓬
+	@RequestMapping("/wantad")
 	public ModelAndView wantad2(WantadVO vo, 
-			WantSearchVO svo, 
-			@RequestParam(defaultValue = "1") int page) {
+			WantSearchVO svo, @RequestParam(defaultValue = "1") int page) {
 
 		ModelAndView mav = new ModelAndView();
 		List<WantadVO> list = new ArrayList<>();
@@ -49,7 +48,7 @@ public class WantadController {
 		return mav;
 	}
 
-	@RequestMapping("/wantadall")
+	@RequestMapping("/wantad/all")
 	public ModelAndView wantad(WantadVO vo) {
 		ModelAndView mav = new ModelAndView();
 		List<WantadVO> list = new ArrayList<>();
@@ -60,13 +59,13 @@ public class WantadController {
 		return mav;
 	}
 
-	@RequestMapping("/wantadform")
+	@RequestMapping("/wantad/form")
 	public String form(WantadVO vo) {
 
 		return "wantadform";
 	}
 
-	@RequestMapping("/wantadinsert1")
+	@RequestMapping("/wantad/insert1")
 	public ModelAndView insert(WantadVO vo) {
 		// System.out.println(vo);
 		dao.insert(vo);
@@ -77,7 +76,7 @@ public class WantadController {
 		return mav;
 	}
 
-	@RequestMapping("/wantadinsert")
+	@RequestMapping("/wantad/insert2")
 	public ModelAndView insert2(WantadVO vo,
 			@RequestParam(defaultValue = "1") int page) {
 		ModelAndView mav = new ModelAndView();
@@ -92,18 +91,24 @@ public class WantadController {
 			System.out.println("등록 실패");
 		}
 		mav.setViewName("redirect:wantad");
-		
-		System.out.println(pvo);
-		System.out.println(list);
+
 		return mav;
 	}
 	
-	@RequestMapping("/wantadview")
+	@RequestMapping("/wantad/insert")
+	public String insert3(WantadVO vo) {
+		if(dao.insert(vo)) {
+			return "success";
+		}else {
+			return "fail";
+		}	
+	}
+	
+	@RequestMapping("/wantad/view")
 	public ModelAndView read(int id) {
 		ModelAndView mav = new ModelAndView();
 		WantadVO vo = dao.listOne(id);
 		mav.addObject("listOne", vo);
-		System.out.println(vo);
 		if (vo.getPost_review_count() > 0) {
 			List<WantReviewVO> list = rdao.listAll(id);
 			System.out.println(list);
@@ -111,6 +116,34 @@ public class WantadController {
 		}
 		mav.setViewName("wantadView");
 		return mav;
+	}
+	
+	@RequestMapping("/wantad/modify")
+	public ModelAndView modify(WantadVO vo) {
+		System.out.println(vo);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("listOne", vo);
+		mav.setViewName("wantadmodify");
+		return mav;
+	}
+	
+	@RequestMapping("/wantad/update")
+	public String update(WantadVO vo){
+		if(dao.update(vo)){
+			return "success";
+		} else {
+			return "fail";
+		}
+	}
+	@RequestMapping("/wantad/delete")
+	public String delete(WantadVO vo) {
+		// 리뷰도 삭제하고 글도 삭제하고 해야함
+		// 현재는 글 삭제만 구현
+		if(dao.delete(vo.getPost_id())){
+			return "success";
+		} else {
+			return "fail";
+		}
 	}
 	
 }

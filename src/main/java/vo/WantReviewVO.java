@@ -1,6 +1,6 @@
 package vo;
 
-public class WantReviewVO {
+public class WantReviewVO implements ReviewVO{
 	private int review_id;
 	private int post_id;
 	private String review_userid;
@@ -50,6 +50,4 @@ public class WantReviewVO {
 				+ ", review_comment=" + review_comment + ", review_date=" + review_date + ", review_rate=" + review_rate
 				+ "]";
 	}
-	
-	
 }

@@ -11,27 +11,27 @@ import dao.WantReviewDAOImpl;
 import vo.WantReviewVO;
 
 @Controller
-public class WantReviewController {
+public class WantReviewController{
 	@Autowired
-	WantReviewDAOImpl dao;
+	WantReviewDAOImpl rdao;
 
 	@ResponseBody
-	@RequestMapping("/wantreview")
+	@RequestMapping(value="/wantreview",produces="applicaiton/json; charset=UTF-8")
 	public String wantreview(int post_id) throws Exception{
-		return new ObjectMapper().writeValueAsString(dao.listAll(post_id));
+		return new ObjectMapper().writeValueAsString(rdao.listAll(post_id));
 	}
 
 	@ResponseBody
-	@RequestMapping("/wantreviewinsert")
-	public String insert(WantReviewVO vo) {
-		if (dao.insert(vo)) return "success";
+	@RequestMapping("/wantreview/insert")
+	public String insert(WantReviewVO rvo) {
+		if (rdao.insert(rvo)) return "success";
 		else return "fail";
 	}
 
 	@ResponseBody
-	@RequestMapping("/wantreviewdelete")
-	public String delete(int review_id) {
-		if (dao.delete(review_id)) return "success";
+	@RequestMapping("/wantreview/delete")
+	public String delete(WantReviewVO rvo) {
+		if (rdao.delete(rvo)) return "success";
 		else return "fail";
 	}
 }
