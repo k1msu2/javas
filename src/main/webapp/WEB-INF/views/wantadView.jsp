@@ -1,29 +1,366 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="vo.WantadVO, vo.WantReviewVO, java.util.List"%>
+<%@ page
+	import="vo.WantadVO, vo.LoginVO, vo.PageVO, vo.WantSearchVO, java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Negotiate - Free Bootstrap 4 Template by Colorlib</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link
+	href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap"
+	rel="stylesheet">
+
+<link rel="stylesheet" href="/javas/css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="/javas/css/animate.css">
+
+<link rel="stylesheet" href="/javas/css/owl.carousel.min.css">
+<link rel="stylesheet" href="/javas/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="/javas/css/magnific-popup.css">
+
+<link rel="stylesheet" href="/javas/css/aos.css">
+
+<link rel="stylesheet" href="/javas/css/ionicons.min.css">
+
+<link rel="stylesheet" href="/javas/css/flaticon.css">
+<link rel="stylesheet" href="/javas/css/icomoon.css">
+<link rel="stylesheet" href="/javas/css/style.css">
+
+<style>
+#delbtn {
+	background-color: white;
+	color: black;
+	border: 2px solid #e7e7e7;
+	border-radius: 12px;
+}
+</style>
 </head>
 <body>
-	<h1>구직 게시판 글</h1>
-	<button onclick="location.href='/javas/wantad/'">구직 게시판으로</button>
-	<hr>
-	<c:if test="${!empty listOne}">
-		<c:out value="${listOne.post_title}" />
-		<br>
-		<c:out value="${listOne.post_content}" />
-		<br>
-		<c:out value="${listOne.post_writedate}" />
-		<br>
-	</c:if>
-	<button onclick="location.href='/javas/wantad/modify'">수정</button>
-	<button onclick="location.href='/javas/wantad/delete'">삭제</button>
-	<hr>
-	<%@ include file="reviewform.jsp" %>
+	<div class="bg-top navbar-light d-flex flex-column-reverse">
+		<div class="container py-3">
+			<div
+				class="row no-gutters d-flex align-items-center align-items-stretch">
+				<div class="col-md-4 d-flex align-items-center py-4">
+					<a class="navbar-brand" href="index.html"
+						style="font-family: 'Do Hyeon', 'sans-serif'">잉/력/시/장 <span>surpluspower
+							market</span></a>
+				</div>
+				<div class="col-lg-8 d-block">
+					<div class="row d-flex">
+						<div
+							class="col-md d-flex topper align-items-center align-items-stretch py-md-4">
+							<div
+								class="icon d-flex justify-content-center align-items-center">
+								<span class="ion-ios-paper-plane"></span>
+							</div>
+							<div class="text">
+								<span>Email</span> <span>surpluspowermarket@gmail.com</span>
+							</div>
+						</div>
+						<div
+							class="col-md d-flex topper align-items-center align-items-stretch py-md-4">
+							<div
+								class="icon d-flex justify-content-center align-items-center">
+								<span class="ion-ios-call"></span>
+							</div>
+							<div class="text">
+								<span>Call</span> <span>+123 523 5598</span>
+							</div>
+						</div>
+						<div
+							class="col-md d-flex topper align-items-center align-items-stretch py-md-4">
+							<div
+								class="icon d-flex justify-content-center align-items-center">
+								<span class="ion-ios-time"></span>
+							</div>
+							<div class="text">
+								<span>Project Period</span> <span>20200309-20200319</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="top-social-menu py-2 bg-light">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<p class="social mb-0">
+							<a href="#"><i class="ion-logo-facebook"></i><span
+								class="sr-only">Facebook</span></a> <a href="#"><i
+								class="ion-logo-twitter"></i><span class="sr-only">Twitter</span></a>
+							<a href="#"><i class="ion-logo-googleplus"></i><span
+								class="sr-only">Googleplus</span></a>
+						</p>
+					</div>
+					<div class="col text-right">
+						<a href="#" class="btn-link">@JAVAS</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<nav
+		class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light"
+		id="ftco-navbar">
+		<div class="container d-flex align-items-center">
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#ftco-nav" aria-controls="ftco-nav"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="oi oi-menu"></span> Menu
+			</button>
+			<div class="collapse navbar-collapse" id="ftco-nav">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active"><a href="/javas/main"
+						class="nav-link">홈</a></li>
+					<li class="nav-item"><a href="about.html" class="nav-link">소개</a></li>
+					<li class="nav-item"><a href="team.html" class="nav-link">팀원</a></li>
+					<li class="nav-item"><a href="/javas/jobad" class="nav-link">대타
+							구인</a></li>
+					<li class="nav-item"><a href="/javas/wantad" class="nav-link">대타
+							구직</a></li>
+
+					<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+					<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+					<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+					<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+					<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+					<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+					<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+					<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+					<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+					<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+					<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+					<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+					<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+					<c:if test="${!empty loginVO}">
+						<li class="nav-item"><a href="/javas/mypage" class="nav-link">마이페이지</a></li>
+						<li class="nav-item"><a href="/javas/logout" class="nav-link">로그아웃</a></li>
+					</c:if>
+					<c:if test="${empty loginVO}">
+						<li class="nav-item"><a href="/javas/login/form"
+							class="nav-link">로그인</a></li>
+						<li class="nav-item"><a href="/javas/resources/meminfo.jsp"
+							class="nav-link">회원가입</a></li>
+					</c:if>
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- END nav -->
+
+	<section class="hero-wrap hero-wrap-2"
+		style="background-image: url('images/bg_1.jpg');">
+		<div class="overlay"></div>
+		<div class="container">
+			<div
+				class="row no-gutters slider-text align-items-center justify-content-center">
+				<div class="col-md-9 ftco-animate text-center">
+					<h1 class="mb-2 bread">Blog</h1>
+					<p class="breadcrumbs">
+						<span class="mr-2"><a href="index.html">Home <i
+								class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a
+							href="index.html">Blog <i class="ion-ios-arrow-forward"></i></a></span>
+						<span>Blog Single <i class="ion-ios-arrow-forward"></i></span>
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 ftco-animate">
+
+					<!-- 게시글 출력 -->
+					<c:if test="${!empty listOne}">
+						<div class="about-author d-flex p-4 bg-light">
+							<div class="bio mr-5">
+								<img src="/javas/images/person_1.jpg" width="200px"
+									alt="Image placeholder" class="img-fluid mb-4">
+							</div>
+							<div class="desc">
+								<h3>
+									<c:out value="${listOne.post_title}" />
+								</h3>
+								<p>
+									<c:out value="${listOne.post_writedate}" />
+								</p>
+								<p>
+									<c:out value="${listOne.post_content}" />
+								</p>
+							</div>
+						</div>
+					</c:if>
+
+					<!-- 코멘트 출력 -->
+
+					<div class="pt-5 mt-5">
+						<h3 class="mb-5 h4 font-weight-bold">6 Comments</h3>
+						<div id="reviewlistbox"></div>
+
+						<c:if test="${empty loginVO}">
+							<br><br><h4><c:out value="로그인 후, 후기를 남겨주세요" /></h4>
+						</c:if>
+
+						<c:if test="${!empty loginVO}">
+							<!-- 코멘트 입력창 -->
+							<div class="comment-form-wrap pt-5">
+								<h4>후기를 남겨주세요</h4>
+								<div id="reviewformbox">
+									<form id="reviewform" name="reviewform" method="post"
+										class="bg-light">
+
+										<label for="review_comment">${loginVO.mem_userid} 후기</label>
+										<textarea name="review_comment" cols="10" rows="10"
+											class="form-control"></textarea>
+										<br> <label for="review_rate">평점</label> <input
+											name="review_rate"><br> <input type="hidden"
+											name="post_id" value="${listOne.post_id}"> <input
+											type="hidden" name="review_id" value="0"> <input
+											type="hidden" name="review_userid"
+											value="${loginVO.mem_userid}">
+
+										<button onclick="reqInsertReview()"
+											class="btn py-3 px-4 btn-primary">등록</button>
+										<input type="reset" value="재작성"
+											class="btn py-3 px-4 btn-primary">
+
+									</form>
+								</div>
+							</div>
+						</c:if>
+					</div>
+				</div>
+				<!-- .col-md-8 -->
+
+
+				<!-- loader -->
+				<div id="ftco-loader" class="show fullscreen">
+					<svg class="circular" width="48px" height="48px">
+						<circle class="path-bg" cx="24" cy="24" r="22" fill="none"
+							stroke-width="4" stroke="#eeeeee" />
+						<circle class="path" cx="24" cy="24" r="22" fill="none"
+							stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
+				</div>
+
+
+				<script src="/javas/js/jquery.min.js"></script>
+				<script src="/javas/js/jquery-migrate-3.0.1.min.js"></script>
+				<script src="/javas/js/popper.min.js"></script>
+				<script src="/javas/js/bootstrap.min.js"></script>
+				<script src="/javas/js/jquery.easing.1.3.js"></script>
+				<script src="/javas/js/jquery.waypoints.min.js"></script>
+				<script src="/javas/js/jquery.stellar.min.js"></script>
+				<script src="/javas/js/owl.carousel.min.js"></script>
+				<script src="/javas/js/jquery.magnific-popup.min.js"></script>
+				<script src="/javas/js/aos.js"></script>
+				<script src="/javas/js/jquery.animateNumber.min.js"></script>
+				<script src="/javas/js/scrollax.min.js"></script>
+				<script
+					src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+				<script src="/javas/js/google-map.js"></script>
+				<script src="/javas/js/main.js"></script>
+
+
+				<script>
+		// 리뷰 등록하기
+		function reqInsertReview() {
+			var request = new XMLHttpRequest();
+			var formElement = document.getElementById("reviewform");
+			var formdata = new FormData(formElement);
+			
+			request.open('post', '/javas/wantreview/insert', true);
+			request.send(formdata);
+			
+			request.onload = function(event) {
+				if (request.status == 200) {
+					var str = request.responseText;
+					if (str == "success") {
+						alert("댓글 등록 성공");
+						reqReviewList();
+					} else {
+						alert("댓글 등록 실패");
+					}
+				}
+			}
+		}
+		
+		function reqDeleteReview(review_id) {
+			var request = new XMLHttpRequest();
+			var formdata = new FormData();
+			
+			formdata.enctype='multipart/form-data';
+			formdata.method='post';
+			formdata.action='/javas/wantreview/delete';
+			
+			formdata.append('post_id', ${listOne.post_id});
+			formdata.append('review_id', review_id);
+			console.log(review_id);
+			request.open('post', '/javas/wantreview/delete', true);
+			request.send(formdata);
+
+			request.onload = function(event) {
+				if (request.status == 200) {
+					var str = request.responseText;
+					if (str == "success") {
+						alert("댓글 삭제 성공");
+						reqReviewList();
+					} else {
+						alert("댓글 삭제 실패");
+					}
+				}
+			}
+		}
+		function reqReviewList() {
+			var request = new XMLHttpRequest();
+			var formdata = new FormData();
+			
+			formdata.enctype='multipart/form-data';
+			formdata.method='post';
+			formdata.action='/javas/wantreview';
+			
+			formdata.append('post_id', ${listOne.post_id});
+
+			request.open('post', '/javas/wantreview', true);
+			request.send(formdata);
+			
+			request.onload = function(event) {
+				if (request.status == 200) {
+					var str = request.responseText;
+					var reviewList = JSON.parse(str);
+					console.log(reviewList);
+					var target = document.getElementById("reviewlistbox");
+					
+					for(var i in reviewList){					
+					target.innerHTML += "<td width=100>" + reviewList[i].review_userid + "</td> &nbsp; &nbsp;";
+					target.innerHTML += "<td width=400>" + reviewList[i].review_comment + "</td> &nbsp; &nbsp;";
+					target.innerHTML += "<td width=200>" + reviewList[i].review_rate + "</td> &nbsp; &nbsp;";
+					target.innerHTML += "<td width=200>" + reviewList[i].review_date + "</td> &nbsp; &nbsp;";
+					if(reviewList[i].review_userid == "${loginVO.mem_userid}"){
+						target.innerHTML += "<td><button id='delbtn' onclick='reqDeleteReview("+reviewList[i].review_id+")'>삭제</button></td><br>";
+					}
+					else {
+						target.innerHTML +="<br>";
+					}
+					}
+					target.innerHTML += "</tr></table>";
+					
+				};
+			}
+			
+		}
+
+		// 초기 페이지 로딩 시 댓글 불러오기
+		window.onload = function() {
+			reqReviewList();
+		}
+	</script>
 </body>
 </html>

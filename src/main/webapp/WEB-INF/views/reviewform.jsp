@@ -16,9 +16,9 @@
 	<div class="container">
 		<div id="reviewformbox">
 			<form id="reviewform" name="reviewform" method="post">
-				<input type="hidden" id="post_id" name="post_id" value="${listOne.post_id}"><br> <input type="text"
-					id="review_userid" name="review_userid" value="${loginVO.mem_userid}"> 알바후기
-				<textarea id="review_comment" name="review_comment"></textarea>
+				<input type="hidden" id="post_id" name="post_id" value="${listOne.post_id}"><br> 
+				<input type="text" id="review_userid" name="review_userid" value="${loginVO.mem_userid}"> 
+				알바후기<textarea id="review_comment" name="review_comment"></textarea>
 				알바 평점<input id="review_rate" name="review_rate"> <input
 					type="hidden" id="review_id" name="review_id" value="0">
 				<button onclick="reqInsertReview()">등록</button>
