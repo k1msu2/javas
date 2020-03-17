@@ -1,11 +1,15 @@
 package com.miniproject.javas;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import dao.MeminfoDAO;
@@ -37,7 +41,7 @@ public class MeminfoController {
 		String mem_photo = vo.getMem_photo();
 		int mem_is_employer = vo.getMem_is_employer();
 		
-		
+		System.out.println(mem_photo);
 		mav.addObject("mem_userid", mem_userid);
 		mav.addObject("mem_password", mem_password);
 		mav.addObject("mem_username", mem_username);
@@ -46,10 +50,9 @@ public class MeminfoController {
 		mav.addObject("mem_sex", mem_sex);
 		mav.addObject("mem_phone", mem_phone);
 		mav.addObject("mem_address", mem_address);
-		mav.addObject("mem_register_date", mem_register_date);
 		mav.addObject("mem_photo", mem_photo);
+		mav.addObject("mem_register_date", mem_register_date);
 		mav.addObject("mem_is_employer", mem_is_employer);
-		
 		
 		boolean result = dao.insert(vo);
 		System.out.println(vo);

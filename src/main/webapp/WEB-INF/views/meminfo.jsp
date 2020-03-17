@@ -35,7 +35,7 @@ table {
 	<hr>
 	<br>
 	<br>
-		<form method="post" action="../meminfoinsert">
+		<form method="post" action="/javas/meminfoinsert" enctype="multipart/form-data">
         <table>
         <tr>
 			<td><b>*</b> 아이디</td><td><input id="userid" style="width: 200px; text-align: left;" type="text" name="mem_userid"></td>
@@ -78,7 +78,7 @@ table {
 		</tr>
 		<tr><td>&nbsp;</td></tr>
 		<tr>	
-			<td>프로필 사진</td><td> <input id="photo" style="width: 200px; text-align: left;" type="file" name="mem_photo"> </td>
+			<td>프로필 사진</td><td> <input id="photo" style="width: 200px; text-align: left;" type="file" name="uploadFile"> </td>
 		</tr>
 		<tr><td>&nbsp;</td></tr>
 		<tr>

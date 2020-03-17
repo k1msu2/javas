@@ -136,10 +136,11 @@ if(list!=null && list.size()!=0){
 %>
           <div class="col-md-6 col-lg-4 ftco-animate">
             <div class="blog-entry">
-              <a href="blog-single.html" class="block-20 d-flex align-items-end" style="background-image: url('images/image_1.jpg');">
-								<div class="meta-date text-center p-2">
+              <a href="blog-single.html" class="block-20 d-flex align-items-end">
+				<div class="meta-date text-center p-2">
                   <span class="day"><%= vo1.getPost_writedate() %></span>
                 </div>
+                <img src="/javas/resources/images2/<%= vo1.getMem_userid() %>.png">
               </a>
               <div class="text border border-top-0 p-4">
                 <h3 class="heading"><a href="/javas/jobad?action=listone&post_id=<%= vo1.getPost_id() %>"><%= vo1.getPost_title() %></a></h3>
