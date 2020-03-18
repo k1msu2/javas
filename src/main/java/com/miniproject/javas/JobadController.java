@@ -111,4 +111,9 @@ public class JobadController {
 		return "redirect:http://localhost:8000/javas/jobad?pgNum="+session.getAttribute("pgNum");
 	}
 	
+	@RequestMapping({"jobadinsert"})
+	public String three() {
+		return "jobadinsertForm";
+	}
+	
 }

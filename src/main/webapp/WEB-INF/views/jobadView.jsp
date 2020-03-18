@@ -134,9 +134,9 @@
     </section>
     
     <br><br>
+           <c:if test="${!empty loginVO}">
              <div class="icon d-flex justify-content-center align-items-center"><span><img width=80px src="/javas/resources/images/none.PNG"></span></div>
 			<div class="text" style="text-align : center; font-family: 'Do Hyeon', sans-serif;">
-			     <c:if test="${!empty loginVO}">
 			       <h4><c:out value="${loginVO.mem_username}" />님 환영합니다!</h4>
 		         </c:if>
 		    </div>
@@ -191,6 +191,7 @@ if(list!=null && list.size()!=0){
 %>
 		</div>
 		</section>
+<hr style="width : 85%;">		
         <div>
           <div class="col text-center">
             <div class="block-27">
@@ -200,6 +201,7 @@ if(list!=null && list.size()!=0){
             </div>
           </div>
         </div>
+                
 <% 	if(list!=null && list.size()!=0){ %>
 <div style="text-align : center;">
 	<div>
@@ -254,6 +256,8 @@ if(vo!=null){
 <%
 }
 %>
+
+
 <br><br><br>
      <footer class="ftco-footer ftco-bg-dark ftco-section">
     <h2 style = "color : #ffffff; text-align : center;">Have a Questions?</h2>
@@ -320,7 +324,7 @@ if(vo!=null){
 		else{
 		%>
 			if(command=="insert"){
-				location.href = '/javas/resources/jobadInsertForm.jsp';
+				location.href = '/javas/jobadinsert';
 			}
 			<% if(vo!=null){ %>
 			else if(command=="update"){

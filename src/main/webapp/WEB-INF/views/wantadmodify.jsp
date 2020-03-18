@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>잉력시장 : 작성하기[구직]</title>
 </head>
 <body>
 	<h1>구직 게시판 작성 폼</h1>
