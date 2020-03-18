@@ -27,11 +27,27 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+    
   </head>
   <style>
-  .ftco-section {
+.ftco-section {
     padding: 2em 0;
     position: static;
+}
+
+table{
+
+    height: 600px;
+    width : 600px;
+    border: 1px solid #BDBDBD;
+
+
+}
+
+#table4{
+width : 200px;
+height : 10px;
+padding: 20px 40px;
 }
   </style>
   <body>
@@ -232,22 +248,51 @@ if(request.getAttribute("snull")!=null){
 }
 if(vo!=null){
 %>
-<div style="text-align : center;">
-	<ul class="list-unstyled">
-	<li>유저 아이디 : <%= vo.getMem_userid() %></li>
-	<li>유저 이름 : <%= vo.getMem_username() %></li>
-	<li>글 제목 : <%= vo.getPost_title() %></li>
-	<li>글 내용 : <%= vo.getPost_content() %></li>
-	<li>작성 날짜 : <%= vo.getPost_writedate() %></li>
-	<li>조회수 : <%= vo.getPost_hit() %></li>
-	<li>장소 : <%= vo.getPost_location() %></li>
-	<li>시급 : <%= vo.getPost_payment() %></li>
-	<li>전화번호 : <%= vo.getPost_phone() %></li>
-	<li>리뷰 수 : <%= vo.getPost_review_count() %></li>
-	</ul>
-	<button onclick="location.href='/javas/jobad?pgNum=${sessionScope.pgNum}'">목록 가기</button>
-	<button onclick="isAdmin('delete');">글 삭제하기</button>
-	<button onclick="isAdmin('update');">글 수정하기</button>
+
+
+<div style="margin : auto;">
+  <table style="text-align : left; margin : auto;">
+   <tr>
+     <td id = table4>유저 아이디</td><td><%= vo.getMem_userid() %></td>
+   </tr>
+   <tr>
+     <td id = table4>유저 이름 </td><td><%= vo.getMem_username() %></td>
+   </tr>
+    <tr>
+     <td id = table4>글 제목 </td><td><%= vo.getPost_title() %></td>
+   </tr>
+    <tr>
+     <td id = table4>글 내용 </td><td><%= vo.getPost_content() %></td>
+   </tr>
+    <tr>
+     <td id = table4>작성 날짜 </td><td><%= vo.getPost_writedate() %></td>
+   </tr>
+    <tr>
+     <td id = table4>조회수 </td><td><%= vo.getPost_hit() %></td>
+   </tr>
+    <tr>
+     <td id = table4>장소 </td><td><%= vo.getPost_location() %></td>
+   </tr>
+    <tr>
+     <td id = table4>시급 </td><td><%= vo.getPost_payment() %></td>
+   </tr> 
+   <tr>
+     <td id = table4>전화번호 </td><td><%= vo.getPost_phone() %></td>
+   </tr>
+    <tr>
+     <td id = table4>리뷰 수 </td><td><%= vo.getPost_review_count() %></td>
+   </tr>
+   <tr>
+   <td id = table3 colspan ="2" style = "text-align: center;">
+   </td>
+   </tr>
+  </table>
+  <br>
+  <div style="font-family: 'Do Hyeon', sans-serif; font-size: 60px;">
+	<button class="btn btn-primary pull-right" onclick="location.href='/javas/jobad?pgNum=${sessionScope.pgNum}'" style="margin-left: 480px;">목록 가기</button>
+	<button class="btn btn-primary pull-right" onclick="isAdmin('delete');">글 삭제하기</button>
+	<button class="btn btn-primary pull-right" onclick="isAdmin('update');" style="margin-right: 10px;">글 수정하기</button>
+  </div>
 </div>
 <hr>
 <div style="text-align : center;">

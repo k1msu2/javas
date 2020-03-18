@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <title>구인 게시판</title>
 </head>
 <body>
@@ -116,6 +117,9 @@ if(vo!=null){
 	<button onclick="location.href='/javas/jobad?pgNum=${sessionScope.pgNum}'">목록 가기</button>
 	<button onclick="isAdmin('delete');">글 삭제하기</button>
 	<button onclick="isAdmin('update');">글 수정하기</button>
+	 <button type="button" onclick="location.href='/javas/jobad'" class="btn btn-primary pull-right" style="margin-right: 80px;">작성 취소</button>
+     <input type="reset" value="다시 쓰기" class="btn btn-primary pull-right" style="margin-right: 10px;">
+     <input type="submit" value="작성 완료" class="btn btn-primary pull-right" style="margin-right: 10px;">
 </div>
 <hr>
 	<%@ include file="jobreviewform.jsp" %>
