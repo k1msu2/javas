@@ -1,7 +1,5 @@
 package com.miniproject.javas;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +9,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import dao.MeminfoDAO;
 import dao.WantReviewDAOImpl;
-import dao.WantadDAOImpl;
 import vo.LoginVO;
 import vo.MeminfoVO;
 
