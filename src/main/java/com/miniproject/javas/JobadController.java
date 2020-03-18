@@ -1,9 +1,6 @@
 package com.miniproject.javas;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -15,14 +12,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.mock.web.MockMultipartFile;
+
 import dao.JobadDAO2;
 import dao.MeminfoDAO;
 import service.FTPService;
 import vo.JobadVO;
 import vo.LoginVO;
+import vo.MeminfoVO;
 
 @Controller
 public class JobadController {
@@ -54,37 +51,32 @@ public class JobadController {
 			}
 			count = dao.getCount();
 
-			String hostFolder = "";
+	
+			String hostFolder = "\\memphoto\\";
+			String localDir = "C:\\Users\\student\\Documents\\webcache\\";
+			String resourceDir = context.getRealPath("/") + "resources\\images2\\";
 			String fileName = "";
-			String localDir = "";
-			ftpdownloader.getFtp();
-			for (JobadVO mem : list) {
-				// hostFileFullName = "/ftpserver/memphoto/" + mem.getMem_userid();
-				// fileName = mem.getMem_userid();
-				fileName = "ddochi9";
-				hostFolder = "\\memphoto\\";
-				localDir = "C:\\Users\\student\\Documents\\webcache\\";
-				ftpdownloader.downloadFile(hostFolder, fileName, localDir);
-				
-				InputStream input = new FileInputStream(localDir+fileName);
-				System.out.println(input);
-				MultipartFile uploadFile = new MockMultipartFile(fileName, input);
-				// MultipartFile uploadFile = vo.getUploadFile();
-				byte[] content = uploadFile.getBytes();
-				System.out.println("---" +content);
-				String path = context.getRealPath("/") + "resources\\images2\\" + fileName + ".png";
-				System.out.println(path);
-				File f = new File(path);
-				FileOutputStream fos = new FileOutputStream(f);
-				fos.write(content);
-				fos.close();
-
-			}
-			ftpdownloader.disconnect();
 			
+			File resPathFolder = new File(resourceDir);
+			File[] listOfFiles = resPathFolder.listFiles();
 
-			
-
+			for (JobadVO vo : list) {
+				//fileName = "ddochi9";
+				fileName = vo.getMem_userid();
+				//리소스 폴더에 없는 경우만 ftp 서버에서 다운로드
+				//웹서버 동기화 용도
+				// meminfo 객체의 memphoto 확인
+				MeminfoVO mvo = mdao.listOne(vo.getMem_userid());
+				if(mvo.getMem_photo()!=null && !mvo.getMem_photo().equals("none")) {
+					for (int i = 0; i < listOfFiles.length; i++) {
+						if (listOfFiles[i].getName().equals(fileName)) {
+							ftpdownloader.downloadFile(hostFolder, fileName, localDir);
+							ftpdownloader.fileCopyToResource(resourceDir, localDir, fileName);
+						}
+					}
+				}				
+			}			
+			//ftpdownloader.disconnect(); // 프로젝트 종료시..처리아직 못함.
 		}
 		else if(action.equals("sort")) {
 			list = dao.listSort(key, pgNum);

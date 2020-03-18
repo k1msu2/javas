@@ -227,6 +227,7 @@
 								<div id="pages">
 									<%@ include file="wantadpage.jsp"%>
 								</div>
+								<%@ include file="wantsearchform.jsp"%>
 							</div>
 						</div>
 					</div>

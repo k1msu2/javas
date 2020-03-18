@@ -61,24 +61,24 @@ public class MeminfoController {
 		mav.addObject("mem_photo", mem_photo);
 		mav.addObject("mem_register_date", mem_register_date);
 		mav.addObject("mem_is_employer", mem_is_employer);
-		
 		String fileName = vo.getMem_userid();
 		byte[] content = null;
 		try {
-			content = vo.getUploadFile().getBytes();
-			String path = context.getRealPath("/") + "resources/images2/"+fileName+".png";
-			System.out.println(path);
-			File f = new File(path);
-			FileOutputStream fos = new FileOutputStream(f);
-			fos.write(content);
-			fos.close();
-			
-			// ftp 회원 사진 업로드
-			ftpUploader.getFtp();
-			ftpUploader.uploadFile(path, fileName, "/memphoto/");
-			ftpUploader.disconnect();
-		}
-		
+			if (!vo.getUploadFile().isEmpty()) { // 서버에 데이터 안올라감.
+				content = vo.getUploadFile().getBytes();
+				String path = context.getRealPath("/") + "resources/images2/" + fileName + ".png";
+				System.out.println(path);
+				File f = new File(path);
+				FileOutputStream fos = new FileOutputStream(f);
+				fos.write(content);
+				fos.close();
+
+				// ftp 회원 사진 업로드
+				ftpUploader.uploadFile(path, fileName, "/memphoto/");
+				ftpUploader.disconnect();
+				vo.setMem_photo(fileName);
+			}
+		}		
 		catch(IOException e) {
 			e.printStackTrace();
 		}

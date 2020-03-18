@@ -12,7 +12,9 @@ import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
 import org.apache.commons.net.ftp.FTPReply;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 @Component
 public class FTPService {
@@ -56,12 +58,12 @@ public class FTPService {
 		ftp.changeWorkingDirectory(hostFolder);
 		FTPFile files[] = ftp.listFiles();
 		for (int i = 0; i < files.length; i++) {
-			if( files[i].getName().equals(fileName)) {
-			System.out.println("\t" + fileName);
-			File file = new File(localDir + File.separator + fileName);
-			try (FileOutputStream output = new FileOutputStream(file)) {
-				this.ftp.retrieveFile(fileName, output);
-			}
+			if (files[i].getName().equals(fileName)) {
+				System.out.println("\t" + fileName);
+				File file = new File(localDir + File.separator + fileName);
+				try (FileOutputStream output = new FileOutputStream(file)) {
+					this.ftp.retrieveFile(fileName, output);
+				}
 			}
 		}
 	}
@@ -75,6 +77,17 @@ public class FTPService {
 				f.printStackTrace();
 			}
 		}
+	}
+	
+	public void fileCopyToResource(String resourceDir, String localDir, String fileName) throws IOException {
+		InputStream input = new FileInputStream(localDir+fileName);
+		MultipartFile uploadFile = new MockMultipartFile(fileName, input);
+		byte[] content = uploadFile.getBytes();
+		String path = resourceDir + fileName + ".png";
+		File f = new File(path);
+		FileOutputStream fos = new FileOutputStream(f);
+		fos.write(content);
+		fos.close();
 	}
 	/*
 	 * public static void main(String[] args) throws Exception {

@@ -184,8 +184,10 @@ width : 400px;
 		</tr>
 		<tr><td>&nbsp;</td></tr>
 		<tr>	
-			<td id = table4><b>*</b> 주소 <input type="button" value="주소 검색" onclick="goPopup();"></td><td> <input id="address" style="width: 200px; text-align: left;" type="text" name="mem_address"
-			class="form-control" required="true" readonly="true"></td>
+			<td id = table4><b>*</b> 주소
+			<!--  <input type="button" value="주소 검색" onclick="goPopup();"></td><td>  -->
+			<input id="address" style="width: 200px; text-align: left;" type="text" name="mem_address"
+			class="form-control" required="true" readonly="true"value="test"></td>
 		</tr>
 		<tr><td>&nbsp;</td></tr>
 		<tr>	
@@ -207,7 +209,7 @@ width : 400px;
 		<tr><td>&nbsp;</td></tr>
 		<tr>
 				<td id = table3 colspan ="2" style = "text-align: center;">
-				<input  onclick="f();" type="submit" value="정보수정"> 
+				<input  onclick="f();" type="submit" value="회원가입"> 
 				<input type="reset" value="재작성"> 
 				<input onclick="location.href='/javas/mypage'" type="button" value="취소">
 				</td>
