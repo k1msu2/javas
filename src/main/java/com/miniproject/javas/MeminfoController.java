@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import dao.FTPService;
 import dao.MeminfoDAO;
+import service.FTPService;
 import vo.MeminfoVO;
 
 @Controller
@@ -62,20 +62,23 @@ public class MeminfoController {
 		mav.addObject("mem_register_date", mem_register_date);
 		mav.addObject("mem_is_employer", mem_is_employer);
 		
-		String fileName = "challenge";
-		//byte[] content = null;
+		String fileName = vo.getMem_userid();
+		byte[] content = null;
 		try {
-			//content = vo.getUploadFile().getBytes();
+			content = vo.getUploadFile().getBytes();
 			String path = context.getRealPath("/") + "resources/images2/"+fileName+".png";
-			//System.out.println(path);
+			System.out.println(path);
+			File f = new File(path);
+			FileOutputStream fos = new FileOutputStream(f);
+			fos.write(content);
+			fos.close();
+			
+			// ftp 회원 사진 업로드
 			ftpUploader.getFtp();
-			ftpUploader.uploadFile(path, fileName, "/ok");
+			ftpUploader.uploadFile(path, fileName, "/memphoto/");
 			ftpUploader.disconnect();
-			//File f = new File(path);
-			//FileOutputStream fos = new FileOutputStream(f);
-			//fos.write(content);
-			//fos.close();
 		}
+		
 		catch(IOException e) {
 			e.printStackTrace();
 		}

@@ -141,7 +141,8 @@ if(list!=null && list.size()!=0){
                   <span class="day"><%= vo1.getPost_writedate() %></span>
                 </div>
               </a>
-              <img src="/javas/resources/images2/<%= vo1.getMem_userid() %>.png" width="100">
+             <%--  <img src="/javas/resources/images2/<%= vo1.getMem_userid() %>.png" width="100"> --%>
+              <img src="/javas/resources/images2/ddochi9.png" width="100">
               <div class="text border border-top-0 p-4">
                 <h3 class="heading"><a href="/javas/jobad?action=listone&post_id=<%= vo1.getPost_id() %>"><%= vo1.getPost_title() %></a></h3>
                 <a href="/javas/jobad?action=listWriter&mem_username=<%= vo1.getMem_username() %>"><%= vo1.getMem_username() %></a>

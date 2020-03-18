@@ -51,6 +51,14 @@ public class MeminfoDAO {
 			result = true;
 		return result;
 	}
+	
+	public MeminfoVO listOne(String mem_userid) {
+		System.out.println("Mybatis를 사용 DB 연동-delete : MeminfoMybatisDAO");
+		String statement = "resource.MeminfoMapper.selectMeminfoOne";
+		MeminfoVO vo = session.selectOne(statement, mem_userid);
+		return vo;
+	}
+	
 
 	// insert, update, delete 기능만 구현. 추후 필요한 기능이 생길 시 추가할 예정
 	// SQL 구문이 맞는지 헷갈림...
