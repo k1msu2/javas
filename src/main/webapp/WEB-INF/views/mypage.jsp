@@ -136,7 +136,7 @@
              <div class="icon d-flex justify-content-center align-items-center"><span><img width=80px src="/javas/resources/images/none.PNG"></span></div>
 			<div class="text" style="text-align : center;">
 			     <c:if test="${!empty loginVO}">
-			       <h4><c:out value="${loginVO.mem_userid}" />님 <br>환영합니다!</h4>
+			       <h4><c:out value="${loginVO.mem_username}" />님 <br>환영합니다!</h4>
 		         </c:if>
 		    </div>
 		    <br>

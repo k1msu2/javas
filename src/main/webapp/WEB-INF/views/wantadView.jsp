@@ -8,28 +8,24 @@
 <head>
 <title>Negotiate - Free Bootstrap 4 Template by Colorlib</title>
 <meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/javas/resources/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/javas/resources/css/animate.css">
+    
+    <link rel="stylesheet" href="/javas/resources/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/javas/resources/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/javas/resources/css/magnific-popup.css">
 
-<link
-	href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap"
-	rel="stylesheet">
+    <link rel="stylesheet" href="/javas/resources/css/aos.css">
 
-<link rel="stylesheet" href="/javas/css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="/javas/css/animate.css">
-
-<link rel="stylesheet" href="/javas/css/owl.carousel.min.css">
-<link rel="stylesheet" href="/javas/css/owl.theme.default.min.css">
-<link rel="stylesheet" href="/javas/css/magnific-popup.css">
-
-<link rel="stylesheet" href="/javas/css/aos.css">
-
-<link rel="stylesheet" href="/javas/css/ionicons.min.css">
-
-<link rel="stylesheet" href="/javas/css/flaticon.css">
-<link rel="stylesheet" href="/javas/css/icomoon.css">
-<link rel="stylesheet" href="/javas/css/style.css">
-
+    <link rel="stylesheet" href="/javas/resources/css/ionicons.min.css">
+    
+    <link rel="stylesheet" href="/javas/resources/css/flaticon.css">
+    <link rel="stylesheet" href="/javas/resources/css/icomoon.css">
+    <link rel="stylesheet" href="/javas/resources/css/style.css">
 <style>
 #delbtn {
 	background-color: white;
@@ -41,119 +37,96 @@
 </head>
 <body>
 	<div class="bg-top navbar-light d-flex flex-column-reverse">
-		<div class="container py-3">
-			<div
-				class="row no-gutters d-flex align-items-center align-items-stretch">
-				<div class="col-md-4 d-flex align-items-center py-4">
-					<a class="navbar-brand" href="index.html"
-						style="font-family: 'Do Hyeon', 'sans-serif'">잉/력/시/장 <span>surpluspower
-							market</span></a>
-				</div>
-				<div class="col-lg-8 d-block">
-					<div class="row d-flex">
-						<div
-							class="col-md d-flex topper align-items-center align-items-stretch py-md-4">
-							<div
-								class="icon d-flex justify-content-center align-items-center">
-								<span class="ion-ios-paper-plane"></span>
-							</div>
-							<div class="text">
-								<span>Email</span> <span>surpluspowermarket@gmail.com</span>
-							</div>
-						</div>
-						<div
-							class="col-md d-flex topper align-items-center align-items-stretch py-md-4">
-							<div
-								class="icon d-flex justify-content-center align-items-center">
-								<span class="ion-ios-call"></span>
-							</div>
-							<div class="text">
-								<span>Call</span> <span>+123 523 5598</span>
-							</div>
-						</div>
-						<div
-							class="col-md d-flex topper align-items-center align-items-stretch py-md-4">
-							<div
-								class="icon d-flex justify-content-center align-items-center">
-								<span class="ion-ios-time"></span>
-							</div>
-							<div class="text">
-								<span>Project Period</span> <span>20200309-20200319</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="top-social-menu py-2 bg-light">
-			<div class="container">
-				<div class="row">
-					<div class="col">
-						<p class="social mb-0">
-							<a href="#"><i class="ion-logo-facebook"></i><span
-								class="sr-only">Facebook</span></a> <a href="#"><i
-								class="ion-logo-twitter"></i><span class="sr-only">Twitter</span></a>
-							<a href="#"><i class="ion-logo-googleplus"></i><span
-								class="sr-only">Googleplus</span></a>
-						</p>
-					</div>
-					<div class="col text-right">
-						<a href="#" class="btn-link">@JAVAS</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<nav
-		class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light"
-		id="ftco-navbar">
-		<div class="container d-flex align-items-center">
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#ftco-nav" aria-controls="ftco-nav"
-				aria-expanded="false" aria-label="Toggle navigation">
-				<span class="oi oi-menu"></span> Menu
-			</button>
-			<div class="collapse navbar-collapse" id="ftco-nav">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active"><a href="/javas/main"
-						class="nav-link">홈</a></li>
-					<li class="nav-item"><a href="about.html" class="nav-link">소개</a></li>
-					<li class="nav-item"><a href="team.html" class="nav-link">팀원</a></li>
-					<li class="nav-item"><a href="/javas/jobad" class="nav-link">대타
-							구인</a></li>
-					<li class="nav-item"><a href="/javas/wantad" class="nav-link">대타
-							구직</a></li>
+    	<div class="container py-3">
+    		<div class="row no-gutters d-flex align-items-center align-items-stretch">
+    			<div class="col-md-4 d-flex align-items-center py-4">
+    				<a class="navbar-brand" href="/javas/main" style="font-family: 'Do Hyeon', sans-serif;">잉/력/시/장 <span>Surplus-Power Market</span></a>
+    			</div>
+	    		<div class="col-lg-8 d-block">
+		    		<div class="row d-flex" style="font-family: 'Do Hyeon', sans-serif;">
+					    <div class="col-md d-flex topper align-items-center align-items-stretch py-md-4">
+					    	<div class="icon d-flex justify-content-center align-items-center"><span class="ion-ios-paper-plane"></span></div>
+					    	<div class="text">
+					    		<span>Email</span>
+						    	<span>surpluspowermarket@gmail.com</span>
+						    </div>
+					    </div>
+					    <div class="col-md d-flex topper align-items-center align-items-stretch py-md-4">
+					    	<div class="icon d-flex justify-content-center align-items-center"><span class="ion-ios-call"></span></div>
+						    <div class="text">
+						    	<span>Call</span>
+						    	<span>+123 523 5598</span>
+						    </div>
+					    </div>
+					    <div class="col-md d-flex topper align-items-center align-items-stretch py-md-4">
+					    	<div class="icon d-flex justify-content-center align-items-center"><span class="ion-ios-time"></span></div>
+						    <div class="text">
+						    	<span>Project Period</span>
+						    	<span>20200309-20200319</span>
+						    </div>
+					    </div>
+				    </div>
+			    </div>
+		    </div>
+		  </div>
+		  <div class="top-social-menu py-2 bg-light" >
+		  	<div class="container">
+		  		<div class="row">
+			    	<div class="col">
+			    		<p class="social mb-0">
+			    			<a href="#"><i class="ion-logo-facebook"></i><span class="sr-only">Facebook</span></a>
+			    			<a href="#"><i class="ion-logo-twitter"></i><span class="sr-only">Twitter</span></a>
+			    			<a href="#"><i class="ion-logo-googleplus"></i><span class="sr-only">Googleplus</span></a>
+			    		</p>
+			    	</div>
+			    	<div class="col text-right">
+			    		<a href="#" class="btn-link">@JAVAS</a>
+			    	</div>
+			    </div>
+		  	</div>
+		  </div>
+    </div>
+	  <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container d-flex align-items-center">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav mr-auto">
+	        	<li class="nav-item"><a href="/javas/main" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">홈</a></li>
+	        	<li class="nav-item"><a href="/javas/about" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">소개</a></li>
+	        	<li class="nav-item"><a href="/javas/developers" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">개발진</a></li>
+	        	<li class="nav-item"><a href="/javas/jobad" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">대타 구인</a></li>
+	        	<li class="nav-item active"><a href="/javas/wantad" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">대타 구직</a></li>
+				<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+				<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+				<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+				<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+				<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+				<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+				<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+				<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+				<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+				<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+				<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+				<c:if test="${!empty loginVO}">
+					<li class="nav-item"><a href="/javas/mypage" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">마이페이지</a></li>
+					<li class="nav-item"><a href="/javas/logout" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">로그아웃</a></li>
+				</c:if>         	
+				<c:if test="${empty loginVO}">
 
-					<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-					<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-					<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-					<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-					<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-					<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-					<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-					<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-					<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-					<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-					<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-					<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-					<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-					<c:if test="${!empty loginVO}">
-						<li class="nav-item"><a href="/javas/mypage" class="nav-link">마이페이지</a></li>
-						<li class="nav-item"><a href="/javas/logout" class="nav-link">로그아웃</a></li>
-					</c:if>
-					<c:if test="${empty loginVO}">
-						<li class="nav-item"><a href="/javas/login/form"
-							class="nav-link">로그인</a></li>
-						<li class="nav-item"><a href="/javas/resources/meminfo.jsp"
-							class="nav-link">회원가입</a></li>
-					</c:if>
 
-				</ul>
-			</div>
-		</div>
-	</nav>
-	<!-- END nav -->
+	          	<li class="nav-item"><a href="/javas/login/form" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">로그인</a></li>
+	          	<li class="nav-item"><a href="/javas/meminfo" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">회원가입</a></li>
 
+	          	</c:if>
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+    
+    
 	<section class="hero-wrap hero-wrap-2"
 		style="background-image: url('images/bg_1.jpg');">
 		<div class="overlay"></div>
@@ -251,23 +224,6 @@
 				</div>
 
 
-				<script src="/javas/js/jquery.min.js"></script>
-				<script src="/javas/js/jquery-migrate-3.0.1.min.js"></script>
-				<script src="/javas/js/popper.min.js"></script>
-				<script src="/javas/js/bootstrap.min.js"></script>
-				<script src="/javas/js/jquery.easing.1.3.js"></script>
-				<script src="/javas/js/jquery.waypoints.min.js"></script>
-				<script src="/javas/js/jquery.stellar.min.js"></script>
-				<script src="/javas/js/owl.carousel.min.js"></script>
-				<script src="/javas/js/jquery.magnific-popup.min.js"></script>
-				<script src="/javas/js/aos.js"></script>
-				<script src="/javas/js/jquery.animateNumber.min.js"></script>
-				<script src="/javas/js/scrollax.min.js"></script>
-				<script
-					src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-				<script src="/javas/js/google-map.js"></script>
-				<script src="/javas/js/main.js"></script>
-
 
 				<script>
 		// 리뷰 등록하기
@@ -362,5 +318,19 @@
 			reqReviewList();
 		}
 	</script>
+	
+  <script src="/javas/resources/js/jquery.min.js"></script>
+  <script src="/javas/resources/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="/javas/resources/js/popper.min.js"></script>
+  <script src="/javas/resources/js/bootstrap.min.js"></script>
+  <script src="/javas/resources/js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="/javas/resources/js/jquery.stellar.min.js"></script>
+  <script src="/javas/resources/js/owl.carousel.min.js"></script>
+  <script src="/javas/resources/js/jquery.magnific-popup.min.js"></script>
+  <script src="/javas/resources/js/aos.js"></script>
+  <script src="/javas/resources/js/jquery.animateNumber.min.js"></script>
+  <script src="/javas/resources/js/scrollax.min.js"></script>
+  <script src="/javas/resources/js/main.js"></script>
 </body>
 </html>
