@@ -194,7 +194,7 @@
             <button type="submit" class="btn btn-primary login-btn btn-block">로그인</button>
         </div>
         <div class="form-group">
-            <button onclick="location.href='/javas/resources/meminfo.jsp'" class="btn btn-primary login-btn btn-block">회원가입</button>
+            <button onclick="location.href='/javas/meminfo'" class="btn btn-primary login-btn btn-block">회원가입</button>
         </div>
         <div class="clearfix">
             <label class="pull-left checkbox-inline"><input type="checkbox">아이디 저장</label>

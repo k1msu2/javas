@@ -7,8 +7,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
-    <script src="juso.js"></script>
+<title>잉력시장 : 회원가입</title>
+    <script src="/javas/resources/juso.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -185,9 +185,9 @@ width : 400px;
 		<tr><td>&nbsp;</td></tr>
 		<tr>	
 			<td id = table4><b>*</b> 주소
-			<!--  <input type="button" value="주소 검색" onclick="goPopup();"></td><td>  -->
+			<input type="button" value="주소 검색" onclick="goPopup();"></td><td>
 			<input id="address" style="width: 200px; text-align: left;" type="text" name="mem_address"
-			class="form-control" required="true" readonly="true"value="test"></td>
+			class="form-control" required="true" readonly="true"></td>
 		</tr>
 		<tr><td>&nbsp;</td></tr>
 		<tr>	

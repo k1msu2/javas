@@ -9,25 +9,26 @@
    <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="/javas/resources/css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="/javas/resources/css/animate.css">
-    
-    <link rel="stylesheet" href="/javas/resources/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="/javas/resources/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="/javas/resources/css/magnific-popup.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/javas/resources/css/aos.css">
-
-    <link rel="stylesheet" href="/javas/resources/css/ionicons.min.css">
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
     
-    <link rel="stylesheet" href="/javas/resources/css/flaticon.css">
-    <link rel="stylesheet" href="/javas/resources/css/icomoon.css">
-    <link rel="stylesheet" href="/javas/resources/css/style.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="bg-top navbar-light d-flex flex-column-reverse">
+ <div class="bg-top navbar-light d-flex flex-column-reverse">
     	<div class="container py-3">
     		<div class="row no-gutters d-flex align-items-center align-items-stretch">
     			<div class="col-md-4 d-flex align-items-center py-4">
@@ -59,8 +60,8 @@
 				    </div>
 			    </div>
 		    </div>
-		  </div>
-		  <div class="top-social-menu py-2 bg-light" >
+		    </div>
+		  <div class="top-social-menu py-2 bg-light">
 		  	<div class="container">
 		  		<div class="row">
 			    	<div class="col">
@@ -77,18 +78,20 @@
 		  	</div>
 		  </div>
     </div>
-	  <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light" id="ftco-navbar" style="font-family: 'Do Hyeon', sans-serif; font-size: 50px;">
+	  <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container d-flex align-items-center">
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
 	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav mr-auto">
-	        	<li class="nav-item active"><a href="/javas/main" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 30px;">홈</a></li>
-	        	<li class="nav-item"><a href="/javas/about" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 30px;">소개</a></li>
-	        	<li class="nav-item"><a href="/javas/developers" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 30px;">개발진</a></li>
-	        	<li class="nav-item"><a href="/javas/jobad" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 30px;">대타 구인</a></li>
-	        	<li class="nav-item"><a href="/javas/wantad" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 30px;">대타 구직</a></li>
+	          <ul class="navbar-nav mr-auto">
+	            <li class="nav-item"><a href="/javas/main" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">홈</a></li>
+	            <li class="nav-item"><a href="/javas/about" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">소개</a></li>
+	        	<li class="nav-item"><a href="/javas/developers" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">개발진</a></li>
+	        	<li class="nav-item"><a href="/javas/jobad" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">대타 구인</a></li>
+	        	<li class="nav-item"><a href="/javas/wantad" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">대타 구직</a></li>
+	            <li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+				<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 				<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 				<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 				<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
@@ -101,22 +104,18 @@
 				<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 				<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 				<c:if test="${!empty loginVO}">
-					<li class="nav-item"><a href="/javas/mypage" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 30px;">마이페이지</a></li>
-					<li class="nav-item"><a href="/javas/logout" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 30px;">로그아웃</a></li>
+					<li class="nav-item"><a href="/javas/mypage" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">마이페이지</a></li>
+					<li class="nav-item"><a href="/javas/logout" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">로그아웃</a></li>
 				</c:if>         	
 				<c:if test="${empty loginVO}">
-
-
-	          	<li class="nav-item"><a href="/javas/login/form" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 30px;">로그인</a></li>
-	          	<li class="nav-item"><a href="/javas/meminfo" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 30px;">회원가입</a></li>
-
+	          	<li class="nav-item"><a href="/javas/login/form" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">로그인</a></li>
+	          	<li class="nav-item active"><a href="/javas/meminfo" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">회원가입</a></li>
 	          	</c:if>
 	        </ul>
 	      </div>
 	    </div>
 	  </nav>
     <!-- END nav -->
-    
     
 <br><br><br>
 <div class="container">
@@ -148,7 +147,7 @@
 						<input type="hidden" name="post_phone" value="${sessionScope.loginVO.mem_phone}" required>		
 				</div>
 		<div style="text-align:center;">
-        <button type="button" onclick="location.href='/javas/jobad'" class="btn btn-primary pull-right" style="margin-right: 80px;">작성 취소</button>
+        <button type="button" onclick="location.href='/javas/jobad'" class="btn btn-primary pull-right" style="margin-right: 10px;">작성 취소</button>
         <input type="reset" value="다시 쓰기" class="btn btn-primary pull-right" style="margin-right: 10px;">
         <input type="submit" value="작성 완료" class="btn btn-primary pull-right" style="margin-right: 10px;">
         </div>
