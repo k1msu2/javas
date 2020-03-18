@@ -154,9 +154,9 @@ width : 300px;
 			</tr>
 			<tr id = table2>
 				<td id = table3 colspan ="2" style = "text-align: center;">
-				<input  onclick="f();" type="submit" value="정보수정"> 
-				<input type="reset" value="재작성"> 
-				<input onclick="location.href='${header.referer}'" type="button" value="취소"></td>
+				<input class="btn btn-primary pull-right" onclick="f();" type="submit" value="정보수정" style="margin-right: 10px;"> 
+				<input class="btn btn-primary pull-right" type="reset" value="  재작성  " style="margin-right: 10px;"> 
+				<input class="btn btn-primary pull-right" onclick="location.href='${header.referer}'" type="button" value="   취소   "></td>
 
 			</tr>
 		</table>
