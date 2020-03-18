@@ -1,12 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page
+	import="vo.WantadVO, vo.LoginVO, vo.PageVO, vo.WantSearchVO, vo.JobadVO, java.util.List"%>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>잉력 게시판 : 작성[구인]</title>
+
+<title>잉력시장 : 수정[구인]</title>
+
+   <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
@@ -19,19 +24,17 @@
     <link rel="stylesheet" href="css/aos.css">
 
     <link rel="stylesheet" href="css/ionicons.min.css">
-    <link rel="stylesheet" href="css/bootstrap-select.min.css">
+    
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
     
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    
      <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
     
 </head>
 <body>
+
 <div class="bg-top navbar-light d-flex flex-column-reverse">
     	<div class="container py-3">
     		<div class="row no-gutters d-flex align-items-center align-items-stretch">
@@ -118,48 +121,54 @@
 	    </div>
 	  </nav>
     <!-- END nav -->
-    
-    
-<br><br><br>
+
+
+
+
+<% JobadVO vo = (JobadVO)session.getAttribute("vo"); %>
+
+
+
+
 <div class="container">
 <div class="col-md-5" style="margin: auto 300px;">
     <div class="form-area">  
         <form method="post" action="/javas/jobad">
-        <input type="hidden" name="action" value="insert">
+       <input type="hidden" name="action" value="update">
         <br style="clear:both">
-                    <h3 style="margin-bottom: 25px; text-align: center; font-family: 'Do Hyeon', sans-serif; font-size: 30px;">글 작성하기</h3>
+                    <h3 style="margin-bottom: 25px; text-align: center; font-family: 'Do Hyeon', sans-serif; font-size: 30px;">글 수정하기</h3>
                     <div class="form-group">
-						 <input type="hidden" name="pgNum" value="${sessionScope.pgNum}">
+						 <input type="hidden" class="form-control" name="pgNum" value="${sessionScope.pgNum}">
 					</div>
 					<div class="form-group">
-						 <input type="hidden" name="post_id" value="1">
+						 <input type="hidden" class="form-control" name="post_id" value="<%= vo.getPost_id() %>">
 					</div>
     				<div class="form-group">
-						<input type="text" class="form-control" id="post_title" name="post_title" placeholder="글 제목" required>
+						<input type="text"  class="form-control" name="post_title" value="<%= vo.getPost_title() %>">
 					</div>
 					<div class="form-group">
-                    <textarea class="form-control" type="textarea" id="post_content" name="post_content" placeholder="내용 작성" maxlength="140" rows="7"></textarea>                    
+                    <textarea class="form-control" type="textarea" id="post_content" name="post_content" maxlength="140" rows="7"><%= vo.getPost_content() %></textarea>                    
                     </div>
                     <div class="form-group">
-						<input type="hidden" name="post_location" value="${sessionScope.loginVO.mem_address}">
+						<input type="text" class="form-control" name="post_location" value="<%= vo.getPost_location() %>">
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control" id="post_payment" name="post_payment" placeholder="시급" required>
+						<input type="number" class="form-control" id="post_payment" name="post_payment" value="<%= vo.getPost_payment() %>">
 					</div>
 					<div class="form-group">
-						<input type="hidden" name="post_phone" value="${sessionScope.loginVO.mem_phone}" required>		
+						<input type="tel" class="form-control" name="post_phone" value="<%= vo.getPost_phone() %>" required>		
 				</div>
 		<div style="text-align:center;">
-        <button type="button" onclick="location.href='/javas/jobad'" class="btn btn-primary pull-right" style="margin-right: 80px;">작성 취소</button>
+        <button type="button" onclick="location.href='/javas/jobad?action=listone&post_id=<%= vo.getPost_id() %>'" class="btn btn-primary pull-right" style="margin-right: 80px;">수정 취소</button>
         <input type="reset" value="다시 쓰기" class="btn btn-primary pull-right" style="margin-right: 10px;">
-        <input type="submit" value="작성 완료" class="btn btn-primary pull-right" style="margin-right: 10px;">
+        <input type="submit" value="수정 완료" class="btn btn-primary pull-right" style="margin-right: 10px;">
         </div>
         </form>
     </div>
 </div>
 </div>
-<br><br><br>    
-<br><br><br>
+
+<br><br><br><br><br><br>
      <footer class="ftco-footer ftco-bg-dark ftco-section">
     <h2 style = "color : #ffffff; text-align : center;">Have a Questions?</h2>
     <div style = "text-align : center;">
@@ -173,13 +182,7 @@
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
     </footer>
     
-  
-
-  <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-
-
- <script src="js/jquery.min.js"></script>
+<script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
   <script src="js/popper.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
@@ -191,9 +194,11 @@
   <script src="js/aos.js"></script>
   <script src="js/jquery.animateNumber.min.js"></script>
   <script src="js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
   <script src="js/bootstrap-select.js"></script>
+  
+   <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
 </body>
 </html>

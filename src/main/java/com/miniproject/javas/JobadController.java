@@ -112,8 +112,13 @@ public class JobadController {
 	}
 	
 	@RequestMapping({"jobadinsert"})
-	public String three() {
+	public String one() {
 		return "jobadinsertForm";
+	}
+	
+	@RequestMapping({"jobadupdate"})
+	public String two() {
+		return "jobadUpdateForm";
 	}
 	
 }

@@ -330,7 +330,7 @@ if(vo!=null){
 			else if(command=="update"){
 				<% if(loginVO.getMem_userid().equals(vo.getMem_userid())){ %>
 					
-					location.href = '/javas/resources/jobadUpdateForm.jsp';
+					location.href = '/javas/jobadupdate';
 				
 				<% } 
 				else{
