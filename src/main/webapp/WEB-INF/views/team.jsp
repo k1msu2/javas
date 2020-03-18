@@ -144,10 +144,7 @@
 								<div class="faded">
 									<p>캡틴, 총 책임자</p>
 									<ul class="ftco-social text-center">
-		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-twitter"></span></a></li>
-		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-facebook"></span></a></li>
-		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-google-plus"></span></a></li>
-		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-instagram"></span></a></li>
+		                <li class="ftco-animate"><img class="d-flex align-items-center justify-content-center" src="/javas/images/captain01.png" width="45px"></li>
 		              </ul>
 	              </div>
 							</div>
@@ -164,10 +161,7 @@
 								<div class="faded">
 									<p>앤트맨, 팀에서 중요한 역할</p>
 									<ul class="ftco-social text-center">
-		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-twitter"></span></a></li>
-		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-facebook"></span></a></li>
-		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-google-plus"></span></a></li>
-		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-instagram"></span></a></li>
+		                 <li class="ftco-animate"><img class="d-flex align-items-center justify-content-center" src="/javas/images/antman.png" width="45px"></li>
 		              </ul>
 	              </div>
 							</div>
@@ -184,10 +178,7 @@
 								<div class="faded">
 									<p>스파이더맨, 팀의 디자이너</p>
 									<ul class="ftco-social text-center">
-		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-twitter"></span></a></li>
-		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-facebook"></span></a></li>
-		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-google-plus"></span></a></li>
-		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-instagram"></span></a></li>
+		                <li class="ftco-animate"><img class="d-flex align-items-center justify-content-center" src="/javas/images/spiderman.png" width="60px"></li>
 		              </ul>
 	              </div>
 							</div>
