@@ -11,19 +11,23 @@
 	</select>
 	<select id="selectWantReviewById" parameterType="_int" resultType="vo.WantReviewVO">
 		select review_id, review_userid,
-		review_comment, review_date 
+		review_comment, review_date, review_rate
 		from wantreview where post_id = #{post_id} 
 		order by review_id
 	</select>
 		<select id="selectWantReviewByUserid" parameterType="string" resultType="vo.WantReviewVO">
 		select review_id, review_userid,
-		review_comment, review_date 
+		review_comment, review_date, review_rate
 		from wantreview where review_userid = #{userid} 
 		order by review_id
 	</select>
 	<delete id="deleteWantReview" parameterType="_int">
 		delete from wantreview
 		where review_id=#{review_id}
+	</delete>
+		<delete id="deleteWantReview2" parameterType="_int">
+		delete from wantreview
+		where post_id=#{post_id}
 	</delete>
 	<insert id="insertWantReview" parameterType="vo.WantReviewVO">
 		insert into wantreview

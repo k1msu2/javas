@@ -20,7 +20,7 @@
 			name="post_payment" required> <br>
 		<br> <input id="post_id" type="text" name="newsid"
 			style="display: none">
-		<button onclick="reqInsertWantad()">등록</button>
+		<input type="button" onclick="reqInsertWantad()">등록
 		<input type="reset" value="재작성">
 		<button onclick="location.href='wantad/form'">취소</button>
 	</form>
@@ -38,7 +38,7 @@
 					var str = request.responseText;
 					if (str == "success") {
 						alert("글 등록 성공");
-						window.location.href = "/javas/wantad";
+						window.location.href = "http://localhost:8080/javas/wantad";
 					} else {
 						alert("글 등록 실패");
 					}

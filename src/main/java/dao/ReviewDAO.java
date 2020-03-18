@@ -10,5 +10,7 @@ public interface ReviewDAO {
 	public List<WantReviewVO> listAll(String userid);
 	public boolean insert(WantReviewVO vo);
 	public boolean delete(WantReviewVO vo);
+	public boolean delete(int id);
 	public boolean update(WantReviewVO vo);
+	
 }

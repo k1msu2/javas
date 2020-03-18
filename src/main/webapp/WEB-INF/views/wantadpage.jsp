@@ -10,7 +10,7 @@
 </head>
 <body>
 <script>
-		window.onload = function() {
+/* 		window.onload = function() { */
 			document.getElementById("pages").innerHTML += "<a href='/javas/wantad?page=${pageVO.pageBeginNum-1}&searchtype=${searchVO.searchtype}&key=${searchVO.key}'>${pageVO.leftChar}</a>&nbsp&nbsp";
 
 			for (var i = "${pageVO.pageBeginNum}"; i <= "${pageVO.pageEndNum}"; i++) {
@@ -20,7 +20,7 @@
 						+ i + "</a>&nbsp&nbsp";
 			}
 			document.getElementById("pages").innerHTML += "<a href='/javas/wantad?page=${pageVO.pageEndNum+1}&searchtype=${searchVO.searchtype}&key=${searchVO.key}'>${pageVO.rightChar}</a>&nbsp&nbsp<br><br>";
-		};
+/* 		}; */
 	</script>
 </body>
 </html>

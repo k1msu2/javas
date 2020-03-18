@@ -189,19 +189,34 @@
 					<c:if test="${!empty listOne}">
 						<div class="about-author d-flex p-4 bg-light">
 							<div class="bio mr-5">
-								<img src="/javas/images/person_1.jpg" width="200px"
-									alt="Image placeholder" class="img-fluid mb-4">
+								<img src="/javas/resources/images2/${listOne.mem_userid}.png"
+									width="100">
 							</div>
 							<div class="desc">
 								<h3>
 									<c:out value="${listOne.post_title}" />
 								</h3>
 								<p>
-									<c:out value="${listOne.post_writedate}" />
+									 <label for="post_writedate"> 등록일 &nbsp;&nbsp;</label>
+									 <c:out value="${listOne.post_writedate}" />
 								</p>
 								<p>
-									<c:out value="${listOne.post_content}" />
+									<label for="post_content">구직 내용&nbsp;&nbsp;</label><c:out value="${listOne.post_content}" />
 								</p>
+								<p>
+									<label for="post_location">구직 희망 지역&nbsp;&nbsp;</label>
+									<c:out value="${listOne.post_location}" />
+								</p>
+								<p>
+									<label for="post_payment">구직 희망 시급&nbsp;&nbsp;</label>
+									<c:out value="${listOne.post_payment}" />
+								</p>
+								<p>
+									<label for="post_hit">조회수&nbsp;&nbsp;</label>
+									<c:out value="${listOne.post_hit}" />
+								</p>
+								<button onclick="location.href='/javas/wantad/modify?id=${listOne.post_id}'" class="btn px-4 btn-primary btn-sm">수정</button>
+								<button onclick="delListOne(${listOne.post_id})" class="btn px-4 btn-primary btn-sm">삭제</button>
 							</div>
 						</div>
 					</c:if>
@@ -235,7 +250,7 @@
 										<span id= "star3" class="fa fa-star" onclick="star3()"></span> 
 										<span id= "star4" class="fa fa-star" onclick="star4()"></span> 
 										<span id= "star5" class="fa fa-star" onclick="star5()"></span> 
-										<input type="hidden" name="review_rate" value = "0"/>
+										<input type="hidden" id="review_rate" name="review_rate" value = "0"/>
 										<input type="hidden" name="post_id" value="${listOne.post_id}"> 
 										<input type="hidden" name="review_id" value="0"> 
 										<input type="hidden" name="review_userid" value="${loginVO.mem_userid}"> <br>
@@ -271,10 +286,35 @@
 
 
 	<script>
+
+	function delListOne(id){
+		var request = new XMLHttpRequest();
+		var formdata = new FormData();
+		
+		formdata.enctype='multipart/form-data';
+		formdata.method='post';
+		formdata.action='/javas/wantad/deletepost';
+		formdata.append('id', id);
+		
+		request.open('post', '/javas/wantad/deletepost', true);
+		request.send(formdata);
+		
+	 	request.onload = function(event) {
+			if (request.status == 200) {
+					var str = request.responseText;
+					if (str == "success") {
+						alert("삭제 성공");
+						window.location.href='/javas/wantad';
+					} else {
+						alert("삭제 실패");
+					}
+				}
+			}
+		}
+		
 		// 리뷰 등록하기
 		function reqInsertReview() {
-			getTotalStarRate(); // star rate 만..
-			
+			getTotalStarRate(); // star rate 만..			
 			var request = new XMLHttpRequest();
 			var formElement = document.getElementById("reviewform");
 			var formdata = new FormData(formElement);
@@ -287,7 +327,7 @@
 					var str = request.responseText;
 					if (str == "success") {
 						alert("댓글 등록 성공");
-						reqReviewList();
+						reqReviewList(); 	
 					} else {
 						alert("댓글 등록 실패");
 					}
@@ -340,11 +380,32 @@
 					var reviewList = JSON.parse(str);
 					console.log(reviewList);
 					var target = document.getElementById("reviewlistbox");
-					
+					target.innerHTML = "";
 					for(var i in reviewList){					
 					target.innerHTML += "<td width=100>" + reviewList[i].review_userid + "</td> &nbsp; &nbsp;";
 					target.innerHTML += "<td width=400>" + reviewList[i].review_comment + "</td> &nbsp; &nbsp;";
-					target.innerHTML += "<td width=200>" + reviewList[i].review_rate + "</td> &nbsp; &nbsp;";
+					
+					var star0 = "<span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span>";
+					var star1 = "<span class='fa fa-star checked'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span>";   
+					var star2 = "<span class='fa fa-star checked'></span><span class='fa fa-star checked'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span>";
+					var star3 = "<span class='fa fa-star checked'></span><span class='fa fa-star checked'></span><span class='fa fa-star checked'></span><span class='fa fa-star'></span><span class='fa fa-star'></span>";
+					var star4 = "<span class='fa fa-star checked'></span><span class='fa fa-star checked'></span><span class='fa fa-star checked'></span><span class='fa fa-star checked'></span><span class='fa fa-star'></span>";
+					var star5 = "<span class='fa fa-star checked'></span><span class='fa fa-star checked'></span><span class='fa fa-star checked'></span><span class='fa fa-star checked'></span><span class='fa fa-star checked'></span>";
+											
+					if(reviewList[i].review_rate == 0)
+						target.innerHTML += "<td width=200>" + star0 + "</td> &nbsp; &nbsp;";
+					if(reviewList[i].review_rate == 1)
+						target.innerHTML += "<td width=200>" + star1 + "</td> &nbsp; &nbsp;";
+					if(reviewList[i].review_rate == 2)
+						target.innerHTML += "<td width=200>" + star2 + "</td> &nbsp; &nbsp;";
+					if(reviewList[i].review_rate == 3)
+						target.innerHTML += "<td width=200>" + star3 + "</td> &nbsp; &nbsp;";
+					if(reviewList[i].review_rate == 4)
+						target.innerHTML += "<td width=200>" + star4 + "</td> &nbsp; &nbsp;";
+					if(reviewList[i].review_rate == 5)
+						target.innerHTML += "<td width=200>" + star5 + "</td> &nbsp; &nbsp;";
+										
+										
 					target.innerHTML += "<td width=200>" + reviewList[i].review_date + "</td> &nbsp; &nbsp;";
 					if(reviewList[i].review_userid == "${loginVO.mem_userid}"){
 						target.innerHTML += "<td><button id='delbtn' onclick='reqDeleteReview("+reviewList[i].review_id+")'>삭제</button></td><br>";
@@ -465,7 +526,10 @@
 			if(s4 == "fa fa-star checked") res += 1;
 			if(s5 == "fa fa-star checked") res += 1;
 			
-			alert(res);
+			//alert(document.getElementById("review_rate").value);
+			document.getElementById("review_rate").value=res;
+			
+			//alert(res);
 		}
 
 	</script>

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import vo.PageVO;
 import vo.WantSearchVO;
+import vo.WantadLocVO;
 import vo.WantadVO;
 
 @Repository
@@ -155,7 +156,7 @@ public class WantadDAOImpl implements WantadDAO {
 		System.out.println(statement);
 		System.out.println(totalListNum);
 
-		pvo.setShowListNum(6);
+		pvo.setShowListNum(5);
 		pvo.setShowPageNum(5);
 		
 		pvo.setPage(page);
@@ -268,6 +269,13 @@ public class WantadDAOImpl implements WantadDAO {
 		pvo.setListEndNum(listBeginNum);
 		return pvo;
 
+	}
+	@Override
+	public List<WantadLocVO> listAllLocation() {
+		List<WantadLocVO> list = null;
+		String statement = "resource.WantadMapper.selectWantadLocation";
+		list = session.selectList(statement);
+		return list;
 	}
 
 

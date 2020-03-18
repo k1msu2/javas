@@ -17,8 +17,8 @@
 				<option value='all'>제목+내용</option>
 			</select> 
 			<input id="key" type="text" name="key"> 
-			<input type="submit" value="게시글 찾기">
-			<button type="button" onclick="location.href='wantad/form'">
+			<input type="submit" value="게시글 찾기" class="icon icon-search btn btn-primary">
+			<button type="button" onclick="location.href='wantad/form'" class="btn btn-primary">
 				작성하기</button>
 		</form>
 	</div>
