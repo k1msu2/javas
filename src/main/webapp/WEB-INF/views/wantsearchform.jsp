@@ -18,7 +18,8 @@
 			</select> 
 			<input id="key" type="text" name="key"> 
 			<input type="submit" value="게시글 찾기">
-			<button type="button" onclick="location.href='wantad'">게시판 홈</button>
+			<button type="button" onclick="location.href='wantad/form'">
+				작성하기</button>
 		</form>
 	</div>
 </body>

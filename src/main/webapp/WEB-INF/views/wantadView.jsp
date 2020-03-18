@@ -8,6 +8,7 @@
 <head>
 <title>Negotiate - Free Bootstrap 4 Template by Colorlib</title>
 <meta charset="utf-8">
+
     <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
@@ -20,7 +21,6 @@
     <link rel="stylesheet" href="/javas/resources/css/magnific-popup.css">
 
     <link rel="stylesheet" href="/javas/resources/css/aos.css">
-
     <link rel="stylesheet" href="/javas/resources/css/ionicons.min.css">
     
     <link rel="stylesheet" href="/javas/resources/css/flaticon.css">
@@ -32,6 +32,13 @@
 	color: black;
 	border: 2px solid #e7e7e7;
 	border-radius: 12px;
+}
+
+.checked {
+	color: orange;
+}
+#reviewform{
+	padding:20px;
 }
 </style>
 </head>
@@ -128,7 +135,7 @@
     
     
 	<section class="hero-wrap hero-wrap-2"
-		style="background-image: url('images/bg_1.jpg');">
+		style="background-image: url('/javas/images/bg_1.jpg');">
 		<div class="overlay"></div>
 		<div class="container">
 			<div
@@ -149,8 +156,7 @@
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-8 ftco-animate">
-
+				<div class="col-lg-12 ftco-animate">
 					<!-- 게시글 출력 -->
 					<c:if test="${!empty listOne}">
 						<div class="about-author d-flex p-4 bg-light">
@@ -175,35 +181,38 @@
 					<!-- 코멘트 출력 -->
 
 					<div class="pt-5 mt-5">
-						<h3 class="mb-5 h4 font-weight-bold">6 Comments</h3>
 						<div id="reviewlistbox"></div>
 
 						<c:if test="${empty loginVO}">
-							<br><br><h4><c:out value="로그인 후, 후기를 남겨주세요" /></h4>
+							<br>
+							<br>
+							<h4>
+								<c:out value="로그인 후, 후기를 남겨주세요" />
+							</h4>
 						</c:if>
 
 						<c:if test="${!empty loginVO}">
 							<!-- 코멘트 입력창 -->
 							<div class="comment-form-wrap pt-5">
-								<h4>후기를 남겨주세요</h4>
 								<div id="reviewformbox">
-									<form id="reviewform" name="reviewform" method="post"
-										class="bg-light">
+									<form id="reviewform" name="reviewform" method="post" class="bg-light">
 
-										<label for="review_comment">${loginVO.mem_userid} 후기</label>
-										<textarea name="review_comment" cols="10" rows="10"
+										<label for="review_comment">&nbsp;&nbsp;&nbsp;${loginVO.mem_userid}님,
+											후기를 남겨주세요!</label>
+										<textarea name="review_comment" cols="2" rows="2"
 											class="form-control"></textarea>
-										<br> <label for="review_rate">평점</label> <input
-											name="review_rate"><br> <input type="hidden"
-											name="post_id" value="${listOne.post_id}"> <input
-											type="hidden" name="review_id" value="0"> <input
-											type="hidden" name="review_userid"
-											value="${loginVO.mem_userid}">
-
-										<button onclick="reqInsertReview()"
-											class="btn py-3 px-4 btn-primary">등록</button>
-										<input type="reset" value="재작성"
-											class="btn py-3 px-4 btn-primary">
+										<br> <label for="review_rate">&nbsp;&nbsp;&nbsp;만족도&nbsp;&nbsp;&nbsp;</label> 
+										<span id= "star1" class="fa fa-star" onclick="star1()"></span> 
+										<span id= "star2" class="fa fa-star" onclick="star2()"></span> 
+										<span id= "star3" class="fa fa-star" onclick="star3()"></span> 
+										<span id= "star4" class="fa fa-star" onclick="star4()"></span> 
+										<span id= "star5" class="fa fa-star" onclick="star5()"></span> 
+										<input type="hidden" name="review_rate" value = "0"/>
+										<input type="hidden" name="post_id" value="${listOne.post_id}"> 
+										<input type="hidden" name="review_id" value="0"> 
+										<input type="hidden" name="review_userid" value="${loginVO.mem_userid}"> <br>
+										<button onclick="reqInsertReview()" class="btn px-4 btn-primary btn-sm">등록</button>
+										<input type="reset" value="재작성" class="btn px-4 btn-primary btn-sm">
 
 									</form>
 								</div>
@@ -211,23 +220,33 @@
 						</c:if>
 					</div>
 				</div>
-				<!-- .col-md-8 -->
+			</div>
+		</div>
+	</section>
+	<!-- .col-md-8 -->
+
+	<script src="/javas/js/jquery.min.js"></script>
+	<script src="/javas/js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="/javas/js/popper.min.js"></script>
+	<script src="/javas/js/bootstrap.min.js"></script>
+	<script src="/javas/js/jquery.easing.1.3.js"></script>
+	<script src="/javas/js/jquery.waypoints.min.js"></script>
+	<script src="/javas/js/jquery.stellar.min.js"></script>
+	<script src="/javas/js/owl.carousel.min.js"></script>
+	<script src="/javas/js/jquery.magnific-popup.min.js"></script>
+	<script src="/javas/js/aos.js"></script>
+	<script src="/javas/js/jquery.animateNumber.min.js"></script>
+	<script src="/javas/js/scrollax.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+	<script src="/javas/js/google-map.js"></script>
+	<script src="/javas/js/main.js"></script>
 
 
-				<!-- loader -->
-				<div id="ftco-loader" class="show fullscreen">
-					<svg class="circular" width="48px" height="48px">
-						<circle class="path-bg" cx="24" cy="24" r="22" fill="none"
-							stroke-width="4" stroke="#eeeeee" />
-						<circle class="path" cx="24" cy="24" r="22" fill="none"
-							stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
-				</div>
-
-
-
-				<script>
+	<script>
 		// 리뷰 등록하기
 		function reqInsertReview() {
+			getTotalStarRate(); // star rate 만..
+			
 			var request = new XMLHttpRequest();
 			var formElement = document.getElementById("reviewform");
 			var formdata = new FormData(formElement);
@@ -286,7 +305,7 @@
 
 			request.open('post', '/javas/wantreview', true);
 			request.send(formdata);
-			
+
 			request.onload = function(event) {
 				if (request.status == 200) {
 					var str = request.responseText;
@@ -305,18 +324,122 @@
 					else {
 						target.innerHTML +="<br>";
 					}
-					}
+				}
 					target.innerHTML += "</tr></table>";
 					
 				};
 			}
 			
 		}
-
-		// 초기 페이지 로딩 시 댓글 불러오기
-		window.onload = function() {
+		
+		window.onload = function(){
 			reqReviewList();
+		};
+
+		
+		function star1(){
+			var s1 = document.getElementById("star1").className;
+			var s2 = document.getElementById("star2").className;
+			var s3 = document.getElementById("star3").className;
+			var s4 = document.getElementById("star4").className;
+			var s5 = document.getElementById("star5").className;
+			
+
+			if(s1=="fa fa-star" && s2 == "fa fa-star" 
+			&& s3 == "fa fa-star" && s4 == "fa fa-star" 
+			&& s5 == "fa fa-star"){
+				document.getElementById("star1").className = "fa fa-star checked";
+			} else {
+				document.getElementById("star1").className = "fa fa-star";
+			}
+
 		}
+		
+		function star2(){
+			var s1 = document.getElementById("star1").className;
+			var s2 = document.getElementById("star2").className;
+			var s3 = document.getElementById("star3").className;
+			var s4 = document.getElementById("star4").className;
+			var s5 = document.getElementById("star5").className;
+			
+			if(s1 == "fa fa-star checked" && s3 == "fa fa-star" 
+					&& s4 == "fa fa-star" && s5 == "fa fa-star"){
+				if(s2=="fa fa-star"){
+					document.getElementById("star2").className = "fa fa-star checked";
+				} else {
+					document.getElementById("star2").className = "fa fa-star";
+				}
+			}
+			
+		}
+		
+		function star3(){
+			var s1 = document.getElementById("star1").className;
+			var s2 = document.getElementById("star2").className;
+			var s3 = document.getElementById("star3").className;
+			var s4 = document.getElementById("star4").className;
+			var s5 = document.getElementById("star5").className;
+			
+			if(s1 == "fa fa-star checked" && s2 == "fa fa-star checked" 
+					&& s4 == "fa fa-star" && s5 == "fa fa-star"){
+				if(s3=="fa fa-star"){
+					document.getElementById("star3").className = "fa fa-star checked";
+				} else {
+					document.getElementById("star3").className = "fa fa-star";
+				}
+			}
+		}
+		
+		function star4(){
+			var s1 = document.getElementById("star1").className;
+			var s2 = document.getElementById("star2").className;
+			var s3 = document.getElementById("star3").className;
+			var s4 = document.getElementById("star4").className;
+			var s5 = document.getElementById("star5").className;
+
+			if(s1 == "fa fa-star checked" && s2 == "fa fa-star checked" 
+					&& s3 == "fa fa-star checked" && s5 == "fa fa-star"){
+				if(s4=="fa fa-star"){
+					document.getElementById("star4").className = "fa fa-star checked";
+				} else {
+					document.getElementById("star4").className = "fa fa-star";
+				}
+			}
+		}
+		
+		function star5(){			
+			var s1 = document.getElementById("star1").className;
+			var s2 = document.getElementById("star2").className;
+			var s3 = document.getElementById("star3").className;
+			var s4 = document.getElementById("star4").className;
+			var s5 = document.getElementById("star5").className;
+			
+			if(s1 == "fa fa-star checked" && s2 == "fa fa-star checked" 
+					&& s3 == "fa fa-star checked" && s4 == "fa fa-star checked"){
+				if(s5=="fa fa-star"){
+					document.getElementById("star5").className = "fa fa-star checked";
+				} else {
+					document.getElementById("star5").className = "fa fa-star";
+				}
+			}
+		}
+		
+		function getTotalStarRate(){
+			var s1 = document.getElementById("star1").className;
+			var s2 = document.getElementById("star2").className;
+			var s3 = document.getElementById("star3").className;
+			var s4 = document.getElementById("star4").className;
+			var s5 = document.getElementById("star5").className;
+			var res = 0;
+			if(s1 == "fa fa-star checked") res += 1;
+			if(s2 == "fa fa-star checked") res += 1;
+			if(s3 == "fa fa-star checked") res += 1;
+			if(s4 == "fa fa-star checked") res += 1;
+			if(s5 == "fa fa-star checked") res += 1;
+			
+			alert(res);
+		}
+
 	</script>
 	
   <script src="/javas/resources/js/jquery.min.js"></script>

@@ -79,6 +79,8 @@ public class WantadController {
 	@RequestMapping("/wantad/insert2")
 	public ModelAndView insert2(WantadVO vo,
 			@RequestParam(defaultValue = "1") int page) {
+		
+	
 		ModelAndView mav = new ModelAndView();
 		List<WantadVO> list = new ArrayList<>();
 		PageVO pvo = dao.pagination(1);
@@ -97,6 +99,8 @@ public class WantadController {
 	
 	@RequestMapping("/wantad/insert")
 	public String insert3(WantadVO vo) {
+		System.out.println("insert" + vo);
+		
 		if(dao.insert(vo)) {
 			return "success";
 		}else {

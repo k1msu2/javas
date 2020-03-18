@@ -12,6 +12,7 @@ public class JobadVO {
 	private int post_payment;
 	private String post_phone;
 	private int post_review_count;
+	
 	public int getPost_id() {
 		return post_id;
 	}
@@ -85,5 +86,5 @@ public class JobadVO {
 				+ ", post_location=" + post_location + ", post_payment=" + post_payment + ", post_phone=" + post_phone
 				+ ", post_review_count=" + post_review_count + "]";
 	}
-	
+
 }

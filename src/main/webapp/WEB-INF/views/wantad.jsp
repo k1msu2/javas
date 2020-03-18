@@ -167,14 +167,12 @@
 						<c:forEach var="vo" items="${listAll}" varStatus="status">
 							<!-- <div class="col-md-6 col-lg-4 ftco-animate"> -->
 							<div class="blog-entry">
-								<a href="wantad/view?id=${vo.post_id}"
-									class="block-15 d-flex align-items-end"
-									style="background-image: url('images/none.PNG'); width: 300px">
+								<a href="wantad/view?id=${vo.post_id}">
 								</a>
 								<div class="text border border-top-0 p-4">
 									<h3 class="heading">
-										<a href="wantad/view?id=${vo.post_id}"> <c:out
-												value="${vo.post_title}" /></a>
+										<a href="wantad/view?id=${vo.post_id}"> 
+										<c:out value="${vo.post_title}" /></a>
 									</h3>
 									<p>
 										<c:out value="${vo.post_content}" />
@@ -204,6 +202,7 @@
 								<div id="pages">
 									<%@ include file="wantadpage.jsp"%>
 								</div>
+								<%@ include file="wantsearchform.jsp"%>
 							</div>
 						</div>
 					</div>

@@ -1,7 +1,9 @@
 package com.miniproject.javas;
 
+import java.io.File;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +15,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import dao.JobadDAO2;
+import dao.MeminfoDAO;
+import service.FTPService;
 import vo.JobadVO;
 import vo.LoginVO;
+import vo.MeminfoVO;
 
 @Controller
 public class JobadController {
 	@Autowired JobadDAO2 dao;
+	@Autowired FTPService ftpdownloader;
+	@Autowired ServletContext context; 
+	@Autowired MeminfoDAO mdao;
+	
 	@RequestMapping(value="/jobad",method=RequestMethod.GET)
 	public ModelAndView doGet(
 	@RequestParam(value="action",required=false)String action,
@@ -27,7 +36,7 @@ public class JobadController {
 	@RequestParam(value="key",required=false)String key,
 	@RequestParam(value="searchType",required=false)String searchType,
 	@RequestParam(defaultValue="0")int post_id,
-	HttpSession session) {
+	HttpSession session) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		List<JobadVO> list;
 		int count = 0;
@@ -36,15 +45,42 @@ public class JobadController {
 			list = dao.listAll(pgNum);
 			session.setAttribute("pgNum", pgNum);
 			System.out.println("pgNum : "+pgNum);
-			mav.addObject("msg","구인 게시판");
+			mav.addObject("msg","援ъ씤 寃뚯떆�뙋");
 			if(list!=null && list.size()!=0) {
 				mav.addObject("list",list);
 			}
 			count = dao.getCount();
+
+	
+			String hostFolder = "\\memphoto\\";
+			String localDir = "C:\\Users\\student\\Documents\\webcache\\";
+			String resourceDir = context.getRealPath("/") + "resources\\images2\\";
+			String fileName = "";
+			
+			File resPathFolder = new File(resourceDir);
+			File[] listOfFiles = resPathFolder.listFiles();
+
+			for (JobadVO vo : list) {
+				//fileName = "ddochi9";
+				fileName = vo.getMem_userid();
+				//리소스 폴더에 없는 경우만 ftp 서버에서 다운로드
+				//웹서버 동기화 용도
+				// meminfo 객체의 memphoto 확인
+				MeminfoVO mvo = mdao.listOne(vo.getMem_userid());
+				if(mvo.getMem_photo()!=null && !mvo.getMem_photo().equals("none")) {
+					for (int i = 0; i < listOfFiles.length; i++) {
+						if (listOfFiles[i].getName().equals(fileName)) {
+							ftpdownloader.downloadFile(hostFolder, fileName, localDir);
+							ftpdownloader.fileCopyToResource(resourceDir, localDir, fileName);
+						}
+					}
+				}				
+			}			
+			//ftpdownloader.disconnect(); // 프로젝트 종료시..처리아직 못함.
 		}
 		else if(action.equals("sort")) {
 			list = dao.listSort(key, pgNum);
-			mav.addObject("msg","구인 리스트("+key+"정렬)");
+			mav.addObject("msg","援ъ씤 由ъ뒪�듃("+key+"�젙�젹)");
 			if(list!=null && list.size()!=0) {
 				mav.addObject("list",list);
 			}
@@ -55,13 +91,13 @@ public class JobadController {
 			JobadVO vo = dao.listOne(post_id);
 			if(vo!=null) {
 				session.setAttribute("vo", vo);
-				mav.addObject("msg","구인 내용");
+				mav.addObject("msg","援ъ씤 �궡�슜");
 				mav.addObject("vo",vo);
 			}
 		}
 		else if(action.equals("listWriter")) {
 			list = dao.listWriter(mem_username, pgNum);
-			mav.addObject("msg","구인 게시판");
+			mav.addObject("msg","援ъ씤 寃뚯떆�뙋");
 			if(list!=null && list.size()!=0) {
 				mav.addObject("list",list);
 				count = dao.getCount(mem_username);
@@ -72,13 +108,13 @@ public class JobadController {
 		else if(action.equals("search")) {
 			list = dao.search(key, searchType, pgNum);
 			if(list!=null && list.size()!=0) {
-				mav.addObject("msg",key+"을(를) 포함하는 글 리스트");
+				mav.addObject("msg",key+"�쓣(瑜�) �룷�븿�븯�뒗 湲� 由ъ뒪�듃");
 				mav.addObject("list",list);
 				count = dao.getCount(key, searchType);
 				linkStr = "&searchType="+searchType+"&key="+key+"&action=search";
 			}
 			else {
-				mav.addObject("snull",key+"을 포함하는 검색글이 없습니다.");
+				mav.addObject("snull",key+"�쓣 �룷�븿�븯�뒗 寃��깋湲��씠 �뾾�뒿�땲�떎.");
 			}
 		}
 		else if(action.equals("delete")) {
@@ -87,7 +123,7 @@ public class JobadController {
 			mav.setViewName("redirect:http://localhost:8000/javas/jobad?pgNum="+session.getAttribute("pgNum"));
 			return mav;
 		}
-		
+
 		mav.addObject("totalCount",count);
 		mav.addObject("pagelist",new JobadDAO2().getPageLinkList(pgNum, linkStr, count));
 		mav.addObject("pgNum",pgNum);

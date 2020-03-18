@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import dao.MeminfoDAO;
+import service.FTPService;
 import vo.MeminfoVO;
 
 @Controller
@@ -23,12 +24,15 @@ public class MeminfoController {
 	MeminfoDAO dao;
 	@Autowired
 	ServletContext context; 
+	@Autowired
+	FTPService ftpUploader;
+	
 	@RequestMapping("/meminfo")
 	public String meminfo() {
 		return "meminfo";
 	}
 	@RequestMapping(value = "/meminfoinsert", method = RequestMethod.POST)
-	public ModelAndView meminfoinsert(MeminfoVO vo, String action) {
+	public ModelAndView meminfoinsert(MeminfoVO vo, String action) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		List<MeminfoVO> list = null;
 		String mem_userid = vo.getMem_userid();
@@ -57,21 +61,28 @@ public class MeminfoController {
 		mav.addObject("mem_photo", mem_photo);
 		mav.addObject("mem_register_date", mem_register_date);
 		mav.addObject("mem_is_employer", mem_is_employer);
-		
 		String fileName = vo.getMem_userid();
 		byte[] content = null;
 		try {
-			content = vo.getUploadFile().getBytes();
-			String path = context.getRealPath("/") + "resources/images2/"+fileName+".png";
-			System.out.println(path);
-			File f = new File(path);
-			FileOutputStream fos = new FileOutputStream(f);
-			fos.write(content);
-			fos.close();
-		}
+			if (!vo.getUploadFile().isEmpty()) { // 서버에 데이터 안올라감.
+				content = vo.getUploadFile().getBytes();
+				String path = context.getRealPath("/") + "resources/images2/" + fileName + ".png";
+				System.out.println(path);
+				File f = new File(path);
+				FileOutputStream fos = new FileOutputStream(f);
+				fos.write(content);
+				fos.close();
+
+				// ftp 회원 사진 업로드
+				ftpUploader.uploadFile(path, fileName, "/memphoto/");
+				ftpUploader.disconnect();
+				vo.setMem_photo(fileName);
+			}
+		}		
 		catch(IOException e) {
 			e.printStackTrace();
 		}
+		vo.setMem_address("test");
 		boolean result = dao.insert(vo);
 		System.out.println(vo);
 		if (result) {
