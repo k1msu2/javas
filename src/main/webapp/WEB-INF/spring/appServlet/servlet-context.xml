@@ -23,6 +23,7 @@
 	<resources mapping="/fonts/**" location="/resources/fonts/" />
 	<resources mapping="/scss/**" location="/resources/scss/" />
 
+
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
 	<beans:bean

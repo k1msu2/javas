@@ -1,15 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ page
-	import="vo.WantadVO, vo.LoginVO, vo.PageVO, vo.WantSearchVO, java.util.List"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>잉력시장 : 마이페이지</title>
+<title>잉력 게시판 : 작성[구인]</title>
    <meta charset="utf-8">
-   <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
@@ -30,7 +28,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	 <div class="bg-top navbar-light d-flex flex-column-reverse">
+ <div class="bg-top navbar-light d-flex flex-column-reverse">
     	<div class="container py-3">
     		<div class="row no-gutters d-flex align-items-center align-items-stretch">
     			<div class="col-md-4 d-flex align-items-center py-4">
@@ -88,7 +86,7 @@
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	          <ul class="navbar-nav mr-auto">
 	            <li class="nav-item"><a href="/javas/main" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">홈</a></li>
-	        	<li class="nav-item"><a href="/javas/about" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">소개</a></li>
+	            <li class="nav-item"><a href="/javas/about" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">소개</a></li>
 	        	<li class="nav-item"><a href="/javas/developers" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">개발진</a></li>
 	        	<li class="nav-item"><a href="/javas/jobad" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">대타 구인</a></li>
 	        	<li class="nav-item"><a href="/javas/wantad" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">대타 구직</a></li>
@@ -106,84 +104,60 @@
 				<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 				<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 				<c:if test="${!empty loginVO}">
-					<li class="nav-item active"><a href="/javas/mypage" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">마이페이지</a></li>
+					<li class="nav-item"><a href="/javas/mypage" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">마이페이지</a></li>
 					<li class="nav-item"><a href="/javas/logout" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">로그아웃</a></li>
 				</c:if>         	
 				<c:if test="${empty loginVO}">
 	          	<li class="nav-item"><a href="/javas/login/form" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">로그인</a></li>
-	          	<li class="nav-item"><a href="/javas/meminfo" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">회원가입</a></li>
+	          	<li class="nav-item active"><a href="/javas/meminfo" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">회원가입</a></li>
 	          	</c:if>
 	        </ul>
 	      </div>
 	    </div>
 	  </nav>
     <!-- END nav -->
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('/javas/resources/images/bg_1.jpg');">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center">
-          <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-2 bread">마이페이지</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="/javas/main">홈 <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="/javas/mypage">마이페이지 <i class="ion-ios-arrow-forward"></i></a></span></p>
-          </div>
+    
+<br><br><br>
+<div class="container">
+<div class="col-md-5" style="margin: auto 300px;">
+    <div class="form-area">  
+        <form method="post" action="/javas/jobad">
+        <input type="hidden" name="action" value="insert">
+        <br style="clear:both">
+                    <h3 style="margin-bottom: 25px; text-align: center; font-family: 'Do Hyeon', sans-serif; font-size: 30px;">글 작성하기</h3>
+                    <div class="form-group">
+						 <input type="hidden" name="pgNum" value="${sessionScope.pgNum}">
+					</div>
+					<div class="form-group">
+						 <input type="hidden" name="post_id" value="1">
+					</div>
+    				<div class="form-group">
+						<input type="text" class="form-control" id="post_title" name="post_title" placeholder="글 제목" required>
+					</div>
+					<div class="form-group">
+                    <textarea class="form-control" type="textarea" id="post_content" name="post_content" placeholder="내용 작성" maxlength="140" rows="7"></textarea>                    
+                    </div>
+                    <div class="form-group">
+						<input type="hidden" id="post_location" name="post_location" value="${sessionScope.loginVO.mem_address}">
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" id="post_payment" name="post_payment" placeholder="시급" required>
+					</div>
+					<div class="form-group">
+						<input type="hidden" name="post_phone" value="${sessionScope.loginVO.mem_phone}" required>		
+				</div>
+		<div style="text-align:center;">
+        <button type="button" onclick="location.href='/javas/jobad'" class="btn btn-primary pull-right" style="margin-right: 10px;">작성 취소</button>
+        <input type="reset" value="다시 쓰기" class="btn btn-primary pull-right" style="margin-right: 10px;">
+        <input type="submit" value="작성 완료" class="btn btn-primary pull-right" style="margin-right: 10px;">
         </div>
-      </div>
-    </section>
-		<section class="ftco-section">
-			<div class="container">
-				<div class="row">
-          <div class="col-md-3 col-md-pull-9 sidebar ftco-animate">
-             <div class="icon d-flex justify-content-center align-items-center">
-             <c:if test="${!empty loginVO}">
-             <span><img width=80px src="/javas/resources/images2/<c:out value="${loginVO.mem_userid}" />.png"></span></div>
-				<div class="text" style="text-align : center;">
-			     	<h4><c:out value="${loginVO.mem_username}" />님 <br>환영합니다!</h4>
-		    </c:if>
-		    </div>
-		    <br>
-              <ul class="categories" style="text-align : center;">
-                <li><a onclick="displayone(); return false;">정보 수정</a></li>
-                <li><a onclick="displaytwo();">리뷰 관리</a></li>
-
-                <li><a href="/javas/jobad">구인 게시</a></li>
-                <li><a href="/javas/wandad">구직 게시</a></li>
-                <li><a onclick="displaythree()">1:1 문의</a></li>
-              </ul>
-          </div><!-- END COL -->
-          
-          
-          <div class="col-md-9 col-md-push-3 ftco-animate">
-          
-              <section id="header" class="ftco-intro ftco-no-pb img" style="background-image: url(/javas/resources/images/image_1.jpg);">
-    	         <div class="container">
-    		       <div class="row justify-content-center">
-                      <div class="col-md-10 text-center heading-section heading-section-white ftco-animate">
-                           <br><br><br><br>
-                          <h2 class="mb-0">Welcome to 잉/력/시/장</h2>
-                           <br><br><br><br>
-                      </div>
-                   </div>	
-    	         </div>
-              </section>
-              
-              <div id="displayone"  style="display:none" >
-            	<%@ include file="meminfomodify.jsp"%>
-              </div>
-        
-              <div id="displaytwo"  style="display:none" >
-            	<%@ include file="myreviews.jsp"%>
-              </div>
-              
-               <div id="displaythree"  style="display:none" >
-            	<%@ include file="contact.jsp"%>
-              </div>
-             
-                       
-		  </div>
-			
-		</section>
-		
-      <footer class="ftco-footer ftco-bg-dark ftco-section">
+        </form>
+    </div>
+</div>
+</div>
+<br><br><br>    
+<br><br><br>
+     <footer class="ftco-footer ftco-bg-dark ftco-section">
     <h2 style = "color : #ffffff; text-align : center;">Have a Questions?</h2>
     <div style = "text-align : center;">
     <span class="icon icon-map-marker"></span><span class="text">212 Teheran-ro, Gangnam-gu, Seoul, Republic of Korea (06220)</span>
@@ -201,29 +175,8 @@
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
-  <script>
-  
-  var displayone = function(e){
-		document.getElementById("displayone").style.display = "block";
-		document.getElementById("header").style.display = "none";
-		document.getElementById("displaytwo").style.display = "none";
-		document.getElementById("displaythree").style.display = "none";
-  }
-  var displaytwo = function(e){
-		document.getElementById("displaytwo").style.display = "block";
-		document.getElementById("header").style.display = "none";
-		document.getElementById("displayone").style.display = "none";
-		document.getElementById("displaythree").style.display = "none";
-  }
-  var displaythree = function(e){
-		document.getElementById("displaythree").style.display = "block";
-		document.getElementById("header").style.display = "none";
-		document.getElementById("displayone").style.display = "none";
-		document.getElementById("displaytwo").style.display = "none";
- }
-  </script>
 
-  <script src="js/jquery.min.js"></script>
+ <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
   <script src="js/popper.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
@@ -235,6 +188,9 @@
   <script src="js/aos.js"></script>
   <script src="js/jquery.animateNumber.min.js"></script>
   <script src="js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/bootstrap-select.js"></script>
 </body>
 </html>
