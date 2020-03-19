@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Negotiate - Free Bootstrap 4 Template by Colorlib</title>
+<title>잉력시장 : 구인 게시판</title>
 <meta charset="utf-8">
 
     <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="/javas/resources/css/flaticon.css">
     <link rel="stylesheet" href="/javas/resources/css/icomoon.css">
     <link rel="stylesheet" href="/javas/resources/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 #delbtn {
 	background-color: white;
@@ -39,6 +40,9 @@
 }
 #reviewform{
 	padding:20px;
+}
+#table4{
+width:150px;
 }
 </style>
 </head>
@@ -141,12 +145,12 @@
 			<div
 				class="row no-gutters slider-text align-items-center justify-content-center">
 				<div class="col-md-9 ftco-animate text-center">
-					<h1 class="mb-2 bread">Blog</h1>
+					<h1 class="mb-2 bread">상세 보기</h1>
 					<p class="breadcrumbs">
-						<span class="mr-2"><a href="index.html">Home <i
+						<span class="mr-2"><a href="/javas/main">홈 <i
 								class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a
-							href="index.html">Blog <i class="ion-ios-arrow-forward"></i></a></span>
-						<span>Blog Single <i class="ion-ios-arrow-forward"></i></span>
+							href="/javas/wantad">대타 구직<i class="ion-ios-arrow-forward"></i></a></span>
+						<span>상세 보기<i class="ion-ios-arrow-forward"></i></span>
 					</p>
 				</div>
 			</div>
@@ -160,33 +164,31 @@
 					<!-- 게시글 출력 -->
 					<c:if test="${!empty listOne}">
 						<div class="about-author d-flex p-4 bg-light">
-							<div class="bio mr-5">
-								<img src="/javas/resources/images2/${listOne.mem_userid}.png"
-									width="100">
+							<div style = "margin:auto;">
+								<img src="/javas/resources/images2/${listOne.mem_userid}.png" width=300>
 							</div>
-							<div class="desc">
+							<div style = "width : 500px; margin-right:100px;">
 								<h3>
 									<c:out value="${listOne.post_title}" />
 								</h3>
-								<p>
-									 <label for="post_writedate"> 등록일 &nbsp;&nbsp;</label>
-									 <c:out value="${listOne.post_writedate}" />
-								</p>
-								<p>
-									<label for="post_content">구직 내용&nbsp;&nbsp;</label><c:out value="${listOne.post_content}" />
-								</p>
-								<p>
-									<label for="post_location">구직 희망 지역&nbsp;&nbsp;</label>
-									<c:out value="${listOne.post_location}" />
-								</p>
-								<p>
-									<label for="post_payment">구직 희망 시급&nbsp;&nbsp;</label>
-									<c:out value="${listOne.post_payment}" />
-								</p>
-								<p>
-									<label for="post_hit">조회수&nbsp;&nbsp;</label>
-									<c:out value="${listOne.post_hit}" />
-								</p>
+							  <table>
+								 <tr>
+			                        <td id = table4><label for="post_writedate"> 등록일 &nbsp;&nbsp;</label></td><td> <c:out value="${listOne.post_writedate}" /></td>
+		                         </tr>
+		                         <tr>
+			                        <td id = table4><label for="post_content">구직 내용&nbsp;&nbsp;</label></td><td><c:out value="${listOne.post_content}" /></td>
+		                         </tr>
+		                         <tr>
+			                        <td id = table4><label for="post_location">구직 희망 지역&nbsp;&nbsp;</label></td><td><c:out value="${listOne.post_location}" /></td>
+		                         </tr>
+		                         <tr>
+			                        <td id = table4><label for="post_payment">구직 희망 시급&nbsp;&nbsp;</label></td><td><c:out value="${listOne.post_payment}" /></td>
+		                         </tr>
+							     <tr>
+			                        <td id = table4><label for="post_hit">조회수&nbsp;&nbsp;</label></td><td><c:out value="${listOne.post_hit}" /></td>
+		                         </tr>
+								</table>
+								<br>
 								<button onclick="location.href='/javas/wantad/modify?id=${listOne.post_id}'" class="btn px-4 btn-primary btn-sm">수정</button>
 								<button onclick="delListOne(${listOne.post_id})" class="btn px-4 btn-primary btn-sm">삭제</button>
 							</div>
@@ -212,7 +214,7 @@
 								<div id="reviewformbox">
 									<form id="reviewform" name="reviewform" method="post" class="bg-light">
 
-										<label for="review_comment">&nbsp;&nbsp;&nbsp;${loginVO.mem_userid}님,
+										<label for="review_comment">&nbsp;&nbsp;&nbsp;${loginVO.mem_username}님,
 											후기를 남겨주세요!</label>
 										<textarea name="review_comment" cols="2" rows="2"
 											class="form-control"></textarea>
@@ -239,23 +241,6 @@
 		</div>
 	</section>
 	<!-- .col-md-8 -->
-
-	<script src="/javas/js/jquery.min.js"></script>
-	<script src="/javas/js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="/javas/js/popper.min.js"></script>
-	<script src="/javas/js/bootstrap.min.js"></script>
-	<script src="/javas/js/jquery.easing.1.3.js"></script>
-	<script src="/javas/js/jquery.waypoints.min.js"></script>
-	<script src="/javas/js/jquery.stellar.min.js"></script>
-	<script src="/javas/js/owl.carousel.min.js"></script>
-	<script src="/javas/js/jquery.magnific-popup.min.js"></script>
-	<script src="/javas/js/aos.js"></script>
-	<script src="/javas/js/jquery.animateNumber.min.js"></script>
-	<script src="/javas/js/scrollax.min.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="/javas/js/google-map.js"></script>
-	<script src="/javas/js/main.js"></script>
-
 
 	<script>
 
@@ -511,7 +496,7 @@
   <script src="/javas/resources/js/popper.min.js"></script>
   <script src="/javas/resources/js/bootstrap.min.js"></script>
   <script src="/javas/resources/js/jquery.easing.1.3.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="/javas/resources/js/jquery.waypoints.min.js"></script>
   <script src="/javas/resources/js/jquery.stellar.min.js"></script>
   <script src="/javas/resources/js/owl.carousel.min.js"></script>
   <script src="/javas/resources/js/jquery.magnific-popup.min.js"></script>

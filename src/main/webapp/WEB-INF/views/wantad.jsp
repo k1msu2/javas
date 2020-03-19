@@ -23,8 +23,6 @@
 }
 </style>
 </head>
-<title>Negotiate - Free Bootstrap 4 Template by Colorlib</title>
-<meta charset="utf-8">
 <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -144,21 +142,22 @@
 				class="row no-gutters slider-text align-items-center justify-content-center">
 				<div class="col-md-9 ftco-animate text-center">
 					<h1 class="mb-2 bread">대타 구직</h1>
-					<c:if test="${!empty loginVO}">
-						<h3 class="mb-2 bread">
-							<c:out value="${loginVO.mem_userid}" />
-							님 환영합니다!
-						</h3>
-					</c:if>
-					<p class="breadcrumbs">
-						<span class="mr-2"><a href="/javas/main">Home <i
-								class="ion-ios-arrow-forward"></i></a></span>
-					</p>
+						  <p class="breadcrumbs"><span class="mr-2"><a href="/javas/main">홈 <i class="ion-ios-arrow-forward"></i></a></span> <span>구직 게시판 <i class="ion-ios-arrow-forward"></i></span></p>
 				</div>
 			</div>
 		</div>
 	</section>
-
+	
+	  <br><br>
+           <c:if test="${!empty loginVO}">
+             <div class="icon d-flex justify-content-center align-items-center"><span><img width=80px src="/javas/resources/images/none.PNG"></span></div>
+			<div class="text" style="text-align : center; font-family: 'Do Hyeon', sans-serif;">
+			       <h4><c:out value="${loginVO.mem_username}" />님 환영합니다!</h4>
+		         </c:if>
+		    </div>
+     <br>
+   <hr style="width : 85%;">
+   
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row">
@@ -217,6 +216,22 @@
 			</div>
 		</div>
 	</section>
+
+
+<br><br><br>
+     <footer class="ftco-footer ftco-bg-dark ftco-section">
+    <h2 style = "color : #ffffff; text-align : center;">Have a Questions?</h2>
+    <div style = "text-align : center;">
+    <span class="icon icon-map-marker"></span><span class="text">212 Teheran-ro, Gangnam-gu, Seoul, Republic of Korea (06220)</span>
+	              <br><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a>
+	              <br><a href="#"><span class="icon icon-envelope"></span><span class="text">surpowermarket@gmail.com</span></a>
+    </div>
+    <br><br><br>
+ <p style = "text-align : center;"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">@JAVAS</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+    </footer>
+
 
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery-migrate-3.0.1.min.js"></script>

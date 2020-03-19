@@ -49,30 +49,7 @@ public class JobadController {
 				mav.addObject("list",list);
 			}
 			count = dao.getCount();
-
 	
-			String hostFolder = "\\memphoto\\";
-			//String localDir = "C:\\Users\\student\\Documents\\webcache\\";
-			String localDir = "C:\\Users\\KIMSUI\\Documents\\1_Study\\webcache\\";
-			String resourceDir = context.getRealPath("/") + "resources\\images2\\";
-			System.out.println(resourceDir);
-			String fileName = "";
-						
-			for (JobadVO vo : list) {
-				//fileName = "ddochi9";
-				fileName = vo.getMem_userid();
-				//리소스 폴더에 없는 경우만 ftp 서버에서 다운로드
-				//웹서버 동기화 용도
-				// meminfo 객체의 memphoto 확인
-				try {
-					ftpdownloader.downloadFile(hostFolder, fileName, localDir);
-					ftpdownloader.fileCopyToResource(resourceDir, localDir, fileName);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				
-			}			
-			//ftpdownloader.disconnect(); // 프로젝트 종료시..처리아직 못함.
 		}
 		else if(action.equals("sort")) {
 			list = dao.listSort(key, pgNum);
