@@ -145,7 +145,7 @@
 		<div style="text-align:center;">
         <button type="sumit" onclick="reqUpdateWantad()" class="btn btn-primary pull-right" style="margin-right: 10px;">&nbsp;&nbsp;&nbsp;&nbsp;등록&nbsp;&nbsp;&nbsp;&nbsp;</button>
         <input type="reset" value="다시 쓰기" class="btn btn-primary pull-right" style="margin-right: 10px;">
-        <input type="button" value="작성 취소" onclick="location.href='wantad/modify'"  class="btn btn-primary pull-right" style="margin-right: 10px;">
+        <input type="button" value="작성 취소" onclick="location.href='/javas/wantad/view?id=${vo.post_id}'"  class="btn btn-primary pull-right" style="margin-right: 10px;">
         </div>
         </form>
     </div>
