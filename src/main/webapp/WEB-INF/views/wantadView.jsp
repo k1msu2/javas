@@ -198,7 +198,7 @@ width:150px;
 					<!-- 코멘트 출력 -->
 
 					<div class="pt-5 mt-5">
-						<div id="reviewlistbox"></div>
+						<div id="reviewlistbox" style="margin:auto 130px;"></div>
 
 						<c:if test="${empty loginVO}">
 							<br>
@@ -210,7 +210,7 @@ width:150px;
 
 						<c:if test="${!empty loginVO}">
 							<!-- 코멘트 입력창 -->
-							<div class="comment-form-wrap pt-5">
+							<div class="comment-form-wrap pt-5" style="width:900px; margin:auto;">
 								<div id="reviewformbox">
 									<form id="reviewform" name="reviewform" method="post" class="bg-light">
 
