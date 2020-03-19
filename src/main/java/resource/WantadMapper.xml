@@ -9,6 +9,9 @@
 		post_location,
 		post_payment, post_review_count from wantad order by post_id desc
 	</select>
+	<select id="selectWantadLocation" resultType="vo.WantadLocVO">
+		select post_id, post_location from wantad order by post_id desc
+	</select>
 	<select id="selectWantadPage" parameterType="java.util.Map"
 		resultType="vo.WantadVO">
 		select post_id, mem_userid, post_title, post_content, post_writedate,
@@ -42,17 +45,17 @@
 	</select>
 	<select id="searchWantadAll1" parameterType="string"
 		resultType="vo.WantadVO">
-		select mem_userid, post_title, post_content,
-		post_writedate, post_hit,
-		post_location, post_payment,
-		post_review_count from wantad
-		where
-		post_title like '%'||#{key}||'%'
+		select mem_userid, post_title, post_content,post_writedate, 
+		post_hit, post_location, post_payment, post_review_count from wantad
+		where post_title like '%'||#{key}||'%'
 		union
 		select mem_userid, post_title, post_content, post_writedate,
-		post_hit,
-		post_location, post_payment, post_review_count from wantad
+		post_hit, post_location, post_payment, post_review_count from wantad
 		where post_content like '%'||#{key}||'%'
+		union
+		select mem_userid, post_title, post_content, post_writedate,
+		post_hit, post_location, post_payment, post_review_count from wantad
+		where post_location like '%'||#{key}||'%'
 	</select>
 
 	<select id="searchWantad1" parameterType="string"
@@ -125,7 +128,13 @@
 		select post_id, mem_userid, post_title,
 		post_content, post_writedate, post_hit, post_location,
 		post_payment, post_review_count
-		from wantad where post_content like '%'||#{key}||'%')
+		from wantad where post_content like '%'||#{key}||'%'
+		union
+		select post_id, mem_userid, post_title,
+		post_content, post_writedate, post_hit, post_location,
+		post_payment, post_review_count
+		from wantad where post_location like '%'||#{key}||'%'
+		)
 		order by post_id desc)
 		where rnum between to_number(${beginNum}) and to_number(${endNum})
 		order by post_id desc
@@ -167,7 +176,10 @@
 		select count(post_id) from
 		(select post_id from wantad where post_title like '%'||#{key}||'%'
 		union
-		select post_id from wantad where post_content like '%'||#{key}||'%')
+		select post_id from wantad where post_content like '%'||#{key}||'%'
+		union
+		select post_id from wantad where post_location like '%'||#{key}||'%'
+		)
 	</select>
 
 </mapper>

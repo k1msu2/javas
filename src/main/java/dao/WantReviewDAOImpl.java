@@ -78,4 +78,16 @@ public class WantReviewDAOImpl implements ReviewDAO {
 		return list;
 	}
 
+	@Override
+	public boolean delete(int id) {
+		boolean result = false;
+		String statement = "resource.WantReviewMapper.deleteWantReview2";
+		if (session.delete(statement, id) == 1) {
+			result = true;
+		}
+		return result;
+	}
+	
+
+
 }

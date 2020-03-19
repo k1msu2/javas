@@ -19,7 +19,6 @@ import dao.MeminfoDAO;
 import service.FTPService;
 import vo.JobadVO;
 import vo.LoginVO;
-import vo.MeminfoVO;
 
 @Controller
 public class JobadController {
@@ -36,7 +35,7 @@ public class JobadController {
 	@RequestParam(value="key",required=false)String key,
 	@RequestParam(value="searchType",required=false)String searchType,
 	@RequestParam(defaultValue="0")int post_id,
-	HttpSession session) throws Exception {
+	HttpSession session){
 		ModelAndView mav = new ModelAndView();
 		List<JobadVO> list;
 		int count = 0;
@@ -53,28 +52,25 @@ public class JobadController {
 
 	
 			String hostFolder = "\\memphoto\\";
-			String localDir = "C:\\Users\\student\\Documents\\webcache\\";
+			//String localDir = "C:\\Users\\student\\Documents\\webcache\\";
+			String localDir = "C:\\Users\\KIMSUI\\Documents\\1_Study\\webcache\\";
 			String resourceDir = context.getRealPath("/") + "resources\\images2\\";
+			System.out.println(resourceDir);
 			String fileName = "";
-			
-			File resPathFolder = new File(resourceDir);
-			File[] listOfFiles = resPathFolder.listFiles();
-
+						
 			for (JobadVO vo : list) {
 				//fileName = "ddochi9";
 				fileName = vo.getMem_userid();
 				//리소스 폴더에 없는 경우만 ftp 서버에서 다운로드
 				//웹서버 동기화 용도
 				// meminfo 객체의 memphoto 확인
-				MeminfoVO mvo = mdao.listOne(vo.getMem_userid());
-				if(mvo.getMem_photo()!=null && !mvo.getMem_photo().equals("none")) {
-					for (int i = 0; i < listOfFiles.length; i++) {
-						if (listOfFiles[i].getName().equals(fileName)) {
-							ftpdownloader.downloadFile(hostFolder, fileName, localDir);
-							ftpdownloader.fileCopyToResource(resourceDir, localDir, fileName);
-						}
-					}
-				}				
+				try {
+					ftpdownloader.downloadFile(hostFolder, fileName, localDir);
+					ftpdownloader.fileCopyToResource(resourceDir, localDir, fileName);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
 			}			
 			//ftpdownloader.disconnect(); // 프로젝트 종료시..처리아직 못함.
 		}

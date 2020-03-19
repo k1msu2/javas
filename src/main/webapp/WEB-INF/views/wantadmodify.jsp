@@ -11,7 +11,7 @@
 <body>
 	<h1>구직 게시판 작성 폼</h1>
 	<form id="wantadform" name="wantadform" method="post">
-		작성자 <input id="mem_userid" type="text" name="mem_userid" value="${listOne.mem_userid}"><br>
+	<%-- 	작성자 <input id="mem_userid" type="text" name="mem_userid" value="${listOne.mem_userid}"><br> --%>
 		<br> 제목 <input id="post_title" type="text" name="post_title"
 			value="${listOne.post_title}"><br> <br> 내용
 		<textarea id="post_content" rows="3" cols="30" name="post_content"
@@ -22,7 +22,8 @@
 		<br> 희망 급여 <input id="post_payment" type="number"
 			name="post_payment" value = "${listOne.post_payment}"> <br>
 		<br> <input id="post_id" type="text" name="post_id" style="display: none" value="${listOne.post_id}">
-		<button onclick="reqUpdateWantad()">등록</button>
+		<input type="hidden" name="mem_userid" value="${listOne.mem_userid }">
+		<input type="button" onclick="reqUpdateWantad()">등록
 		<input type="reset" value="재작성">
 		<button onclick="location.href='wantad/modify'">취소</button>
 	</form>

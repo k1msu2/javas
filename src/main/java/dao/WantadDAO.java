@@ -4,6 +4,7 @@ import java.util.List;
 
 import vo.PageVO;
 import vo.WantSearchVO;
+import vo.WantadLocVO;
 import vo.WantadVO;
 
 public interface WantadDAO {
@@ -17,4 +18,5 @@ public interface WantadDAO {
 	public int listCount();
 	public PageVO pagination(int page, WantSearchVO svo);
 	public PageVO pagination(int page);
+	public List<WantadLocVO> listAllLocation();
 }

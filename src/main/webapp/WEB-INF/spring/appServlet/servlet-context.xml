@@ -41,7 +41,7 @@
 <!-- String host, String user, String pwd -->
 <!-- "127.0.0.1", "test", "1234" -->
 	<beans:bean id="FTPService" class="service.FTPService">
-		<beans:constructor-arg index ="0" value="70.12.115.164"/> 
+		<beans:constructor-arg index ="0" value="localhost"/> 
 		<beans:constructor-arg index ="1" value="test"/>
 		<beans:constructor-arg index ="2" value="1234"/>
 	</beans:bean>
@@ -53,7 +53,7 @@
 		<beans:property name="driverClassName"
 			value="oracle.jdbc.driver.OracleDriver" />
 		<beans:property name="url"
-			value="jdbc:oracle:thin:@70.12.115.164:1521:XE" />
+			value="jdbc:oracle:thin:@localhost:1521:XE" />
 		<beans:property name="username" value="javas" />
 		<beans:property name="password" value="1234" />
 	</beans:bean>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page
-	import="vo.WantadVO, vo.LoginVO, vo.PageVO, vo.WantSearchVO, java.util.List"%>
+	import="vo.WantadVO, vo.WantadLocVO, vo.LoginVO, vo.PageVO, vo.WantSearchVO, java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -167,8 +167,7 @@
 						<c:forEach var="vo" items="${listAll}" varStatus="status">
 							<!-- <div class="col-md-6 col-lg-4 ftco-animate"> -->
 							<div class="blog-entry">
-								<a href="wantad/view?id=${vo.post_id}">
-								</a>
+								<a href="wantad/view?id=${vo.post_id}"> </a>
 								<div class="text border border-top-0 p-4">
 									<h3 class="heading">
 										<a href="wantad/view?id=${vo.post_id}"> 
@@ -200,7 +199,7 @@
 						<div class="col text-center">
 							<div class="block-27">
 								<div id="pages">
-									<%@ include file="wantadpage.jsp"%>
+									<%-- <%@ include file="wantadpage.jsp"%> --%>
 								</div>
 								<%@ include file="wantsearchform.jsp"%>
 							</div>
@@ -211,37 +210,94 @@
 
 
 				<div class="col-lg-6 sidebar ftco-animate">
-					<div class="sidebar-box">
-						<form action="#" class="search-form">
-							<div class="form-group">
-								<span class="icon icon-search"></span> <input type="text"
-									class="form-control" placeholder="xx동을 입력하세요">
-							</div>
-						</form>
-						<p id="demo">현재 위치에서 검색하려면 버튼을 누르세요</p>
-						<button class="btn btn-primary pull-right" onclick="getLocation()">실행</button>
-						<br>
-						<br>
-					</div>
-					<div class="sidebar-box ftco-animate">
+	                                                                  <div class="sidebar-box ftco-animate">
 						<div id="mapid"></div>
 					</div>
 				</div>
 			</div>
+		</div>
 	</section>
 
-	<!-- loader -->
-	<div id="ftco-loader" class="show fullscreen">
-		<svg class="circular" width="48px" height="48px">
-			<circle class="path-bg" cx="24" cy="24" r="22" fill="none"
-				stroke-width="4" stroke="#eeeeee" />
-			<circle class="path" cx="24" cy="24" r="22" fill="none"
-				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
-	</div>
-
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="js/jquery.stellar.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/aos.js"></script>
+	<script src="js/jquery.animateNumber.min.js"></script>
+	<script src="js/scrollax.min.js"></script>
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+	<script src="js/google-map.js"></script>
+	<script src="js/main.js"></script>
 	<script>
-		var x = document.getElementById("demo");
-		function getLocation() {
+	
+		var mymap;
+		var lat;
+		var lng;
+		var googleApiUrlToLatlng = "https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyD8k2DWC_7yFHCrH6LDR3RfITsmWMEqC8c&address=";
+		var googleApiUrlToAddr = "http://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyD8k2DWC_7yFHCrH6LDR3RfITsmWMEqC8c&latlng="; //+ latitude + "," + longitude
+		var xhr = new XMLHttpRequest();
+
+ 	 	window.onload = function(){
+ 			// 페이징
+ 			document.getElementById("pages").innerHTML += "<a href='/javas/wantad?page=${pageVO.pageBeginNum-1}&searchtype=${searchVO.searchtype}&key=${searchVO.key}'>${pageVO.leftChar}</a>&nbsp&nbsp";
+
+			for (var i = "${pageVO.pageBeginNum}"; i <= "${pageVO.pageEndNum}"; i++) {
+				document.getElementById("pages").innerHTML += "<a href='/javas/wantad?page="
+						+ i
+						+ "&searchtype=${searchVO.searchtype}&key=${searchVO.key}'>"
+						+ i + "</a>&nbsp&nbsp";
+			}
+			document.getElementById("pages").innerHTML += "<a href='/javas/wantad?page=${pageVO.pageEndNum+1}&searchtype=${searchVO.searchtype}&key=${searchVO.key}'>${pageVO.rightChar}</a>&nbsp&nbsp<br><br>";
+			
+			// 0. 현재 위치로 set
+			getLocation();
+
+			// 1. 서버에 리스트 데이터를 json 파일로 요청
+			// 이거 하고나면 paging 이 이상해짐..
+			// window.onload 를 주석 처리하면 정상적으로 나옴.
+			// -> windowload 가 두번 사용됨;;
+			xhr.open('post', '/javas/wantad/json', true);
+			xhr.send();
+
+			xhr.onload = function(event) {
+				if (xhr.status == 200) {
+					var str = xhr.responseText;
+					var wantadList = JSON.parse(str);
+					console.log(wantadList);
+					// 2. 구글 맵을 for문으로 돌려서 출력
+					for ( var i in wantadList) {
+						showGoogleMap(wantadList[i].post_location);
+					}
+				}
+			}
+		};  
+
+		function showGoogleMap(addr) {
+			var xhr2 = new XMLHttpRequest();
+			xhr2.open("GET", googleApiUrlToLatlng + encodeURIComponent(addr), true);
+			xhr2.send();
+			xhr2.onload = function() {
+				if (xhr2.status == 200) {
+					var data = JSON.parse(xhr2.responseText);
+					//console.log(data);
+					lat = data.results[0].geometry.location.lat;
+					lng = data.results[0].geometry.location.lng;
+					//console.log(mymap);
+					
+					/* 지역 추가가 정상 적으로 되었을 경우 다시 주석 풀기 */
+					//L.marker([ lat, lng ]).addTo(mymap);
+				}
+			}
+		}
+		
+		function getLocation(){
+			var x = document.getElementById("demo");
 			if (navigator.geolocation) {
 				navigator.geolocation.getCurrentPosition(showPosition,
 						showError);
@@ -249,10 +305,23 @@
 				x.innerHTML = " 이 브라우저는 geolocation을 지원하지 않습니다.";
 			}
 		}
+		
 		function showPosition(position) {
-			x.innerHTML = "위도: " + position.coords.latitude + "<br />경도: "
-					+ position.coords.longitude;
 
+			lat = position.coords.latitude;
+			lng = position.coords.longitude;
+
+			mymap = L.map('mapid').setView([ lat, lng ], 12)
+			L.tileLayer(
+					'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
+					{
+						maxZoom : 18,
+						attribution : 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, '
+								+ '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, '
+								+ 'Imagery <a href="https://www.mapbox.com/">Mapbox</a>',
+						id : 'mapbox.streets'
+					}).addTo(mymap);
+			L.marker([ lat, lng ]).addTo(mymap);
 		}
 		function showError(error) {
 			switch (error.code) {
@@ -273,84 +342,6 @@
 				break;
 			}
 		}
-	</script>
-
-	<script src="js/jquery.min.js"></script>
-	<script src="js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.easing.1.3.js"></script>
-	<script src="js/jquery.waypoints.min.js"></script>
-	<script src="js/jquery.stellar.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/aos.js"></script>
-	<script src="js/jquery.animateNumber.min.js"></script>
-	<script src="js/scrollax.min.js"></script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="js/google-map.js"></script>
-	<script src="js/main.js"></script>
-	<script>
-		var mymap;
-		var lat;
-		var lng;
-		var googleApiUrl = "https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyD8k2DWC_7yFHCrH6LDR3RfITsmWMEqC8c&address=";
-
-		var greenIcon = L
-				.icon({
-					iconUrl : 'http://70.12.115.164:8000/d3edu/images/leaf-green.png',
-					shadowUrl : 'http://70.12.115.164:8000/d3edu/images/leaf-shadow.png',
-
-					iconSize : [ 38, 95 ],
-					shadowSize : [ 50, 64 ],
-					iconAnchor : [ 22, 94 ],
-					shadowAnchor : [ 4, 62 ],
-					popupAnchor : [ -3, -76 ]
-				});
-
-		var redIcon = L
-				.icon({
-					iconUrl : 'http://70.12.115.164:8000/d3edu/images/leaf-red.png',
-					shadowUrl : 'http://70.12.115.164:8000/d3edu/images/leaf-shadow.png',
-
-					iconSize : [ 38, 95 ],
-					shadowSize : [ 50, 64 ],
-					iconAnchor : [ 22, 94 ],
-					shadowAnchor : [ 4, 62 ],
-					popupAnchor : [ -3, -76 ]
-				});
-
-		var xhr = new XMLHttpRequest();
-		xhr.open("GET", googleApiUrl + encodeURIComponent("청주시"), true);
-		xhr.send();
-		xhr.onload = function() {
-			if (xhr.status == 200) {
-				var data = JSON.parse(xhr.responseText);
-				console.log(data);
-				lat = data.results[0].geometry.location.lat;
-				lng = data.results[0].geometry.location.lng;
-				console.log(mymap);
-				if (mymap)
-					mymap.remove();
-				mymap = L.map('mapid').setView([ lat, lng ], 8)
-				L
-						.tileLayer(
-								'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
-								{
-									maxZoom : 18,
-									attribution : 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, '
-											+ '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, '
-											+ 'Imagery <a href="https://www.mapbox.com/">Mapbox</a>',
-									id : 'mapbox.streets'
-								}).addTo(mymap);
-
-				L.marker([ lat, lng ], {
-					icon : greenIcon
-				}).addTo(mymap).bindPopup("<b>" + "test").openPopup();
-
-			}
-		};
 	</script>
 </body>
 </html>

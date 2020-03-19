@@ -64,7 +64,7 @@ public class MeminfoController {
 		String fileName = vo.getMem_userid();
 		byte[] content = null;
 		try {
-			if (!vo.getUploadFile().isEmpty()) { // 서버에 데이터 안올라감.
+			if (!vo.getUploadFile().isEmpty()) { // ok!
 				content = vo.getUploadFile().getBytes();
 				String path = context.getRealPath("/") + "resources/images2/" + fileName + ".png";
 				System.out.println(path);
@@ -77,6 +77,8 @@ public class MeminfoController {
 				ftpUploader.uploadFile(path, fileName, "/memphoto/");
 				ftpUploader.disconnect();
 				vo.setMem_photo(fileName);
+			} else {
+
 			}
 		}		
 		catch(IOException e) {

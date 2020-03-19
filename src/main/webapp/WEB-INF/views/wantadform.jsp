@@ -167,7 +167,7 @@
 					var str = request.responseText;
 					if (str == "success") {
 						alert("글 등록 성공");
-						window.location.href = "/javas/wantad";
+						window.location.href = "http://localhost:8080/javas/wantad";
 					} else {
 						alert("글 등록 실패");
 					}
