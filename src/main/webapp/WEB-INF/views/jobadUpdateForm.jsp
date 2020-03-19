@@ -156,7 +156,7 @@
 						<input type="number" class="form-control" id="post_payment" name="post_payment" value="<%= vo.getPost_payment() %>">
 					</div>
 					<div class="form-group">
-						<input type="tel" class="form-control" name="post_phone" value="<%= vo.getPost_phone() %>" required>		
+						<input type="number" class="form-control" name="post_phone" value="<%= vo.getPost_phone() %>">		
 				</div>
 		<div style="text-align:center;">
         <button type="button" onclick="location.href='/javas/jobad?action=listone&post_id=<%= vo.getPost_id() %>'" class="btn btn-primary pull-right" style="margin-right: 80px;">수정 취소</button>

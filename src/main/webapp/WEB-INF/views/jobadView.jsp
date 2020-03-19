@@ -28,6 +28,14 @@
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
     
+    <link rel="stylesheet"
+	href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+	integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+	crossorigin="" />
+<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+	integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+	crossorigin=""></script>
+    
   </head>
   <style>
 .ftco-section {
@@ -49,6 +57,7 @@ width : 200px;
 height : 10px;
 padding: 20px 40px;
 }
+
   </style>
   <body>
  	 <div class="bg-top navbar-light d-flex flex-column-reverse">
@@ -150,13 +159,21 @@ padding: 20px 40px;
     </section>
     
     <br><br>
-           <c:if test="${!empty loginVO}">
-             <div class="icon d-flex justify-content-center align-items-center"><span><img width=80px src="/javas/resources/images/none.PNG"></span></div>
-			<div class="text" style="text-align : center; font-family: 'Do Hyeon', sans-serif;">
-			       <h4><c:out value="${loginVO.mem_username}" />님 환영합니다!</h4>
-		         </c:if>
-		    </div>
-     <br>
+	<c:if test="${!empty loginVO}">
+		<div class="icon d-flex justify-content-center align-items-center">
+			<span> <img
+				src="/javas/resources/images2/<c:out value="${loginVO.mem_userid}" />.png"
+				width="100"></span>
+		</div>
+		<div class="text"
+			style="text-align: center; font-family: 'Do Hyeon', sans-serif;">
+			<h4>
+				<c:out value="${loginVO.mem_username}" />
+				님 환영합니다!
+			</h4>
+	</c:if>
+	</div>
+	<br>
    <hr style="width : 85%;">
    <br><br>
     
@@ -178,7 +195,14 @@ if(list!=null && list.size()!=0){
 <%
 	for(JobadVO vo1 : list){
 %>
-          <div class="col-md-6 col-lg-4 ftco-animate">
+
+          <div class="col-md-8 col-md-push-3 sidebar ftco-animate">
+	            <div class="sidebar-box ftco-animate">
+						<div id="mapid"></div>
+					</div>
+					</div>
+
+          <div class="ftco-animate">
             <div class="blog-entry">
               <div style = "text-align : center;">
               <img src="/javas/resources/images2/<%= vo1.getMem_userid() %>.png" width="100">

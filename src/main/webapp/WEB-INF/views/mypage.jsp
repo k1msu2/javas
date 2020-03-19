@@ -133,15 +133,16 @@
 			<div class="container">
 				<div class="row">
           <div class="col-md-3 col-md-pull-9 sidebar ftco-animate">
-             <div class="icon d-flex justify-content-center align-items-center"><span><img width=80px src="/javas/resources/images/none.PNG"></span></div>
-			<div class="text" style="text-align : center;">
-			     <c:if test="${!empty loginVO}">
-			       <h4><c:out value="${loginVO.mem_username}" />님 <br>환영합니다!</h4>
-		         </c:if>
+             <div class="icon d-flex justify-content-center align-items-center">
+             <c:if test="${!empty loginVO}">
+             <span><img width=80px src="/javas/resources/images2/<c:out value="${loginVO.mem_userid}" />.png"></span></div>
+				<div class="text" style="text-align : center;">
+			     	<h4><c:out value="${loginVO.mem_username}" />님 <br>환영합니다!</h4>
+		    </c:if>
 		    </div>
 		    <br>
               <ul class="categories" style="text-align : center;">
-                <li><a onclick="displayone()">정보 수정</a></li>
+                <li><a onclick="displayone(); return false;">정보 수정</a></li>
                 <li><a onclick="displaytwo()">리뷰 관리</a></li>
                 <li><a href="/javas/jobad">구인 게시</a></li>
                 <li><a href="/javas/wandad">구직 게시</a></li>

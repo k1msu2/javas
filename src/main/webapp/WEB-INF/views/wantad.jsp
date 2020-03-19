@@ -150,7 +150,7 @@
 	
 	  <br><br>
            <c:if test="${!empty loginVO}">
-             <div class="icon d-flex justify-content-center align-items-center"><span><img width=80px src="/javas/resources/images/none.PNG"></span></div>
+             <div class="icon d-flex justify-content-center align-items-center"><span><img width=80px src="/javas/resources/images2/<c:out value="${loginVO.mem_userid}" />.png"></span></div>
 			<div class="text" style="text-align : center; font-family: 'Do Hyeon', sans-serif;">
 			       <h4><c:out value="${loginVO.mem_username}" />님 환영합니다!</h4>
 		         </c:if>
@@ -306,7 +306,7 @@
 					//console.log(mymap);
 					
 					/* 지역 추가가 정상 적으로 되었을 경우 다시 주석 풀기 */
-					//L.marker([ lat, lng ]).addTo(mymap);
+					L.marker([ lat, lng ]).addTo(mymap);
 				}
 			}
 		}

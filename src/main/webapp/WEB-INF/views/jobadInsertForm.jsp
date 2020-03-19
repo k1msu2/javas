@@ -138,7 +138,7 @@
                     <textarea class="form-control" type="textarea" id="post_content" name="post_content" placeholder="내용 작성" maxlength="140" rows="7"></textarea>                    
                     </div>
                     <div class="form-group">
-						<input type="hidden" name="post_location" value="${sessionScope.loginVO.mem_address}">
+						<input type="hidden" id="post_location" name="post_location" value="${sessionScope.loginVO.mem_address}">
 					</div>
 					<div class="form-group">
 						<input type="text" class="form-control" id="post_payment" name="post_payment" placeholder="시급" required>

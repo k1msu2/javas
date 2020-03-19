@@ -161,6 +161,7 @@ width:150px;
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 ftco-animate">
+				
 					<!-- 게시글 출력 -->
 					<c:if test="${!empty listOne}">
 						<div class="about-author d-flex p-4 bg-light">

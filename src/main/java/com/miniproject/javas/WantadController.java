@@ -129,13 +129,11 @@ public class WantadController {
 		fileName = vo.getMem_userid();
 		boolean flag = false;
 		
-		for (int i = 0; i < listOfFiles.length; i++) {
-			System.out.println("listOfFiles: " + listOfFiles[i]);
-			if (listOfFiles[i].getName().equals(fileName+".png")) {
-				flag = true;
-			}
-		}
-		
+		/* 같은 이름의 파일이 있으면 검색에서 제외
+		 * for (int i = 0; i < listOfFiles.length; i++) {
+		 * System.out.println("listOfFiles: " + listOfFiles[i]); if
+		 * (listOfFiles[i].getName().equals(fileName+".png")) { flag = true; } }
+		 */
 		if (!flag) {
 			try {
 				ftpdownloader.downloadFile(hostFolder, fileName, localDir);
