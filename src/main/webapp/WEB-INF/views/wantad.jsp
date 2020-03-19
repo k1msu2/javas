@@ -316,7 +316,7 @@
 					//console.log(mymap);
 					
 					/* 지역 추가가 정상 적으로 되었을 경우 다시 주석 풀기 */
-					//L.marker([ lat, lng ]).addTo(mymap);
+					L.marker([ lat, lng ]).addTo(mymap);
 				}
 			}
 		}

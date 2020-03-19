@@ -117,8 +117,8 @@ public class WantadController {
 	public ModelAndView read(int id) {
 		ModelAndView mav = new ModelAndView();
 		String hostFolder = "\\memphoto\\";
-		//String localDir = "C:\\Users\\student\\Documents\\webcache\\";
-		String localDir = "C:\\Users\\KIMSUI\\Documents\\1_Study\\webcache\\";
+		String localDir = "C:\\Users\\student\\Documents\\webcache\\";
+		//String localDir = "C:\\Users\\KIMSUI\\Documents\\1_Study\\webcache\\";
 		String resourceDir = context.getRealPath("/") + "resources\\images2\\";
 		String fileName = "";
 		
