@@ -8,16 +8,10 @@
 <head>
 <title>잉력시장 : 로그인</title>
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
     <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
     
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="/javas/resources/css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="/javas/resources/css/animate.css">
     
@@ -32,7 +26,6 @@
     <link rel="stylesheet" href="/javas/resources/css/flaticon.css">
     <link rel="stylesheet" href="/javas/resources/css/icomoon.css">
     <link rel="stylesheet" href="/javas/resources/css/style.css">
-
 <style type="text/css">
 	.login-form {
 		width: 385px;
@@ -88,18 +81,10 @@
         z-index: 1;
     }
     
-     #ftco-navbar{
-    
-    height : 80px;
-    data-toggle : collapse;
-    
-    }
- 
 </style>
 </head>
 <body>
-
-	  <div class="bg-top navbar-light d-flex flex-column-reverse">
+<div class="bg-top navbar-light d-flex flex-column-reverse">
     	<div class="container py-3">
     		<div class="row no-gutters d-flex align-items-center align-items-stretch">
     			<div class="col-md-4 d-flex align-items-center py-4">
@@ -131,8 +116,8 @@
 				    </div>
 			    </div>
 		    </div>
-		    </div>
-		  <div class="top-social-menu py-2 bg-light">
+		  </div>
+		  <div class="top-social-menu py-2 bg-light" >
 		  	<div class="container">
 		  		<div class="row">
 			    	<div class="col">
@@ -155,14 +140,12 @@
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
 	      <div class="collapse navbar-collapse" id="ftco-nav">
-	          <ul class="navbar-nav mr-auto">
-	            <li class="nav-item"><a href="/javas/main" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">홈</a></li>
-	            <li class="nav-item"><a href="/javas/about" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">소개</a></li>
+	        <ul class="navbar-nav mr-auto">
+	        	<li class="nav-item"><a href="/javas/main" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">홈</a></li>
+	        	<li class="nav-item"><a href="/javas/about" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">소개</a></li>
 	        	<li class="nav-item"><a href="/javas/developers" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">개발진</a></li>
 	        	<li class="nav-item"><a href="/javas/jobad" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">대타 구인</a></li>
 	        	<li class="nav-item"><a href="/javas/wantad" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">대타 구직</a></li>
-	            <li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-				<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 				<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 				<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 				<li class="nav-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
@@ -179,8 +162,11 @@
 					<li class="nav-item"><a href="/javas/logout" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">로그아웃</a></li>
 				</c:if>         	
 				<c:if test="${empty loginVO}">
+
+
 	          	<li class="nav-item active"><a href="/javas/login/form" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">로그인</a></li>
 	          	<li class="nav-item"><a href="/javas/meminfo" class="nav-link" style="font-family: 'Do Hyeon', sans-serif; font-size: 20px;">회원가입</a></li>
+
 	          	</c:if>
 	        </ul>
 	      </div>
@@ -208,7 +194,7 @@
             <button type="submit" class="btn btn-primary login-btn btn-block">로그인</button>
         </div>
         <div class="form-group">
-            <button onclick="location.href='/javas/resources/meminfo.jsp'" class="btn btn-primary login-btn btn-block">회원가입</button>
+            <button onclick="location.href='/javas/meminfo'" class="btn btn-primary login-btn btn-block">회원가입</button>
         </div>
         <div class="clearfix">
             <label class="pull-left checkbox-inline"><input type="checkbox">아이디 저장</label>

@@ -43,11 +43,10 @@ width : 300px;
 	<hr>
 	<br>
 	<br>
-	<form method="post" action="/javas/meminfoupdate">
+	<form method="post" action="/javas/meminfoupdate" enctype="multipart/form-data">
 		<input type="hidden" name="action" value="update">
+		<input type="hidden" id="mem_userid" name="mem_userid" 	value="${loginVO.mem_userid}">
 		<table id = table1>
-			<input type="hidden" id="mem_userid" name="mem_userid"
-				value="${loginVO.mem_userid}">
 			<tr id = table2>
 				<td id = table4><b>*</b> 아이디</td>
 				<td id = table2> ${loginVO.mem_userid}</td>
@@ -125,26 +124,26 @@ width : 300px;
 			</tr>
 			<tr id = table2>
 				<td id = table4>프로필 사진</td>
-				<td id = table2><input id="photo" style="width: 200px; text-align: left;"
-					type="text" name="mem_photo" value="${loginVO.mem_photo}"></td>
+				<td id = table2><input id="photo" style="width: 200px; text-align: left;" type="file" name="uploadFile"></td>
 			</tr>
 			<tr id = table2>
 				<td id = table2>&nbsp;</td>
 			</tr>
 			<tr id = table2>
 				<td id = table4><b>*</b> 직업</td>
-				<td id = table2><SELECT name='mem_is_employer'
-					value="${loginVO.mem_is_employer}">
-						<c:if test="${loginVO.mem_is_employer == 2}">
-							<OPTION value='1'>사업자</OPTION>
-							<OPTION value='2' selected>파트타이머</OPTION>
-						</c:if>
-						<c:if test="${loginVO.mem_is_employer == 1}">
-							<OPTION value='1' selected>사업자</OPTION>
-							<OPTION value='2' >파트타이머</OPTION>
-						</c:if>
-
-				</SELECT></td>
+				<td id = table2>
+					<SELECT name='mem_is_employer'
+						value="${loginVO.mem_is_employer}">
+							<c:if test="${loginVO.mem_is_employer == 2}">
+								<OPTION value='1'>사업자</OPTION>
+								<OPTION value='2' selected>파트타이머</OPTION>
+							</c:if>
+							<c:if test="${loginVO.mem_is_employer == 1}">
+								<OPTION value='1' selected>사업자</OPTION>
+								<OPTION value='2' >파트타이머</OPTION>
+							</c:if>
+					</SELECT>
+				</td>
 			</tr>
 			<tr id = table2>
 				<td>&nbsp;</td>
@@ -154,14 +153,17 @@ width : 300px;
 			</tr>
 			<tr id = table2>
 				<td id = table3 colspan ="2" style = "text-align: center;">
-				<input  onclick="f();" type="submit" value="정보수정"> 
-				<input type="reset" value="재작성"> 
-				<input onclick="location.href='${header.referer}'" type="button" value="취소"></td>
+				<input onclick="f();" class="btn btn-primary pull-right" type="submit" value="정보수정" style="margin-right: 10px;"> 
+				<input class="btn btn-primary pull-right" type="reset" value="  재작성  " style="margin-right: 10px;"> 
+				<input class="btn btn-primary pull-right" onclick="location.href='${header.referer}'" type="button" value="   취소   ">
+				</td>
 
 			</tr>
 		</table>
 	</form>
 </body>
+
+
 <script>
 function f() {
 	alert('${ msg1 }');

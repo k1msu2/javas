@@ -8,25 +8,25 @@
   <head>
     <title>잉력시장 : 개발진</title>
     <meta charset="utf-8">
-   <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
     
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="/javas/resources/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/javas/resources/css/animate.css">
     
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="/javas/resources/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/javas/resources/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/javas/resources/css/magnific-popup.css">
 
-    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="/javas/resources/css/aos.css">
 
-    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="/javas/resources/css/ionicons.min.css">
     
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/javas/resources/css/flaticon.css">
+    <link rel="stylesheet" href="/javas/resources/css/icomoon.css">
+    <link rel="stylesheet" href="/javas/resources/css/style.css">
+
   </head>
   <body>
 	  <div class="bg-top navbar-light d-flex flex-column-reverse">
@@ -144,10 +144,7 @@
 								<div class="faded">
 									<p>캡틴, 총 책임자</p>
 									<ul class="ftco-social text-center">
-		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-twitter"></span></a></li>
-		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-facebook"></span></a></li>
-		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-google-plus"></span></a></li>
-		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-instagram"></span></a></li>
+		                <li class="ftco-animate"><img class="d-flex align-items-center justify-content-center" src="/javas/images/captain01.png" width="45px"></li>
 		              </ul>
 	              </div>
 							</div>
@@ -164,10 +161,7 @@
 								<div class="faded">
 									<p>앤트맨, 팀에서 중요한 역할</p>
 									<ul class="ftco-social text-center">
-		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-twitter"></span></a></li>
-		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-facebook"></span></a></li>
-		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-google-plus"></span></a></li>
-		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-instagram"></span></a></li>
+		                 <li class="ftco-animate"><img class="d-flex align-items-center justify-content-center" src="/javas/images/antman.png" width="45px"></li>
 		              </ul>
 	              </div>
 							</div>
@@ -184,10 +178,7 @@
 								<div class="faded">
 									<p>스파이더맨, 팀의 디자이너</p>
 									<ul class="ftco-social text-center">
-		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-twitter"></span></a></li>
-		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-facebook"></span></a></li>
-		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-google-plus"></span></a></li>
-		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-instagram"></span></a></li>
+		                <li class="ftco-animate"><img class="d-flex align-items-center justify-content-center" src="/javas/images/spiderman.png" width="60px"></li>
 		              </ul>
 	              </div>
 							</div>
@@ -217,19 +208,19 @@
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/scrollax.min.js"></script>
-  <script src="js/main.js"></script>
+  <script src="/javas/resources/js/jquery.min.js"></script>
+  <script src="/javas/resources/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="/javas/resources/js/popper.min.js"></script>
+  <script src="/javas/resources/js/bootstrap.min.js"></script>
+  <script src="/javas/resources/js/jquery.easing.1.3.js"></script>
+  <script src="/javas/resources/js/jquery.waypoints.min.js"></script>
+  <script src="/javas/resources/js/jquery.stellar.min.js"></script>
+  <script src="/javas/resources/js/owl.carousel.min.js"></script>
+  <script src="/javas/resources/js/jquery.magnific-popup.min.js"></script>
+  <script src="/javas/resources/js/aos.js"></script>
+  <script src="/javas/resources/js/jquery.animateNumber.min.js"></script>
+  <script src="/javas/resources/js/scrollax.min.js"></script>
+  <script src="/javas/resources/js/main.js"></script>
     
   </body>
 </html>

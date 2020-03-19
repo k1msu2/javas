@@ -9,23 +9,22 @@
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
     
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="/javas/resources/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/javas/resources/css/animate.css">
     
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="/javas/resources/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/javas/resources/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/javas/resources/css/magnific-popup.css">
 
-    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="/javas/resources/css/aos.css">
 
-    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="/javas/resources/css/ionicons.min.css">
     
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/javas/resources/css/flaticon.css">
+    <link rel="stylesheet" href="/javas/resources/css/icomoon.css">
+    <link rel="stylesheet" href="/javas/resources/css/style.css">
   </head>
   <body>
 	  <div class="bg-top navbar-light d-flex flex-column-reverse">
@@ -135,63 +134,55 @@
           <div class="col-md-8 text-center heading-section ftco-animate">
           	<span class="subheading">소개</span>
             <h2 class="mb-4">왜 잉력시장일까요?</h2>
-            <p>Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country</p>
+            <p>잉력시장은 잉력시장 만의 가치가 있습니다.</p>
           </div>
         </div>
   			<div class="row tabulation mt-4 ftco-animate">
   				<div class="col-md-4">
 						<ul class="nav nav-pills nav-fill d-md-flex d-block flex-column">
 						  <li class="nav-item text-left">
-						    <a class="nav-link active py-4" data-toggle="tab" href="#services-1"><span class="flaticon-analysis mr-2"></span> Business Analysis</a>
+						    <a class="nav-link active py-4" data-toggle="tab" href="#services-1"><span class="flaticon-analysis mr-2"></span> 능력 개발</a>
 						  </li>
 						  <li class="nav-item text-left">
-						    <a class="nav-link py-4" data-toggle="tab" href="#services-2"><span class="flaticon-business mr-2"></span> Business Consulting</a>
+						    <a class="nav-link py-4" data-toggle="tab" href="#services-2"><span class="flaticon-business mr-2"></span> 완벽한 매칭</a>
 						  </li>
 						  <li class="nav-item text-left">
-						    <a class="nav-link py-4" data-toggle="tab" href="#services-3"><span class="flaticon-insurance mr-2"></span> Business Insurance</a>
+						    <a class="nav-link py-4" data-toggle="tab" href="#services-4"><span class="flaticon-money mr-2"></span> 상생 가능성</a>
 						  </li>
 						  <li class="nav-item text-left">
-						    <a class="nav-link py-4" data-toggle="tab" href="#services-4"><span class="flaticon-money mr-2"></span> Global Investigation</a>
+						    <a class="nav-link py-4" data-toggle="tab" href="#services-5"><span class="flaticon-rating mr-2"></span> 광고 효과</a>
 						  </li>
 						  <li class="nav-item text-left">
-						    <a class="nav-link py-4" data-toggle="tab" href="#services-5"><span class="flaticon-rating mr-2"></span> Audit &amp; Evaluation</a>
-						  </li>
-						  <li class="nav-item text-left">
-						    <a class="nav-link py-4" data-toggle="tab" href="#services-6"><span class="flaticon-search-engine mr-2"></span> Marketing Strategy</a>
+						    <a class="nav-link py-4" data-toggle="tab" href="#services-6"><span class="flaticon-search-engine mr-2"></span> 시간의 금전적 효율</a>
 						  </li>
 						</ul>
 					</div>
 					<div class="col-md-8">
 						<div class="tab-content">
 						  <div class="tab-pane container p-0 active" id="services-1">
-						  	<div class="img" style="background-image: url(/javas/resources/images/project-2.jpg);"></div>
-						  	<h3><a href="#">Business Analysis</a></h3>
-						  	<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+						  	<div class="img" style="background-image: url(/javas/resources/images/skill.jpg);"></div>
+						  	<h3><a href="#">능력 개발</a></h3>
+						  	<p>취미, 시간 죽이기, 더이상 쓰지 않는 수준에서 머물던 기술을 지속적으로 사용함으로써 능력을 개발할 수 있습니다.</p>
 						  </div>
 						  <div class="tab-pane container p-0 fade" id="services-2">
-						  	<div class="img" style="background-image: url(/javas/resources/images/project-3.jpg);"></div>
-						  	<h3><a href="#">Business Consulting</a></h3>
-						  	<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-						  </div>
-						  <div class="tab-pane container p-0 fade" id="services-3">
-						  	<div class="img" style="background-image: url(/javas/resources/images/project-4.jpg);"></div>
-						  	<h3><a href="#">Business Insurance</a></h3>
-						  	<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+						  	<div class="img" style="background-image: url(/javas/resources/images/matching.jpg);"></div>
+						  	<h3><a href="#">완벽한 매칭</a></h3>
+						  	<p>장소, 시간, 시급 등의 필요 조건을 완벽히 매칭시켜줌으로써 후회되지 않는 선택을 할 수가 있습니다.</p>
 						  </div>
 						  <div class="tab-pane container p-0 fade" id="services-4">
-						  	<div class="img" style="background-image: url(/javas/resources/images/project-5.jpg);"></div>
-						  	<h3><a href="#">Global Investigation</a></h3>
-						  	<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+						  	<div class="img" style="background-image: url(/javas/resources/images/good.jpg);"></div>
+						  	<h3><a href="#">상생 가능성</a></h3>
+						  	<p>일을 하고자 하는 사람과 쓰고자 하는 사람 간의 필요성을 채워줌으로써 얻는 상생 가능성을 거론합니다.</p>
 						  </div>
 						  <div class="tab-pane container p-0 fade" id="services-5">
-						  	<div class="img" style="background-image: url(/javas/resources/images/project-6.jpg);"></div>
-						  	<h3><a href="#">Audit &amp; Evaluation</a></h3>
-						  	<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+						  	<div class="img" style="background-image: url(/javas/resources/images/marketing.jpg);"></div>
+						  	<h3><a href="#">광고 효과</a></h3>
+						  	<p>다양한 연령대의 수많은 사람들이 모이는 플랫폼에서 자기 자신을, 나아가서 자신의 사업장을 광고해 인지도를 높일 수 있습니다.</p>
 						  </div>
 						  <div class="tab-pane container p-0 fade" id="services-6">
-						  	<div class="img" style="background-image: url(/javas/resources/images/project-1.jpg);"></div>
-						  	<h3><a href="#">Marketing Strategy</a></h3>
-						  	<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+						  	<div class="img" style="background-image: url(/javas/resources/images/time.png);"></div>
+						  	<h3><a href="#">시간의 금전적 효율</a></h3>
+						  	<p>쉽게 운용할 수 있지만 남기만 했던 시간을 효율적으로 원하는 곳에 사용하고 대가를 얻음으로써 금전적 효율을 누릴 수 있습니다.</p>
 						  </div>
 						</div>
 					</div>
@@ -200,14 +191,14 @@
     </section>
 
     <section class="ftco-section">
-			<div class="container">
+			<div class="container" style="text-align:center;">
 				<div class="row">
 					<div class="col-lg-4 d-flex">
 						<div class="services-2 border rounded text-center ftco-animate">
 							<div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-analysis"></span></div>
 							<div class="text media-body">
-								<h3>Business Analysis</h3>
-								<p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
+								<h3>능력 개발</h3>
+								<p>기술을 지속적으로 사용함으로써 능력 개발</p>
 							</div>
 						</div>
 					</div>
@@ -215,17 +206,8 @@
 						<div class="services-2 border rounded text-center ftco-animate">
 							<div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-business"></span></div>
 							<div class="text media-body">
-								<h3>Business Consulting</h3>
-								<p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 d-flex">
-						<div class="services-2 border rounded text-center ftco-animate">
-							<div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-insurance"></span></div>
-							<div class="text media-body">
-								<h3>Business Insurance</h3>
-								<p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
+								<h3>완벽한 매칭</h3>
+								<p>필요 조건의 흠 없는 매칭</p>
 							</div>
 						</div>
 					</div>
@@ -233,8 +215,8 @@
 						<div class="services-2 border rounded text-center ftco-animate">
 							<div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-money"></span></div>
 							<div class="text media-body">
-								<h3>Global Investigation</h3>
-								<p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
+								<h3>상생 가능성</h3>
+								<p>구직자와 구인자 간의 상생 가능성</p>
 							</div>
 						</div>
 					</div>
@@ -242,8 +224,8 @@
 						<div class="services-2 border rounded text-center ftco-animate">
 							<div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-rating"></span></div>
 							<div class="text media-body">
-								<h3>Audit &amp; Evaluation</h3>
-								<p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
+								<h3>광고 효과</h3>
+								<p> 자기 자신, 나아가서 자신의 사업장 광고</p>
 							</div>
 						</div>
 					</div>
@@ -251,8 +233,8 @@
 						<div class="services-2 border rounded text-center ftco-animate">
 							<div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-search-engine"></span></div>
 							<div class="text media-body">
-								<h3>Marketing Strategy</h3>
-								<p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
+								<h3>시간의 금전적 효율</h3>
+								<p>남는 시간을 이용한 금전적 효율</p>
 							</div>
 						</div>
 					</div>
@@ -280,22 +262,19 @@
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="js/google-map.js"></script>
-  <script src="js/main.js"></script>
-    
+  <script src="/javas/resources/js/jquery.min.js"></script>
+  <script src="/javas/resources/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="/javas/resources/js/popper.min.js"></script>
+  <script src="/javas/resources/js/bootstrap.min.js"></script>
+  <script src="/javas/resources/js/jquery.easing.1.3.js"></script>
+  <script src="/javas/resources/js/jquery.waypoints.min.js"></script>
+  <script src="/javas/resources/js/jquery.stellar.min.js"></script>
+  <script src="/javas/resources/js/owl.carousel.min.js"></script>
+  <script src="/javas/resources/js/jquery.magnific-popup.min.js"></script>
+  <script src="/javas/resources/js/aos.js"></script>
+  <script src="/javas/resources/js/jquery.animateNumber.min.js"></script>
+  <script src="/javas/resources/js/scrollax.min.js"></script>
+  <script src="/javas/resources/js/main.js"></script>
     
   </body>
 </html>

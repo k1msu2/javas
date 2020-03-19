@@ -15,20 +15,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="/javas/resources/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/javas/resources/css/animate.css">
     
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="/javas/resources/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/javas/resources/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/javas/resources/css/magnific-popup.css">
 
-    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="/javas/resources/css/aos.css">
 
-    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="/javas/resources/css/ionicons.min.css">
     
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/javas/resources/css/flaticon.css">
+    <link rel="stylesheet" href="/javas/resources/css/icomoon.css">
+    <link rel="stylesheet" href="/javas/resources/css/style.css">
 
 <body>
   <div class="bg-top navbar-light d-flex flex-column-reverse">
@@ -122,7 +122,7 @@
     <!-- END nav -->
     
     <section class="home-slider owl-carousel">
-      <div class="slider-item" style="background-image:url(images/partime.jpg);">
+      <div class="slider-item" style="background-image:url(/javas/resources/images/partime.jpg);">
       	<div class="overlay"></div>
         <div class="container">
           <div class="row no-gutters slider-text align-items-center justify-content-start" data-scrollax-parent="true">
@@ -135,7 +135,7 @@
         </div>
       </div>
 
-      <div class="slider-item" style="background-image:url(images/partime2.jpg);">
+      <div class="slider-item" style="background-image:url(/javas/resources/images/partime2.jpg);">
       	<div class="overlay"></div>
         <div class="container">
           <div class="row no-gutters slider-text align-items-center justify-content-start" data-scrollax-parent="true">
@@ -197,7 +197,7 @@
 			</div>
 		</section>
 		<br><br><br>
-		<section class="ftco-intro ftco-no-pb img" style="background-image: url(images/bg_3.jpg);">
+		<section class="ftco-intro ftco-no-pb img" style="background-image: url(/javas/resources/images/bg_3.jpg);">
     	<div class="container">
     		<div class="row justify-content-center">
           <div class="col-md-10 text-center heading-section heading-section-white ftco-animate">
@@ -211,7 +211,7 @@
 			<div class="container consult-wrap">
 				<div class="row d-flex align-items-stretch">
 					<div class="col-md-6 wrap-about align-items-stretch d-flex">
-						<div class="img" style="background-image: url(images/partime3.jpg);"></div>
+						<div class="img" style="background-image: url(/javas/resources/images/partime3.jpg);"></div>
 					</div>
 					<div class="col-md-6 wrap-about ftco-animate py-md-5 pl-md-5">
 						<div class="heading-section mb-4">
@@ -298,21 +298,19 @@
 
 
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="js/google-map.js"></script>
-  <script src="js/main.js"></script>
+  <script src="/javas/resources/js/jquery.min.js"></script>
+  <script src="/javas/resources/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="/javas/resources/js/popper.min.js"></script>
+  <script src="/javas/resources/js/bootstrap.min.js"></script>
+  <script src="/javas/resources/js/jquery.easing.1.3.js"></script>
+  <script src="/javas/resources/js/jquery.waypoints.min.js"></script>
+  <script src="/javas/resources/js/jquery.stellar.min.js"></script>
+  <script src="/javas/resources/js/owl.carousel.min.js"></script>
+  <script src="/javas/resources/js/jquery.magnific-popup.min.js"></script>
+  <script src="/javas/resources/js/aos.js"></script>
+  <script src="/javas/resources/js/jquery.animateNumber.min.js"></script>
+  <script src="/javas/resources/js/scrollax.min.js"></script>
+  <script src="/javas/resources/js/main.js"></script>
     
 
 </body>
