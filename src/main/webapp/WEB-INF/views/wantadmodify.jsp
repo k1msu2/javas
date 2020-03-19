@@ -143,7 +143,7 @@
 						<input class="form-control" id="post_id" type="text" name="newsid" style="display: none">
 					</div>
 		<div style="text-align:center;">
-        <button type="sumit" onclick="reqUpdateWantad()" class="btn btn-primary pull-right" style="margin-right: 10px;">등록</button>
+        <button type="sumit" onclick="reqUpdateWantad()" class="btn btn-primary pull-right" style="margin-right: 10px;">&nbsp;&nbsp;&nbsp;&nbsp;등록&nbsp;&nbsp;&nbsp;&nbsp;</button>
         <input type="reset" value="다시 쓰기" class="btn btn-primary pull-right" style="margin-right: 10px;">
         <input type="button" value="작성 취소" onclick="location.href='wantad/modify'"  class="btn btn-primary pull-right" style="margin-right: 10px;">
         </div>
