@@ -20,7 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class FTPService {
 
 	private FTPClient ftp = null;
-
+	
 	public FTPClient getFtp() {
 		return ftp;
 	}

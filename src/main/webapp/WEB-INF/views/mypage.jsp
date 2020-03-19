@@ -141,8 +141,8 @@
 		    </div>
 		    <br>
               <ul class="categories" style="text-align : center;">
-                <li><a onclick="displayone()">정보 수정</a></li>
-                <li><a onclick="displaytwo()">리뷰 관리</a></li>
+                <li><a onclick="displayone(); return false;">정보 수정</a></li>
+                <li><a onclick="displaytwo();">리뷰 관리</a></li>
                 <li><a href="/javas/jobad">구인 게시</a></li>
                 <li><a href="/javas/wandad">구직 게시</a></li>
                 <li><a onclick="displaythree()">1:1 문의</a></li>
