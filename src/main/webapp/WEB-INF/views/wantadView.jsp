@@ -215,8 +215,10 @@
 									<label for="post_hit">조회수&nbsp;&nbsp;</label>
 									<c:out value="${listOne.post_hit}" />
 								</p>
-								<button onclick="location.href='/javas/wantad/modify?id=${listOne.post_id}'" class="btn px-4 btn-primary btn-sm">수정</button>
-								<button onclick="delListOne(${listOne.post_id})" class="btn px-4 btn-primary btn-sm">삭제</button>
+								<c:if test="${listOne.mem_userid==loginVO.mem_userid}">
+									<button onclick="location.href='/javas/wantad/modify?id=${listOne.post_id}'" class="btn px-4 btn-primary btn-sm">수정</button>
+									<button onclick="delListOne(${listOne.post_id})" class="btn px-4 btn-primary btn-sm">삭제</button>
+								</c:if>
 							</div>
 						</div>
 					</c:if>
